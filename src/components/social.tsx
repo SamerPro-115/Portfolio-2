@@ -81,7 +81,7 @@ return (
     className="
       fixed 
       top-2 left-1/2 -translate-x-1/2 flex-row gap-2
-      sm:top-1/2 sm:left-4 sm:-translate-x-0 sm:-translate-y-1/2 sm:flex-col sm:gap-3
+      sm:top-[4%] sm:left-4 sm:-translate-x-0 sm:-translate-y-1/2  sm:gap-3
       z-50 flex
     "
   >
@@ -91,7 +91,7 @@ return (
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className="group p-1.5 sm:p-3 rounded-full bg-white border border-black sm:border-2
+        className="group p-1 sm:p-1.5  rounded-full bg-white border border-black sm:border-2
                    hover:bg-black hover:border-white
                    transition-all duration-300 ease-out
                    transform hover:scale-110 shadow-md sm:shadow-lg hover:shadow-xl"
@@ -99,7 +99,7 @@ return (
       >
         <Icon
           size={20}
-          className="sm:w-5 sm:h-5 text-black group-hover:text-white transition-colors duration-300"
+          className="w-5 h-5  text-black group-hover:text-white transition-colors duration-300"
         />
       </a>
     ))}

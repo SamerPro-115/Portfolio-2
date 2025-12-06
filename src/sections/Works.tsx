@@ -1,11 +1,19 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 
 const works = [
    {
+    name: "SAAK TEAM Training Center",
+    link: "https://saakteam.com.sa",
+    img: "/works/SAAK.webp",
+    desc: "SAAK TEAM a platform for IPC-certified electronics training. I built the website to showcase courses, activities, and media in a simple, modern way.",
+    tech: ["React", "TypeScript", "Tailwind CSS", "i18next"],
+    year: "2025"
+  },
+   {
     name: "Wakan",
     link: "https://wa-kan.com",
-    img: "/works/Wakan.png",
+    img: "/works/Wakan.webp",
     desc: "Marketing company portfolio site, vibrant colors reflecting brand identity and fully responsive with smooth scrolling.",
     tech: ["HTML", "CSS", "JavaScript"],
     year: "2025"
@@ -13,7 +21,7 @@ const works = [
    {
     name: "Mohtaway",
     link: "https://mohtaway.app",
-    img: "/works/Mohtaway.png",
+    img: "/works/Mohtaway.webp",
     desc: "Content-sharing platform with subscription features. You can upload your video/book/podcast and sell it at Mohtaway marketplace.",
     tech: ["JavaScript", "Node.js", "MongoDB", "GCP"],
     year: "2024 - 2025"
@@ -22,7 +30,7 @@ const works = [
   {
     name: "FastFlow",
     link: "https://fastflow.sa",
-    img: "/works/fastflow.png",
+    img: "/works/fastflow.webp",
     desc: "A unique portfolio website for exceptional events. Creatively crafted to showcase innovation, highlighting a one-of-a-kind company.",
     tech: ["JavaScript", "Bootstrap", "Animate.css"],
     year: "2024"
@@ -31,7 +39,7 @@ const works = [
     {
     name: "Trader's Tools",
     link: "https://chromewebstore.google.com/detail/ljdomcoabaomadeckhgmdlbjdpmcgdhj?utm_source=item-share-cb",
-    img: "/works/ex.png",
+    img: "/works/ex.webp",
     desc: "A React-based Chrome extension for traders with simple tools like a calculator and to-do-list, etc.",
     tech: ["React", "Chrome API", "JavaScript"],
     year: "2025"
@@ -40,15 +48,20 @@ const works = [
   {
     name: "Learning Corner",
     link: "https://www.learningcorner.net",
-    img: "/works/learncorner.png",
+    img: "/works/learncorner.webp",
     desc: "A learning platform for students to connect with their own private tutor. With customizing Msaaq platform pages using embedded CSS and HTML to provide a better UI.",
     tech: ["HTML", "CSS", "Custom Integration"],
-    year: "2023 - present"
+    year: "2023 - 2025"
   },
 ];
 
 export function Works() {
   const [selectedWork, setSelectedWork] = useState<number | null>(null);
+
+  useEffect(() => {
+    document.documentElement.style.overflow = selectedWork !== null ? 'hidden' : 'auto';
+  }, [selectedWork])
+
 
   return (
     <section className="min-h-screen bg-black text-white relative overflow-hidden py-20 ">
