@@ -8,7 +8,19 @@ export default function TikTokSection() {
   const [isPlaying, setIsPlaying] = useState(false);
   const sectionRef = useRef(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-
+  const [isEnglish, setIsEnglish] = useState(false);
+const toggleLanguage = () => {
+  setIsEnglish(!isEnglish);
+  // Wait for state update, then reload video
+  setTimeout(() => {
+    if (videoRef.current) {
+      videoRef.current.load(); // This forces the video to reload with new source
+      if (isPlaying) {
+        videoRef.current.play();
+      }
+    }
+  }, 0);
+};
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -107,7 +119,7 @@ export default function TikTokSection() {
                   {/* Video Container */}
                   <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900">
                     {/* Replace this src with your actual video path */}
-                    <video
+                  <video
                       ref={videoRef}
                       className="w-full h-full object-cover"
                       loop
@@ -115,7 +127,7 @@ export default function TikTokSection() {
                       poster="/video-poster.png" // Optional: Add a thumbnail image
                       onClick={togglePlay}
                     >
-                      <source src="/videos/Video.mp4" type="video/mp4" />
+                      <source src={isEnglish ? "/videos/video-english.mp4" : "/videos/Video.mp4"} type="video/mp4" />
                       {/* Fallback for browsers that don't support video */}
                       <div className="absolute inset-0 flex items-center justify-center">
                         <div className="text-center space-y-4 p-8">
@@ -126,6 +138,7 @@ export default function TikTokSection() {
                         </div>
                       </div>
                     </video>
+                  
 
                     {/* Play/Pause Overlay */}
                     {!isPlaying && (
@@ -171,6 +184,12 @@ export default function TikTokSection() {
                   </div>
                 </div>
               </div>
+<button 
+  className='bg-black text-white border border-white rounded-xl p-1 cursor-pointer text-sm translation-video-button' 
+  onClick={toggleLanguage}
+>
+  {isEnglish ? 'Arabic' : 'English'} Audio
+</button>
 
               {/* Decorative floating elements */}
               <motion.div

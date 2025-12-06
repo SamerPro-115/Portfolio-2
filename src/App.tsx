@@ -8,7 +8,7 @@ import Social from "./components/social";
 import { Toaster } from "sonner";
 import CurrentProject from "./sections/CurrentProject";
 import CursorEffect from "./components/cursour-effect";
-import TikTokSection from "./sections/Journy";
+import TikTokSection from "./sections/TikTokSection";
 import CourseSection from "./sections/CourseSection";
 
 function App() {

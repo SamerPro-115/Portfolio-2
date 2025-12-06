@@ -16,7 +16,7 @@ const currentProject = {
   description: "Developing a human resource management system that streamlines employee, manager, and team operations. The platform focuses on simplifying organizational workflows through intuitive design and reliable data handling.",
   fullDescription: "Connect HRMS is designed to help organizations efficiently manage their workforce. It provides tools for creating and managing teams, assigning managers, and tracking employees with real-time data updates. The system is built with scalability in mind, featuring a robust backend, responsive frontend with modern React architecture, and optimized data synchronization to ensure accuracy across all modules. The goal is to reduce administrative overhead while improving clarity and efficiency in HR operations.",
   tech: ["React", "TypeScript", "Tailwind CSS", "Shadcn/ui", "Node.js", "GCP", "Socket.io", "MongoDB", "Git/Github", ],
-  status: "On a break from work, focusing on my studies.",
+  status: "On a break from work",
   progress: 30,
   images: [
     {
