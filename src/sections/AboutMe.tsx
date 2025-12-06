@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { ArrowDown, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
-import LightRays from '@/components/Animations/LightRays';
 
 export function AboutMe() {
   const [expandedImage, setExpandedImage] = useState<number | null>(null);
@@ -52,20 +51,6 @@ export function AboutMe() {
     >
 
       <div className="text flex flex-1 bg-black justify-center items-center">
-              <div className='pointer-events-none lightning-container top-full md:opacity-[0.7]'>
-  <LightRays
-    raysOrigin="top-center"
-    raysColor="#fff"
-    raysSpeed={1.5}
-    lightSpread={0.3}
-    rayLength={1}
-    followMouse={true}
-    mouseInfluence={0.1}
-    noiseAmount={0.1}
-    distortion={0.05}
-    className="custom-rays"
-  />
-</div>
         <div className="flex flex-col w-2/3 lg:mt-0 lg:mb-0 sm:mt-30 sm:mb-30 mt-10 mb-10">
           <motion.h1
             initial={{ opacity: 0, x: -100 }}

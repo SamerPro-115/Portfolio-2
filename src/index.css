@@ -147,15 +147,7 @@ html {
 
 
 
-.custom-rays{
-  background: transparent;
-}
-.lightning-container{
-  width: 100%;
-    height: 700px;
-    position: absolute;
-    z-index: 99999999999999;
-}
+
 .lighting{
   position: absolute;
     height: 100%;

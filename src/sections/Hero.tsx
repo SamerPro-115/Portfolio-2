@@ -1,66 +1,18 @@
 import { Button } from "@/components/ui/button";
 import "../assets/hero.css";
 import { motion } from "framer-motion";
-import Lightning from "@/components/Animations/Lightning";
-import { useState, useEffect, useRef } from 'react';
 
 export function Hero() {
-  const [isLightningVisible, setIsLightningVisible] = useState(false);
-  const lightningRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        // Update state when visibility changes
-        setIsLightningVisible(entry.isIntersecting);
-      },
-      {
-        threshold: 0.1, // Trigger when at least 10% is visible
-        rootMargin: '50px' // Start loading slightly before it enters viewport
-      }
-    );
-
-    if (lightningRef.current) {
-      observer.observe(lightningRef.current);
-    }
-
-    return () => {
-      if (lightningRef.current) {
-        observer.unobserve(lightningRef.current);
-      }
-    };
-  }, []);
+ 
 
   return (
     <section className="min-h-screen overflow-hidden">
       <div className="relative hero-container overflow-hidden">
         <div className="relative z-10 overflow-hidden">
           <img src="/splash-2.png" className="absolute splash-image" alt="splash image" />
-          <div className="left-side-hero flex overflow-hidden" ref={lightningRef}>
+          <div className="left-side-hero flex overflow-hidden" >
             
-            {/* Only render Lightning when visible */}
-            {isLightningVisible && (
-              <>
-                <div className="lighting hidden md:block opacity-80">
-                  <Lightning
-                    hue={260}
-                    xOffset={-0.2}
-                    speed={0.7}
-                    intensity={0.1}
-                    size={1}
-                  />
-                </div>
-                <div className="lighting block md:hidden opacity-25">
-                  <Lightning
-                    hue={260}
-                    xOffset={0}
-                    speed={0.7}
-                    intensity={0.1}
-                    size={1}
-                  />
-                </div>
-              </>
-            )}
+         
 
             <div className="text-container max-w-xl absolute overflow-hidden">
               <motion.h1
