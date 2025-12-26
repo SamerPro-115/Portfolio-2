@@ -186,7 +186,7 @@ export function Skills() {
                       className="w-full h-full bg-black border border-gray-800 
                                hover:border-white/30 transition-all duration-500
                                flex flex-col items-center justify-center p-4
-                               backdrop-blur-sm relative overflow-hidden"
+                               relative overflow-hidden"
                       whileHover={{
                         boxShadow: "0 8px 32px rgba(255,255,255,0.1)"
                       }}
@@ -208,7 +208,7 @@ export function Skills() {
                           className="w-8 h-8 md:w-10 md:h-10 object-contain relative z-10" 
                         />
                         <motion.div
-                          className="absolute inset-0 bg-white/10 rounded-lg blur-sm opacity-0 group-hover:opacity-100"
+                          className="absolute inset-0 bg-white/10 rounded-lg opacity-0 group-hover:opacity-100"
                           transition={{ duration: 0.3 }}
                         />
                       </motion.div>
@@ -226,7 +226,7 @@ export function Skills() {
                     </motion.div>
                     
                     <motion.div
-                      className="absolute inset-0 -z-10 bg-white/5 blur-xl opacity-0
+                      className="absolute inset-0 -z-10 bg-white/5 opacity-0
                                group-hover:opacity-100 transition-opacity duration-500"
                       style={{ transform: 'scale(1.2)' }}
                     />

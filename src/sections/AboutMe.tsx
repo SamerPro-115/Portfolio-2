@@ -56,7 +56,7 @@ export function AboutMe() {
             initial={{ opacity: 0, x: -100 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: false, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.3 }}
             className="text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight"
           >
             About Me
@@ -65,7 +65,7 @@ export function AboutMe() {
             initial={{ opacity: 0, x: -100 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            viewport={{ once: false, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.3 }}
             className="text-lg lg:text-xl text-gray-300"
           >
             I'm a third-year university student in the Faculty of IT. Outside of coding, I have passions that inspire me and keep life exciting{' '}

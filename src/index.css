@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -161,3 +162,71 @@ html {
     margin: auto;
     margin-top: 12px;
 }
+
+/* 404 */
+
+    @keyframes numberReveal {
+          0% {
+            opacity: 0;
+            transform: translateY(40px) scale(0.6);
+          }
+          60% {
+            opacity: 1;
+            transform: translateY(-10px) scale(1.1);
+          }
+          100% {
+            opacity: 0.9;
+            transform: translateY(0) scale(1);
+          }
+        }
+
+        @keyframes letterReveal {
+          0% {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes lineExpand {
+          0% {
+            width: 0;
+            opacity: 0;
+          }
+          100% {
+            width: clamp(150px, 40vw, 300px);
+            opacity: 0.8;
+          }
+        }
+
+        @keyframes fadeInUp {
+          0% {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .number-reveal {
+          display: inline-block;
+          animation: numberReveal 0.8s ease-out forwards;
+        }
+
+        .letter-reveal {
+          display: inline-block;
+          animation: letterReveal 0.5s ease-out forwards;
+        }
+
+        .line-expand {
+          animation: lineExpand 0.8s ease-out forwards;
+        }
+
+        .fade-in-up {
+          animation: fadeInUp 0.6s ease-out forwards;
+        }

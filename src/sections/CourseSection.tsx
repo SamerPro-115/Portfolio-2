@@ -70,7 +70,7 @@ export default function CourseSection() {
             </div>
             <h2 className="text-4xl md:text-7xl font-bold mb-8 leading-none tracking-[0.2em] font-serif">
               WEB<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500 ">
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-white to-gray-500 ">
                 COURSE
               </span>
             </h2>
@@ -144,7 +144,7 @@ export default function CourseSection() {
               initial={{ opacity: 0, y: 50 }}
               animate={isVisible ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="bg-white/5 backdrop-blur-sm rounded-3xl p-6 border border-white/10 hover:border-white/30 transition-all"
+              className="bg-white/5 rounded-3xl p-6 border border-white/10 hover:border-white/30 transition-all"
             >
               <h4 className="text-lg font-bold mb-6">Technologies</h4>
               <div className="space-y-4">
@@ -180,7 +180,7 @@ export default function CourseSection() {
               initial={{ opacity: 0, y: 50 }}
               animate={isVisible ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="bg-white/5 backdrop-blur-sm rounded-3xl p-6 border border-white/10 hover:border-white/30 transition-all"
+              className="bg-white/5 rounded-3xl p-6 border border-white/10 hover:border-white/30 transition-all"
             >
               <BookOpen className="w-8 h-8 mb-4 text-white/70" />
               <h4 className="text-2xl font-bold mb-2">Complete Guide</h4>
@@ -196,7 +196,7 @@ export default function CourseSection() {
           initial={{ opacity: 0, y: 50 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.7 }}
-          className="mt-16 flex flex-col md:flex-row items-center justify-between gap-8 p-8 bg-white/5 backdrop-blur-sm rounded-3xl border border-white/10"
+          className="mt-16 flex flex-col md:flex-row items-center justify-between gap-8 p-8 bg-white/5  rounded-3xl border border-white/10"
         >
           <div>
             <h4 className="text-2xl font-bold mb-2">Ready to Learn?</h4>

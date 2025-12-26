@@ -149,7 +149,7 @@ const toggleLanguage = () => {
                         className="absolute inset-0 flex items-center justify-center bg-black/30 cursor-pointer"
                         onClick={togglePlay}
                       >
-                        <div className="w-20 h-20 rounded-full bg-white/90 flex items-center justify-center backdrop-blur-sm hover:bg-white transition-colors">
+                        <div className="w-20 h-20 rounded-full bg-white/90 flex items-center justify-center hover:bg-white transition-colors">
                           <Play className="w-10 h-10 text-black ml-1" />
                         </div>
                       </motion.div>
@@ -175,7 +175,7 @@ const toggleLanguage = () => {
                     {/* Right side actions */}
                     <div className="absolute right-2 bottom-20 flex flex-col gap-4">
                       <div className="flex flex-col items-center gap-1">
-                        <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center backdrop-blur-sm">
+                        <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center ">
                           <Play className="w-6 h-6 fill-white" />
                         </div>
                         <span className="text-xs">56K</span>

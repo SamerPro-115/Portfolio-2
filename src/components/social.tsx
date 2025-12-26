@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 
 // YouTube Icon Component
 const YouTubeIcon = ({ size = 20, className = "" }) => (
@@ -54,6 +55,33 @@ const DiscordIcon = ({ size = 20, className = "" }) => (
 
 
 const Social = () => {
+   const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+const handleScroll = () => {
+  // Get the Hero section element
+  const heroSection = document.querySelector('[data-section="works"]');
+  
+  if (heroSection) {
+    const heroRect = heroSection.getBoundingClientRect();
+    // Show social links when user has reached or passed the Hero section
+    // Hide when scrolling back up above the Hero section
+    if (heroRect.top < window.innerHeight) {
+      setIsVisible(true);
+    } else {
+      setIsVisible(false);
+    }
+  }
+};
+
+    // Add scroll listener
+    window.addEventListener('scroll', handleScroll);
+    // Check initial state
+    handleScroll();
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const socialLinks = [
     {
       name: 'YouTube',
@@ -78,12 +106,14 @@ const Social = () => {
   ];
 return (
   <div
-    className="
-      fixed 
-      top-2 left-1/2 -translate-x-1/2 flex-row gap-2
-      sm:top-[4%] sm:left-4 sm:-translate-x-0 sm:-translate-y-1/2  sm:gap-3
-      z-50 flex
-    "
+    className={`
+        fixed 
+        top-2 left-1/2 -translate-x-1/2 flex-row gap-2
+        sm:top-[4%] sm:left-4 sm:-translate-x-0 sm:-translate-y-1/2 sm:gap-3
+        z-50 flex
+        transition-opacity duration-500
+        ${isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}
+      `}
   >
     {socialLinks.map(({ name, href, icon: Icon }) => (
       <a

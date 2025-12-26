@@ -99,7 +99,7 @@ export function Contact() {
           </p>
         </div>
 
-        <Card className="bg-black border-2 border-accent backdrop-blur-sm">
+        <Card className="bg-black border-2 border-accent ">
           <CardHeader className="text-center pb-8">
             <CardTitle className="text-xl md:text-3xl text-white flex items-center justify-center gap-3">
               <Mail className="w-8 h-8" />
