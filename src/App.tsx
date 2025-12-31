@@ -11,12 +11,17 @@ import CursorEffect from "./components/cursour-effect";
 import TikTokSection from "./sections/TikTokSection";
 import CourseSection from "./sections/CourseSection";
 import Introduction from "./sections/Introduction";
+import useTouchDevice from "./hooks/useTouchDevice";
 
 function App() {
+
+  const isTouchDevice = useTouchDevice();
+
   return (
     < >
     <Introduction />
-      <CursorEffect />
+    {isTouchDevice &&  <CursorEffect />}
+     
       <Social />
 
        <div className="relative z-10 bg-white">
