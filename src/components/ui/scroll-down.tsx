@@ -9,14 +9,13 @@ const ScrollDown = () => {
   }, []);
 
   return (
-    <div style={{ opacity: isVisible ? 1 : 0 }} className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 duration-700">
-      <div className="w-0.5 h-16 bg-linear-to-b from-transparent via-white/50 to-transparent animate-pulse" />
-      <span 
-        className="text-white/60 text-xs tracking-[0.3em]"
-        style={{ fontFamily: "Playfair Display, serif" }}
-      >
-        SCROLL
-      </span>
+    <div style={{ opacity: isVisible ? 1 : 0 }} className="absolute bottom-20 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 duration-700">
+    <span 
+  className="text-transparent bg-clip-text bg-linear-to-b from-white/40 via-white to-white/40 text-xs tracking-[0.3em] animate-pulse"
+  style={{ fontFamily: "Playfair Display, serif" }}
+>
+  SCROLL DOWN
+</span>
     </div>
   );
 };

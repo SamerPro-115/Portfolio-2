@@ -29,7 +29,7 @@ const Introduction = () => {
         
         {/* Combined Atmospheric Effects */}
         <div 
-          className="absolute inset-0 lg:opacity-100 opacity-100"
+          className="absolute inset-0 lg:opacity-100 opacity-80"
           style={{
             background: `
               radial-gradient(ellipse 800px 600px at 25% 30%, rgba(45, 45, 45, 0.4) 0%, transparent 50%),
@@ -42,7 +42,7 @@ const Introduction = () => {
         
         {/* Spotlight + Light Rays */}
         <div 
-          className="absolute inset-0 lg:opacity-100 opacity-100"
+          className="absolute inset-0 lg:opacity-100 opacity-70"
           style={{
             background: `
               radial-gradient(circle 500px at 30% 40%, rgba(120, 120, 120, 0.25) 0%, transparent 70%),

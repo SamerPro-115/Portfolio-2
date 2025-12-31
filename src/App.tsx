@@ -20,7 +20,7 @@ function App() {
   return (
     < >
     <Introduction />
-    {isTouchDevice &&  <CursorEffect />}
+    {!isTouchDevice &&  <CursorEffect />}
      
       <Social />
 
