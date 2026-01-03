@@ -4,6 +4,14 @@ import { motion } from 'framer-motion';
 
 const works = [
    {
+    name: "Jusoor events",
+    link: "https://jusoorevent.com",
+    img: "/works/Jusoor.webp",
+    desc: "Jusoor is a full service exhibitions, conferences, and events project, delivering end-to-end solutions including event production, execution, and marketing.",
+    tech: ["HTML", "Jquery", "Tailwind CSS", "i18next"],
+    year: "2025"
+  },
+   {
     name: "SAAK TEAM Training Center",
     link: "https://saakteam.com.sa",
     img: "/works/SAAK.webp",
@@ -23,7 +31,7 @@ const works = [
     name: "Mohtaway",
     link: "https://mohtaway.app",
     img: "/works/Mohtaway.webp",
-    desc: "Content-sharing platform with subscription features. You can upload your video/book/podcast and sell it at Mohtaway marketplace.",
+    desc: "Content sharing platform with subscription features. You can upload your video/book/podcast and sell it at Mohtaway marketplace.",
     tech: ["JavaScript", "Node.js", "MongoDB", "GCP"],
     year: "2024 - 2025"
   },
@@ -41,7 +49,7 @@ const works = [
     name: "Trader's Tools",
     link: "https://chromewebstore.google.com/detail/ljdomcoabaomadeckhgmdlbjdpmcgdhj?utm_source=item-share-cb",
     img: "/works/ex.webp",
-    desc: "A React-based Chrome extension for traders with simple tools like a calculator and to-do-list, etc.",
+    desc: "A React based Chrome extension for traders with simple tools like a calculator and to-do-list, etc.",
     tech: ["React", "Chrome API", "JavaScript"],
     year: "2025"
   },
@@ -52,7 +60,7 @@ const works = [
     img: "/works/learncorner.webp",
     desc: "A learning platform for students to connect with their own private tutor. With customizing Msaaq platform pages using embedded CSS and HTML to provide a better UI.",
     tech: ["HTML", "CSS", "Custom Integration"],
-    year: "2023 - 2025"
+    year: "2023"
   },
 ];
 
@@ -140,11 +148,11 @@ export function Works() {
               viewport={{ once: true}}
             >
               <div className="relative h-96 bg-black border-4 border-white overflow-hidden group-hover:border-gray-300 transition-all duration-500">
-                <div className="absolute inset-0 transform -skew-x-12 origin-bottom-left bg-white transition-transform duration-700 group-hover:skew-x-0"></div>
-                <div className="absolute inset-0 bg-black transform skew-x-12 origin-top-right transition-transform duration-700 group-hover:skew-x-0"></div>
+                
+               
 
                 <div className="relative z-10 h-full flex">
-                  <div className="w-1/2 p-8 flex flex-col justify-between text-black relative z-20">
+                  <div className="w-2/3 md:w-1/2 p-4 md:p-8 flex flex-col justify-between text-black relative z-999999999">
                     <div className="flex justify-between items-start">
                       <div className="w-16 h-16 bg-black text-white flex items-center justify-center text-xl font-bold">
                         {String(index + 1).padStart(2, "0")}
@@ -158,7 +166,7 @@ export function Works() {
                     </div>
 
                     <div>
-                      <h3 className="text-3xl font-bold tracking-tighter mb-4 transform transition-transform duration-300 group-hover:translate-x-2">
+                      <h3 className="text-lg md:text-3xl font-bold tracking-tighter mb-4 transform transition-transform duration-300 text-white group-hover:translate-x-2 ">
                         {work.name}
                       </h3>
 
@@ -166,7 +174,7 @@ export function Works() {
                         {work.tech.slice(0, 3).map((tech) => (
                           <div
                             key={tech}
-                            className="text-xs font-bold tracking-widest opacity-70"
+                            className="text-xs font-bold tracking-widest opacity-70 text-white"
                           >
                             {tech.toUpperCase()}
                           </div>
@@ -175,7 +183,7 @@ export function Works() {
                     </div>
 
                     <div className="flex items-center gap-4">
-                      <div className="w-12 h-px bg-black"></div>
+                      <div className="w-12 h-px bg-black text-white"></div>
                       <div className="text-xs tracking-widest font-bold">
                         PROJECT
                       </div>
@@ -236,21 +244,18 @@ export function Works() {
             >
               <div className="border-b border-zinc-800 p-8 flex justify-between items-start bg-gradient-to-r from-zinc-950 to-zinc-900">
                 <div>
-                  <h3 className="text-2xl md:text-4xl font-bold tracking-tight mb-3">
+                  <h3 className="text-xl sm:text-2xl md:text-4xl font-bold tracking-tight mb-3">
                     {works[selectedWork].name}
                   </h3>
                   <div className="flex items-center gap-4">
                     <span className="px-3 py-1 bg-white text-black text-sm font-bold">
                       {works[selectedWork].year}
                     </span>
-                    <span className="text-zinc-400 text-sm">
-                      Selected Work #{String(selectedWork + 1).padStart(2, "0")}
-                    </span>
                   </div>
                 </div>
                 <button
                   onClick={() => setSelectedWork(null)}
-                  className="w-12 h-12 border border-zinc-700 hover:border-white flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300 group"
+                  className="w-8 h-8 md:w-12 md:h-12 border border-zinc-700 hover:border-white flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300 group"
                 >
                   <span className="font-bold text-lg group-hover:rotate-90 transition-transform duration-300">
                     ×
@@ -304,10 +309,10 @@ export function Works() {
                       href={works[selectedWork].link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center w-full bg-white text-black px-8 py-4 font-bold tracking-widest hover:bg-zinc-200 transition-all duration-300 group"
+                      className="inline-flex items-center justify-center w-full bg-white text-sm md:text-md text-black md:px-8 py-4 font-bold tracking-widest hover:bg-zinc-200 transition-all duration-300 group"
                     >
                       <span>LAUNCH PROJECT</span>
-                      <div className="ml-3 w-4 h-4 border-r-2 border-t-2 border-black transform rotate-45 group-hover:translate-x-1 transition-transform duration-300"></div>
+                      <div className="ml-3 w-3 h-3 md:w-4 md:h-4 border-r-2 border-t-2 border-black transform rotate-45 group-hover:translate-x-1 transition-transform duration-300"></div>
                     </a>
                   </div>
                 </div>
