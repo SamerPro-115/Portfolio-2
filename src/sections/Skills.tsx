@@ -1,12 +1,15 @@
+import { useLanguage } from '@/hooks/useLanguage';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 
 
 
 export function Skills() {
   const [, setHoveredSkill] = useState<string | null>(null);
-
+    const {t} = useTranslation();
+    const isAr = useLanguage();
   
   const skillCategories  = [
     {
@@ -89,12 +92,12 @@ export function Skills() {
           className="text-center mb-24"
         >
           <motion.h2 
-            className="text-4xl md:text-7xl font-extralight text-white mb-8 tracking-[0.2em] font-serif"
+            className={`${isAr ? "text-6xl md:text-8xl" : "text-4xl md:text-7xl"}  font-extralight text-white mb-8 tracking-[0.2em] font-serif`}
             initial={{ letterSpacing: "0.1em" }}
             whileInView={{ letterSpacing: "0.2em" }}
             transition={{ duration: 2 }}
           >
-            EXPERTISE
+           {t("Skills.title")}
                  <div className="w-24 h-1 bg-gradient-to-r from-transparent via-white to-transparent mx-auto mb-6"></div>
 
           </motion.h2>
@@ -136,7 +139,7 @@ export function Skills() {
             whileInView={{ opacity: 1 }}
             transition={{ duration: 1.5, delay: 1 }}
           >
-            A curated collection of technologies and tools, refined through continuous practice and dedication to craft
+            {t("Skills.desc")}
           </motion.p>
         </motion.div>
 

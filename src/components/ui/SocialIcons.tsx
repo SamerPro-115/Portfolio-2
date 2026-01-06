@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
 
 // YouTube Icon Component
-const YouTubeIcon = ({ size = 20, className = "" }) => (
+export const YouTubeIcon = ({ size = 20, className = "" }) => (
   <svg
     width={size}
     height={size}
@@ -14,7 +13,7 @@ const YouTubeIcon = ({ size = 20, className = "" }) => (
 );
 
 // X (Twitter) Icon Component
-const XIcon = ({ size = 20, className = "" }) => (
+export const XIcon = ({ size = 20, className = "" }) => (
   <svg
     width={size}
     height={size}
@@ -27,7 +26,7 @@ const XIcon = ({ size = 20, className = "" }) => (
 );
 
 // TikTok Icon Component
-const TikTokIcon = ({ size = 20, className = "" }) => (
+export const TikTokIcon = ({ size = 20, className = "" }) => (
   <svg
     width={size}
     height={size}
@@ -40,7 +39,7 @@ const TikTokIcon = ({ size = 20, className = "" }) => (
 );
 
 // Discord Icon Component
-const DiscordIcon = ({ size = 20, className = "" }) => (
+export const DiscordIcon = ({ size = 20, className = "" }) => (
   <svg
     width={size}
     height={size}
@@ -54,90 +53,6 @@ const DiscordIcon = ({ size = 20, className = "" }) => (
 
 
 
-const Social = () => {
-   const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-const handleScroll = () => {
-  // Get the Hero section element
-  const heroSection = document.querySelector('[data-section="works"]');
-  
-  if (heroSection) {
-    const heroRect = heroSection.getBoundingClientRect();
-    // Show social links when user has reached or passed the Hero section
-    // Hide when scrolling back up above the Hero section
-    if (heroRect.top < window.innerHeight) {
-      setIsVisible(true);
-    } else {
-      setIsVisible(false);
-    }
-  }
-};
-
-    // Add scroll listener
-    window.addEventListener('scroll', handleScroll);
-    // Check initial state
-    handleScroll();
-
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const socialLinks = [
-    {
-      name: 'YouTube',
-      href: 'https://www.youtube.com/@SamerPro_',
-      icon: YouTubeIcon
-    },
-    {
-      name: 'X (Twitter)',
-      href: 'https://x.com/sam__935',
-      icon: XIcon
-    },
-    {
-      name: 'TikTok',
-      href: 'https://www.tiktok.com/@samerpro_',
-      icon: TikTokIcon
-    },
-    {
-      name: 'Discord',
-      href: 'https://discord.gg/GxfAgbqMaZ',
-      icon: DiscordIcon
-    }
-  ];
-return (
-  <div
-    className={`
-        fixed 
-        top-2 left-1/2 -translate-x-1/2 flex-row gap-2
-        sm:top-[4%] sm:left-4 sm:-translate-x-0 sm:-translate-y-1/2 sm:gap-3
-        z-50 flex
-        transition-opacity duration-500
-        ${isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}
-      `}
-  >
-    {socialLinks.map(({ name, href, icon: Icon }) => (
-      <a
-        key={name}
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="group p-1 sm:p-1.5  rounded-full bg-white border border-black sm:border-2
-                   hover:bg-black hover:border-white
-                   transition-all duration-300 ease-out
-                   transform hover:scale-110 shadow-md sm:shadow-lg hover:shadow-xl"
-        aria-label={name}
-      >
-        <Icon
-          size={20}
-          className="w-5 h-5  text-black group-hover:text-white transition-colors duration-300"
-        />
-      </a>
-    ))}
-  </div>
-);
-
-};
 
 
 
-export default Social;

@@ -1,71 +1,77 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
+import { useLanguage } from '@/hooks/useLanguage';
 
 
+
+export function Works() {
+  const [selectedWork, setSelectedWork] = useState<number | null>(null);
+    const {t} = useTranslation();
+    const isAr = useLanguage();
+
+    
 const works = [
    {
-    name: "Jusoor events",
+    name: t("Works.Projects.Jusoor.title"),
     link: "https://jusoorevent.com",
     img: "/works/Jusoor.webp",
-    desc: "Jusoor is a full service exhibitions, conferences, and events project, delivering end-to-end solutions including event production, execution, and marketing.",
+    desc: t("Works.Projects.Jusoor.desc"),
     tech: ["HTML", "Jquery", "Tailwind CSS", "i18next"],
     year: "2025"
   },
    {
-    name: "SAAK TEAM Training Center",
+    name: t("Works.Projects.SAAK.title"),
     link: "https://saakteam.com.sa",
     img: "/works/SAAK.webp",
-    desc: "SAAK TEAM a platform for IPC-certified electronics training. I built the website to showcase courses, activities, and media in a simple, modern way.",
+    desc: t("Works.Projects.SAAK.desc"),
     tech: ["React", "TypeScript", "Tailwind CSS", "i18next"],
     year: "2025"
   },
    {
-    name: "Wakan",
+    name: t("Works.Projects.WAKAN.title"),
     link: "https://wa-kan.com",
     img: "/works/Wakan.webp",
-    desc: "Marketing company portfolio site, vibrant colors reflecting brand identity and fully responsive with smooth scrolling.",
+    desc: t("Works.Projects.WAKAN.desc"),
     tech: ["HTML", "CSS", "JavaScript"],
     year: "2025"
   },
    {
-    name: "Mohtaway",
+    name: t("Works.Projects.Mohtaway.title"),
     link: "https://mohtaway.app",
     img: "/works/Mohtaway.webp",
-    desc: "Content sharing platform with subscription features. You can upload your video/book/podcast and sell it at Mohtaway marketplace.",
+    desc: t("Works.Projects.Mohtaway.desc"),
     tech: ["JavaScript", "Node.js", "MongoDB", "GCP"],
     year: "2024 - 2025"
   },
 
   {
-    name: "FastFlow",
+    name: t("Works.Projects.FastFlow.title"),
     link: "https://fastflow.sa",
     img: "/works/fastflow.webp",
-    desc: "A unique portfolio website for exceptional events. Creatively crafted to showcase innovation, highlighting a one-of-a-kind company.",
+    desc: t("Works.Projects.FastFlow.desc"),
     tech: ["JavaScript", "Bootstrap", "Animate.css"],
     year: "2024"
   },
   
     {
-    name: "Trader's Tools",
+    name: t("Works.Projects.Traders-Tools.title"),
     link: "https://chromewebstore.google.com/detail/ljdomcoabaomadeckhgmdlbjdpmcgdhj?utm_source=item-share-cb",
     img: "/works/ex.webp",
-    desc: "A React based Chrome extension for traders with simple tools like a calculator and to-do-list, etc.",
+    desc: t("Works.Projects.Traders-Tools.desc"),
     tech: ["React", "Chrome API", "JavaScript"],
     year: "2025"
   },
  
   {
-    name: "Learning Corner",
+    name: t("Works.Projects.LearningCorner.title"),
     link: "https://www.learningcorner.net",
     img: "/works/learncorner.webp",
-    desc: "A learning platform for students to connect with their own private tutor. With customizing Msaaq platform pages using embedded CSS and HTML to provide a better UI.",
+    desc: t("Works.Projects.LearningCorner.desc"),
     tech: ["HTML", "CSS", "Custom Integration"],
     year: "2023"
   },
 ];
-
-export function Works() {
-  const [selectedWork, setSelectedWork] = useState<number | null>(null);
 
   useEffect(() => {
     document.documentElement.style.overflow = selectedWork !== null ? 'hidden' : 'auto';
@@ -119,7 +125,7 @@ export function Works() {
               transition={{ duration: 0.8, delay: 0.1 }}
               viewport={{ once: true}}
             >
-              WORKS
+              {t("Works.title")}
             </motion.h2>
           </div>
           <motion.div className="w-32 h-1 bg-white mx-auto mb-6"
@@ -132,7 +138,7 @@ export function Works() {
               transition={{ duration: 0.8, delay: 0.1 }}
               viewport={{ once: true}}
              className="text-xl text-gray-400 max-w-3xl mx-auto font-light pt-5">
-            Take a look on what I've built for different customers
+            {t("Works.desc")}
           </motion.p>
         </div>
 
@@ -200,7 +206,7 @@ export function Works() {
                     <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
                       <div className="text-center text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                         <div className="text-sm tracking-widest mb-2">
-                          VIEW PROJECT
+                          {t("Works.view-project")}
                         </div>
                         <div className="w-16 h-px bg-white mx-auto"></div>
                       </div>
@@ -217,8 +223,8 @@ export function Works() {
                     className="inline-flex items-center gap-2 text-xs font-bold tracking-widest hover:gap-4 transition-all duration-300"
                     onClick={(e) => e.stopPropagation()}
                   >
-                    VISIT SITE
-                    <div className="w-4 h-4 border-r-2 border-t-2 border-black transform rotate-45"></div>
+                    {t("Works.visit-site")}
+                    {isAr ? <div className="w-4 h-4 border-r-2 border-t-2 border-black transform rotate-[222deg]"></div> : <div className="w-4 h-4 border-r-2 border-t-2 border-black transform rotate-45"></div>}
                   </a>
                 </div>
 
@@ -279,7 +285,7 @@ export function Works() {
                   <div className="lg:col-span-2 space-y-8">
                     <div>
                       <h4 className="text-lg font-bold mb-4 tracking-wide text-white/90">
-                        OVERVIEW
+                       {t("Works.overview")}
                       </h4>
                       <p className="text-zinc-300 leading-relaxed">
                         {works[selectedWork].desc}
@@ -288,7 +294,7 @@ export function Works() {
 
                     <div>
                       <h4 className="text-lg font-bold mb-4 tracking-wide text-white/90">
-                        MAIN TECH STACK
+                        {t("Works.main-stack")}
                       </h4>
                       <div className="space-y-2">
                         {works[selectedWork].tech.map((tech) => (
@@ -311,8 +317,8 @@ export function Works() {
                       rel="noopener noreferrer"
                       className="inline-flex items-center justify-center w-full bg-white text-sm md:text-md text-black md:px-8 py-4 font-bold tracking-widest hover:bg-zinc-200 transition-all duration-300 group"
                     >
-                      <span>LAUNCH PROJECT</span>
-                      <div className="ml-3 w-3 h-3 md:w-4 md:h-4 border-r-2 border-t-2 border-black transform rotate-45 group-hover:translate-x-1 transition-transform duration-300"></div>
+                      <span>{t("Works.visit-site")}</span>
+                      <div className={`ml-3 w-3 h-3 border-r-2 border-t-2 border-black transform ${isAr ? 'rotate-[222deg]' : 'rotate-45'} group-hover:translate-x-1 transition-transform duration-300`}></div>
                     </a>
                   </div>
                 </div>

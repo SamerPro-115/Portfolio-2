@@ -1,0 +1,81 @@
+{
+    "introduction-word": "WELCOME",
+    "scroll-down": "Scroll down",
+    "who-am-i": "Hi, I'm Samer",
+    "web-developer": "web developer ",
+    "who-am-i-desc": "that loves coding and animation",
+    "About-Me": {
+        "title": "About Me",
+        "desc-1": "I'm a third-year university student in the Faculty of IT. Outside of coding, I have passions that inspire me and keep life exciting",
+        "desc-2": "You can take a look on my profile (CV) down below for more details",
+        "profile": "Profile",
+        "football": "Football",
+        "animation": "Animation",
+        "gaming": "Gaming",
+        "toast-alert": "Sorry, I'm still working on my profile!"
+    },
+      "Works": {
+        "title": "Works",
+        "desc": "Take a look on what I've built for different customers",
+        "visit-site": "Visit Site",
+        "view-project": "View Project",
+        "overview": "Overview",
+        "main-stack": "Main Stack",
+         "Projects": {
+            "Jusoor": {
+                "title": "Jusoor Events",
+                "desc": "Built a responsive Arabic/English website with service specific designs and performance-optimized animations."
+            },
+            "SAAK": {
+                "title": "SAAK TEAM Training Center",
+                "desc": "Developed a responsive Arabic/English training platform showcasing IPC-certified courses, with scroll-based animations and optimized visuals for smooth performance."
+            },
+            "WAKAN": {
+                "title": "WAKAN",
+                "desc": "Customized a pre-built template to match wa-kan’s brand identity, focusing on responsive layout and visual consistency."
+            },
+             "Mohtaway": {
+                "title": "Mohtaway",
+                "desc": "Content-sharing platform with subscription features. The UI was designed in collaboration with a designer, and I implemented the platform, enabling creators to sell videos, books, and podcasts on the Mohtaway marketplace."
+            },
+             "FastFlow": {
+                "title": "FAST FLOW",
+                "desc": "Responsive portfolio website for an events company, focused on clear content presentation, structured sections, and a reliable user experience."
+            },
+            "Traders-Tools": {
+                "title": "Trader's Tools",
+                "desc": "React based Chrome extension for traders. The UI was designed in collaboration with a designer, and I handled the full implementation."
+            },
+            "LearningCorner": {
+                "title": "Learning Corner",
+                "desc": "Learning platform connecting students with their instructor. I customized Msaaq platform pages using embedded HTML and CSS to improve the UI. This project represents an early professional milestone in my web development journey."
+            }
+        }
+    },
+    "Skills": {
+            "title": "EXPERTISE",
+            "desc": "The set of skills I have and use in web development."
+    },
+     "Course": {
+        "title-1": "WEB",
+        "title-2": "DEVELOPMENT COURSE",
+        "subtitle": "EDUCATIONAL COURSE",
+        "desc": "A comprehensive Arabic course designed to introduce beginners to the world of web development through HTML, CSS, and JavaScript fundamentals.",
+         "technologies": {
+            "title": "Technologies",
+            "HTML": "HTML",
+            "CSS": "CSS",
+            "JavaScript": "JavaScript"
+        },
+        "tags": {
+            "beginner": " Beginner Level",
+            "language": "Arabic Language"
+        },
+         "complete-guide": "Complete Guide",
+        "guide-desc": "From zero to building your first responsive website",
+        "fundation": "Foundation Course for Beginners",
+        "learn": "Ready to learn?",
+        "learn-desc": "Access the full course and start your web development journey",
+        "view-course": "View Course"
+    }
+}

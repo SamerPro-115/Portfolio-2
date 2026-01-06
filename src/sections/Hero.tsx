@@ -1,9 +1,13 @@
 import { Button } from "@/components/ui/button";
 import "../assets/hero.css";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
+import { useLanguage } from "@/hooks/useLanguage";
 
 export function Hero() {
  
+  const {t} = useTranslation();
+  const isAr = useLanguage();
 
   return (
     <section  className="min-h-screen overflow-hidden relative">
@@ -23,7 +27,7 @@ export function Hero() {
     viewport={{ once: true, amount: 0.5 }}
     className="text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight" 
   >
-    Hi, I'm Samer
+    {t("who-am-i")}
   </motion.h1>
 
   <motion.p
@@ -33,8 +37,23 @@ export function Hero() {
     viewport={{ once: true, amount: 0.5 }}
     className="text-lg lg:text-xl text-gray-300 md:mb-3 mb-3 leading-relaxed" 
   >
-    A <span className="font-semibold text-white">web developer </span>
-    that loves coding and animation
+   {isAr ?  
+   (
+    <>
+    <span className="font-semibold text-white">{t("web-developer")}</span>
+     {t("who-am-i-desc")}
+    </>
+   )
+
+   :
+
+   (
+    <>
+     A <span className="font-semibold text-white">{t("web-developer")}</span>
+     {t("who-am-i-desc")}
+    </>
+   )
+   }
   </motion.p>
   
   <div className="flex gap-4">
@@ -51,7 +70,7 @@ export function Hero() {
       }}
     >
       <Button variant={"default"} className="font-bold" style={{borderRadius: "7px"}}>
-        Scroll down
+        {t("scroll-down")}
       </Button>
     </motion.div>
   </div>

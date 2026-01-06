@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 
-const ScrollDown = () => {
+type Props = {
+  t: (key: string) => string;
+  isAr: boolean
+}
+
+const ScrollDown = ({ t, isAr }: Props) => {
       const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -11,10 +16,9 @@ const ScrollDown = () => {
   return (
     <div style={{ opacity: isVisible ? 1 : 0 }} className="absolute bottom-20 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 duration-700">
     <span 
-  className="text-transparent bg-clip-text bg-linear-to-b from-white/40 via-white to-white/40 text-xs tracking-[0.3em] animate-pulse"
-  style={{ fontFamily: "Playfair Display, serif" }}
+  className={`scroll-down-word text-transparent bg-clip-text bg-linear-to-b from-white/40 via-white to-white/40 ${isAr ? "text-xl" : "text-xs"} tracking-[0.3em] animate-pulse`}
 >
-  SCROLL DOWN
+  {t("scroll-down")}
 </span>
     </div>
   );

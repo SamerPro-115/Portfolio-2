@@ -1,12 +1,16 @@
 import ScrollDown from '@/components/ui/scroll-down';
+import { useLanguage } from '@/hooks/useLanguage';
 import { useEffect, useState } from 'react';
 import { lazy, Suspense } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const Particles = lazy(() => import('@/components/Animations/Particles'));
 
 
 const Introduction = () => {
   const [scrollY, setScrollY] = useState(0);
+  const {t} = useTranslation();
+  const isAr = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -16,7 +20,7 @@ const Introduction = () => {
 
 
   const opacity = Math.max(1 - scrollY / 500, 0);
-  const text = "WELCOME";
+  const text = t("introduction-word");
 
   return (
     <>
@@ -73,13 +77,14 @@ const Introduction = () => {
         <div className="absolute inset-0 flex justify-center items-center">
           <h1 
            className="text-white text-2xl md:text-4xl lg:text-5xl xl:text-6xl flex 
-             tracking-[17px] md:tracking-[30px] lg:tracking-[40px] xl:tracking-[50.8px]"
+             tracking-[17px] md:tracking-[30px] lg:tracking-[40px] xl:tracking-[50.8px] introduction-title"
             style={{
               filter: "brightness(0.85)",
-              fontFamily: "Playfair Display, serif",
             }}
           >
-            {text.split('').map((letter, index) => (
+           {isAr ?  <span className="letter-reveal">{text}</span> : 
+           (
+             text.split('').map((letter, index) => (
               <span
                 key={index}
                 className="letter-reveal"
@@ -90,9 +95,11 @@ const Introduction = () => {
               >
                 {letter}
               </span>
-            ))}
+            ))
+           )
+           }
           </h1>
-          <ScrollDown />
+          <ScrollDown t={t} isAr={isAr} />
         </div>
       </div>
 

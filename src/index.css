@@ -76,11 +76,24 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
-.dark {}
+[data-lang="ar"] {
+  font-family: "Cairo", "Noto Sans Arabic", Arial, sans-serif;
+}
 
+[data-lang="en"] .introduction-title {
+  font-family: 'Playfair Display', serif;
+}
 
-body {
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+[data-lang="en"] {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.lang-ar {
+  font-family: "Cairo", "Noto Sans Arabic", Arial, sans-serif;
+}
+
+.scroll-down-word {
+  font-family: 'Playfair Display', serif;
 }
 
 @layer base {

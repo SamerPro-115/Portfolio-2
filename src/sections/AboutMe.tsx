@@ -1,17 +1,21 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowDown, ArrowRight } from 'lucide-react';
+import { ArrowDown, ArrowLeft, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
+import { useTranslation } from 'react-i18next';
+import { useLanguage } from '@/hooks/useLanguage';
 
 export function AboutMe() {
   const [expandedImage, setExpandedImage] = useState<number | null>(null);
   const [isMid, setIsMid] = useState<boolean>(false);
+    const {t} = useTranslation();
+    const isAr = useLanguage();
 
   const images = [
-    { src: "/madrid.png", alt: "madrid", id: 0, desc: "Football" },
-    { src: "/manga.jpg", alt: "manga", id: 1, desc: "Animation" },
-    { src: "/Rocket.png", alt: "rocket league", id: 2, desc: "Gaming" }
+    { src: "/madrid.png", alt: "madrid", id: 0, desc: t("About-Me.football") },
+    { src: "/manga.jpg", alt: "manga", id: 1, desc: t("About-Me.animation") },
+    { src: "/Rocket.png", alt: "rocket league", id: 2, desc: t("About-Me.gaming") }
   ];
 
   const handleImageClick = (imageId: number, event: React.MouseEvent) => {
@@ -39,9 +43,10 @@ export function AboutMe() {
     return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
 
-  const handlAlert = () => {
-    toast.message("Sorry, I'm still working on my profile!")
+  const handleAlert = () => {
+    toast.message(t("About-Me.toast-alert"))
   }
+  
 
   return (
     <div 
@@ -59,7 +64,7 @@ export function AboutMe() {
             viewport={{ once: true, amount: 0.3 }}
             className="text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight"
           >
-            About Me
+            { t("About-Me.title") }
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, x: -100 }}
@@ -68,18 +73,18 @@ export function AboutMe() {
             viewport={{ once: true, amount: 0.3 }}
             className="text-lg lg:text-xl text-gray-300"
           >
-            I'm a third-year university student in the Faculty of IT. Outside of coding, I have passions that inspire me and keep life exciting{' '}
+            { t("About-Me.desc-1") }
             {isMid ? (
               <ArrowDown className="inline" />
             ) : (
-              <ArrowRight className="inline" />
+              isAr ? <ArrowLeft className="inline" /> : <ArrowRight className="inline" />
             )}
             
             <br />
             <br />
             <br />
-            You can take a look on my profile (CV) down below for more details <br />
-                  <Button onClick={handlAlert} variant={"default"} className="font-bold w-28 text-lg mt-4" style={{borderRadius: "5px"}}>Profile</Button>
+            { t("About-Me.desc-2") } <br />
+                  <Button onClick={handleAlert} variant={"default"} className={`font-bold ${isAr ? "w-36" : "w-28"} text-sm md:text-lg mt-4`} style={{borderRadius: "5px"}}>{t("About-Me.profile")}</Button>
           </motion.p>
         </div>
       </div>

@@ -4,7 +4,6 @@ import { Hero } from "./sections/Hero";
 import { Skills } from "./sections/Skills";
 import { Works } from "./sections/Works";
 import { Contact } from "./sections/Contact";
-import Social from "./components/social";
 import { Toaster } from "sonner";
 import CurrentProject from "./sections/CurrentProject";
 import CursorEffect from "./components/cursour-effect";
@@ -12,17 +11,32 @@ import TikTokSection from "./sections/TikTokSection";
 import CourseSection from "./sections/CourseSection";
 import Introduction from "./sections/Introduction";
 import useTouchDevice from "./hooks/useTouchDevice";
+import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import SocialMenu from "./components/SocialMenu";
 
 function App() {
 
   const isTouchDevice = useTouchDevice();
+ const { i18n } = useTranslation();
+
+  useEffect(() => {
+    const direction = i18n.language === "ar" ? "rtl" : "ltr";
+     const lang = i18n.language === "ar" ? "ar" : "en";
+    document.documentElement.dir = direction;
+    document.documentElement.lang = lang;
+    document.documentElement.setAttribute("data-lang", lang);
+  }, []); 
+
 
   return (
     < >
     <Introduction />
     {!isTouchDevice &&  <CursorEffect />}
      
-      <Social />
+          <div className="fixed top-6 right-6 z-50">
+      <SocialMenu />
+    </div>
 
        <div className="relative z-10 bg-white">
     <Hero />
