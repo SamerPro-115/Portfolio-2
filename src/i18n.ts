@@ -9,7 +9,9 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    fallbackLng: 'ar',
+    fallbackLng: 'en', 
+    supportedLngs: ['en', 'ar'], 
+    
     defaultNS: "common",
     
     backend: {
@@ -21,8 +23,15 @@ i18n
     },
     
     detection: {
-      order: ['localStorage', 'navigator', 'htmlTag'],
-      caches: ['localStorage']
+      order: ['localStorage', 'navigator', 'htmlTag'], 
+      caches: ['localStorage'], 
+      
+      // Convert browser language codes to supported languages
+      convertDetectedLanguage: (lng) => {
+        // If browser language starts with 'ar' (like 'ar-SA', 'ar-EG'), use 'ar'
+        if (lng.startsWith('ar')) return 'ar';
+        return 'en';
+      }
     }
   });
 

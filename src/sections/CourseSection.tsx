@@ -72,7 +72,7 @@ export default function CourseSection() {
             <div className="inline-block mb-6 px-4 py-2 border border-white/30 rounded-full">
               <span className="text-sm tracking-wider">{t("Course.subtitle")}</span>
             </div>
-            <h2 className={` ${isAr ? "md:text-8xl" : "md:text-6xl"} text-4xl font-bold mb-8 leading-none  font-serif`}>
+            <h2 className={` ${isAr ? "md:text-7xl" : "md:text-6xl"} text-4xl font-bold mb-8 leading-none `}>
               {t("Course.title-1")} {isAr ? null : <br />}
               <span className="text-transparent bg-clip-text bg-linear-to-r from-white to-gray-500 ">
                  {t("Course.title-2")} 

@@ -92,13 +92,13 @@ export function Skills() {
           className="text-center mb-24"
         >
           <motion.h2 
-            className={`${isAr ? "text-6xl md:text-8xl" : "text-4xl md:text-7xl"}  font-extralight text-white mb-8 tracking-[0.2em] font-serif`}
+            className={`${isAr ? "text-6xl md:text-8xl" : "text-4xl md:text-7xl"}  font-extralight text-white mb-8 tracking-[0.2em] `}
             initial={{ letterSpacing: "0.1em" }}
             whileInView={{ letterSpacing: "0.2em" }}
             transition={{ duration: 2 }}
           >
            {t("Skills.title")}
-                 <div className="w-24 h-1 bg-gradient-to-r from-transparent via-white to-transparent mx-auto mb-6"></div>
+                 <div className={`w-24 h-1 bg-gradient-to-r from-transparent via-white to-transparent mx-auto ${isAr ? "mt-5" : ""} mb-6`}></div>
 
           </motion.h2>
 
@@ -148,7 +148,7 @@ export function Skills() {
         
 
         {skillCategories.map((category, categoryIndex) => (
-          <motion.div
+          <motion.div dir='ltr'
             key={categoryIndex}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -217,7 +217,7 @@ export function Skills() {
                       </motion.div>
                       
                       <h4 className="text-white font-light text-xs md:text-sm text-center 
-                                   leading-tight font-sans tracking-wide opacity-90
+                                   leading-tight tracking-wide opacity-90
                                    group-hover:opacity-100 transition-opacity duration-300">
                         {skill.name}
                       </h4>

@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
+import { useLanguage } from '@/hooks/useLanguage';
 
 
 type TProject = {
@@ -10,57 +12,57 @@ type TProject = {
 }
 
 
-
-const currentProject = {
-  title: "Connect system",
-  description: "Developing a human resource management system that streamlines employee, manager, and team operations. The platform focuses on simplifying organizational workflows through intuitive design and reliable data handling.",
-  fullDescription: "Connect HRMS is designed to help organizations efficiently manage their workforce. It provides tools for creating and managing teams, assigning managers, and tracking employees with real-time data updates. The system is built with scalability in mind, featuring a robust backend, responsive frontend with modern React architecture, and optimized data synchronization to ensure accuracy across all modules. The goal is to reduce administrative overhead while improving clarity and efficiency in HR operations.",
-  tech: ["React", "TypeScript", "Tailwind CSS", "Shadcn/ui", "Node.js", "GCP", "Socket.io", "MongoDB", "Git/Github", ],
-  status: "On a break from work",
-  progress: 30,
-  images: [
-    {
-      id: 1,
-      url: "/currentWork/1.png",
-      title: "Login page Design",
-      description: "Clean, modern login page"
-    },
-    {
-      id: 2,
-      url: "/currentWork/2.png",
-      title: "Employees Ar",
-      description: "Responsive grid layout with advanced filtering and search."
-    },
-    {
-      id: 3,
-      url: "/currentWork/3.png",
-      title: "Managers",
-      description: "Responsive grid layout with advanced filtering and search."
-    },
-    {
-      id: 4,
-      url: "/currentWork/4.png",
-      title: "Admin Logs",
-      description: "Monitoring users actions during the day."
-    },
-    {
-      id: 5,
-      url: "/currentWork/5.png",
-      title: "Manage Teams",
-      description: "Create, update, delete, manage teams"
-    },
-    {
-      id: 6,
-      url: "/currentWork/6.png",
-      title: "Create Team Ar",
-      description: "Creating team options"
-    }
-  ]
-};
-
 export default function CurrentProject() {
   const [selectedImage, setSelectedImage] = useState<TProject | null>(null);
   const [, setHoveredImage] = useState<number | null>(null);
+        const {t} = useTranslation();
+        const isAr = useLanguage();
+   const currentProject = {
+    title: t('currentProject.project.title'),
+    description: t('currentProject.project.description'),
+    fullDescription: t('currentProject.project.fullDescription'),
+    tech: ["React", "TypeScript", "Tailwind CSS", "Shadcn/ui", "Node.js", "GCP", "Socket.io", "MongoDB", "Git/Github"],
+    status: t('currentProject.project.status'),
+    progress: 45,
+    images: [
+      {
+        id: 1,
+        url: "/currentWork/1.png",
+        title: t('currentProject.project.images.loginPage.title'),
+        description: t('currentProject.project.images.loginPage.description')
+      },
+      {
+        id: 2,
+        url: "/currentWork/2.png",
+        title: t('currentProject.project.images.employeesAr.title'),
+        description: t('currentProject.project.images.employeesAr.description')
+      },
+      {
+        id: 3,
+        url: "/currentWork/3.png",
+        title: t('currentProject.project.images.managers.title'),
+        description: t('currentProject.project.images.managers.description')
+      },
+      {
+        id: 4,
+        url: "/currentWork/4.png",
+        title: t('currentProject.project.images.adminLogs.title'),
+        description: t('currentProject.project.images.adminLogs.description')
+      },
+      {
+        id: 5,
+        url: "/currentWork/5.png",
+        title: t('currentProject.project.images.manageTeams.title'),
+        description: t('currentProject.project.images.manageTeams.description')
+      },
+      {
+        id: 6,
+        url: "/currentWork/6.png",
+        title: t('currentProject.project.images.createTeamAr.title'),
+        description: t('currentProject.project.images.createTeamAr.description')
+      }
+    ]
+  };
 
   return (
     <section className="min-h-screen bg-black py-20 relative overflow-hidden">
@@ -182,13 +184,13 @@ export default function CurrentProject() {
           </div>
 
           <motion.h2 
-            className="text-4xl md:text-6xl font-extralight text-white mb-8 tracking-[0.15em] font-serif
+            className="text-4xl md:text-6xl font-extralight text-white mb-8 tracking-[0.15em]
                      drop-shadow-[0_0_25px_rgba(255,255,255,0.3)] relative z-10"
             initial={{ letterSpacing: "0.1em" }}
             whileInView={{ letterSpacing: "0.15em" }}
             transition={{ duration: 2 }}
           >
-            CURRENT WORK
+             {t('currentProject.sectionTitle')}
           </motion.h2>
           
           <motion.div 
@@ -213,7 +215,7 @@ export default function CurrentProject() {
           className="max-w-4xl mx-auto mb-16 text-center"
         >
           <motion.h3 
-            className="text-3xl md:text-4xl font-light text-white mb-6 font-serif tracking-wide"
+            className="text-3xl md:text-4xl font-light text-white mb-6 tracking-wide"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
@@ -258,19 +260,19 @@ export default function CurrentProject() {
             transition={{ delay: 0.9 }}
           >
             <div className="flex justify-between items-center mb-2">
-              <span className="text-sm text-muted-foreground">Development Progress</span>
+              <span className="text-sm text-muted-foreground">{t('currentProject.project.progressLabel')}</span>
               <span className="text-sm text-gray-300">{currentProject.progress}%</span>
             </div>
             <div className="bg-gray-800 h-1 relative overflow-hidden">
               <motion.div
-                className="absolute top-0 left-0 h-full bg-white"
+                className={`absolute top-0 ${isAr ? "right-0" : "left-0"} h-full bg-white`}
                 initial={{ width: 0 }}
                 whileInView={{ width: `${currentProject.progress}%` }}
                 transition={{ duration: 2, delay: 1 }}
               />
             </div>
             <div className="flex space-x-1 mt-2">
-              <span className="text-muted-foreground text-xs">Status:</span>
+              <span className="text-muted-foreground text-xs">{t('currentProject.project.statusLabel')}</span>
               <span className="text-muted-foreground text-xs">{currentProject.status}</span>
             </div>
           </motion.div>
@@ -283,12 +285,12 @@ export default function CurrentProject() {
           viewport={{ once: true }}
         >
           <motion.h4 
-            className="text-2xl font-light text-white mb-12 text-center font-serif tracking-wide"
+            className="text-2xl font-light text-white mb-12 text-center tracking-wide"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
           >
-            Project Gallery
+              {t('currentProject.project.galleryTitle')}
           </motion.h4>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -327,13 +329,13 @@ export default function CurrentProject() {
                       transition={{ duration: 0.3 }}
                     >
                       <span className="text-white text-sm font-light tracking-wide">
-                        View Details
+                        {t('currentProject.project.viewDetails')}
                       </span>
                     </motion.div>
                   </div>
                   
                   <div className="p-4">
-                    <h5 className="text-white font-light text-lg mb-2 font-serif">
+                    <h5 className="text-white font-light text-lg mb-2 ">
                       {image.title}
                     </h5>
                     <p className="text-gray-400 text-sm font-light leading-relaxed">
@@ -392,7 +394,7 @@ export default function CurrentProject() {
                 </div>
                 
                 <div className="p-8">
-                  <h3 className="text-white text-2xl font-light font-serif mb-4 tracking-wide">
+                  <h3 className="text-white text-2xl font-light mb-4 tracking-wide">
                     {selectedImage.title}
                   </h3>
                   <p className="text-gray-300 leading-relaxed font-light">

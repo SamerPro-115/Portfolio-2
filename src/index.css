@@ -78,6 +78,11 @@
 
 [data-lang="ar"] {
   font-family: "Cairo", "Noto Sans Arabic", Arial, sans-serif;
+  
+}
+
+[data-lang="ar"] * {
+  letter-spacing: normal !important
 }
 
 [data-lang="en"] .introduction-title {

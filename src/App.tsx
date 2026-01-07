@@ -14,6 +14,7 @@ import useTouchDevice from "./hooks/useTouchDevice";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import SocialMenu from "./components/SocialMenu";
+import LanguageSwitcher from "./components/LanguageSwitcher";
 
 function App() {
 
@@ -37,6 +38,7 @@ function App() {
           <div className="fixed top-6 right-6 z-50">
       <SocialMenu />
     </div>
+    <LanguageSwitcher />
 
        <div className="relative z-10 bg-white">
     <Hero />
@@ -49,6 +51,7 @@ function App() {
       viewport={{ once: true, amount: 0.8 }}
       className="flex justify-center"
     />
+    
     
     <Works />
     <Skills />

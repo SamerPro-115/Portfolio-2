@@ -2,8 +2,12 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Play, Zap, Code, Users } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import { useLanguage } from '@/hooks/useLanguage';
 
 export default function TikTokSection() {
+      const {t} = useTranslation();
+      const isAr = useLanguage();
   const [isVisible, setIsVisible] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const sectionRef = useRef(null);
@@ -57,9 +61,9 @@ const toggleLanguage = () => {
   };
 
   const stats = [
-    { icon: <Users className="w-5 h-5" />, label: "Followers", value: "69k+" },
-    { icon: <Code className="w-5 h-5" />, label: "IT Facts", value: "100+" },
-    { icon: <Zap className="w-5 h-5" />, label: "How It Works", value: "30+" }
+    { icon: <Users className="w-5 h-5" />, label: t("Content-creation.followers"), value: "69k+" },
+    { icon: <Code className="w-5 h-5" />, label: t("Content-creation.IT-facts"), value: "100+" },
+    { icon: <Zap className="w-5 h-5" />, label: t("Content-creation.how-it-works"), value: "30+" }
   ];
 
   return (
@@ -89,12 +93,12 @@ const toggleLanguage = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl  font-extralight md:text-6xl mb-6 tracking-[0.15em] font-serif" style={{letterSpacing: "0.15em"}}>
-            CONTENT CREATION
+          <h2 className="text-4xl  font-extralight md:text-6xl mb-6 tracking-[0.15em]" style={{letterSpacing: "0.15em"}}>
+            {t('Content-creation.title')}
           </h2>
           <div className="w-32 h-1 bg-white mx-auto mb-6" />
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            Shared IT knowledge, tech facts, and code insights on TikTok
+            {t("Content-creation.desc")}
           </p>
         </motion.div>
 
@@ -164,21 +168,21 @@ const toggleLanguage = () => {
                         </div>
                         <div>
                           <p className="font-semibold text-sm">@samerpro_</p>
-                          <p className="text-xs text-gray-300">IT Content Creator</p>
+                          <p className="text-xs text-gray-300">{t("Content-creation.video-title")}</p>
                         </div>
                       </div>
                       <p className="text-sm mb-2">
-                        🔥 Did you know? #coding #tech #programmer
+                         {t("Content-creation.video-title-2")} 🔥 #coding #tech #programmer
                       </p>
                     </div>
 
                     {/* Right side actions */}
-                    <div className="absolute right-2 bottom-20 flex flex-col gap-4">
+                    <div className={`absolute ${isAr ? 'left-2' : 'right-2' } bottom-20 flex flex-col gap-4`}>
                       <div className="flex flex-col items-center gap-1">
                         <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center ">
                           <Play className="w-6 h-6 fill-white" />
                         </div>
-                        <span className="text-xs">56K</span>
+                        <span className="text-xs">56{isAr ? " ألف" : "K"}</span>
                       </div>
                     </div>
                   </div>
@@ -188,7 +192,10 @@ const toggleLanguage = () => {
   className='bg-black text-white border border-white rounded-xl p-1 cursor-pointer text-sm translation-video-button' 
   onClick={toggleLanguage}
 >
-  {isEnglish ? 'Arabic' : 'English'} Audio
+  {isEnglish 
+    ? `${t('tiktok.audioToggle.arabic')} ${t('tiktok.audioToggle.audio')}`
+    : `${t('tiktok.audioToggle.english')} ${t('tiktok.audioToggle.audio')}`
+  }
 </button>
 
               {/* Decorative floating elements */}
@@ -214,13 +221,10 @@ const toggleLanguage = () => {
           >
             <div>
               <h3 className="text-3xl md:text-4xl font-bold mb-4">
-                Taught Tech,<br />
-                One Video at a Time
+                {t("Content-creation.desc-title")}
               </h3>
               <p className="text-gray-400 text-lg leading-relaxed">
-                I created engaging content that broke down complex IT concepts into 
-                bite-sized, entertaining videos. From coding tips and tech facts to 
-                explaining how things worked under the hood.
+                {t("Content-creation.desc-desc")}
               </p>
             </div>
 
@@ -242,41 +246,41 @@ const toggleLanguage = () => {
             </div>
 
             {/* Content Topics */}
-            <div className="space-y-3">
-              <h4 className="text-xl font-semibold mb-4">What I Shared:</h4>
-              {[
-                "Strange & fascinating IT facts",
-                "Programming tips & tricks",
-                "How things work in tech",
-                "Top 5",
-                "And more..",
-              ].map((topic, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={isVisible ? { opacity: 1, x: 0 } : {}}
-                  transition={{ delay: 0.8 + index * 0.1 }}
-                  className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors"
-                >
-                  <div className="w-1.5 h-1.5 bg-white rounded-full" />
-                  <span>{topic}</span>
-                </motion.div>
-              ))}
-            </div>
+          <div className="space-y-3">
+  <h4 className="text-xl font-semibold mb-4">{t('tiktok.whatIShared')}</h4>
+  {[
+    t('tiktok.topics.itFacts'),
+    t('tiktok.topics.programmingTips'),
+    t('tiktok.topics.howThingsWork'),
+    t('tiktok.topics.topFive'),
+    t('tiktok.topics.more'),
+  ].map((topic, index) => (
+    <motion.div
+      key={index}
+      initial={{ opacity: 0, x: -20 }}
+      animate={isVisible ? { opacity: 1, x: 0 } : {}}
+      transition={{ delay: 0.8 + index * 0.1 }}
+      className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors"
+    >
+      <div className="w-1.5 h-1.5 bg-white rounded-full" />
+      <span>{topic}</span>
+    </motion.div>
+  ))}
+</div>
 
-            {/* CTA Button */}
-            <motion.a
-              href="https://tiktok.com/@samerpro_"
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0 }}
-              animate={isVisible ? { opacity: 1 } : {}}
-              transition={{ delay: 1.2 }}
-              className="inline-flex items-center gap-2 bg-white text-black px-8 py-3 rounded-lg font-semibold hover:bg-gray-200 transition-colors"
-            >
-              <Play className="w-5 h-5" />
-              View Past Content
-            </motion.a>
+{/* CTA Button */}
+<motion.a
+  href="https://tiktok.com/@samerpro_"
+  target="_blank"
+  rel="noopener noreferrer"
+  initial={{ opacity: 0 }}
+  animate={isVisible ? { opacity: 1 } : {}}
+  transition={{ delay: 1.2 }}
+  className="inline-flex items-center gap-2 bg-white text-black px-8 py-3 rounded-lg font-semibold hover:bg-gray-200 transition-colors"
+>
+  <Play className="w-5 h-5" />
+  {t('tiktok.ctaButton')}
+</motion.a>
           </motion.div>
         </div>
       </div>

@@ -77,5 +77,98 @@
         "learn": "Ready to learn?",
         "learn-desc": "Access the full course and start your web development journey",
         "view-course": "View Course"
+    },
+    "Content-creation": {
+        "title": "CONTENT CREATION",
+        "desc":"Shared IT knowledge, tech facts, and code insights on TikTok",
+        "video-title": "IT Content Creator",
+        "video-title-2": "Did You Know?",
+        "desc-title": "Explaining Technology",
+        "desc-desc": "I created engaging content that broke down complex IT concepts into bite-sized, entertaining videos. From coding tips and tech facts to explaining how things worked under the hood.",
+        "followers": "Followers",
+        "IT-facts": "IT Facts",
+        "how-it-works": "How It Works"
+
+    },
+
+    "tiktok": {
+    "whatIShared": "What I Shared:",
+    "topics": {
+      "itFacts": "Strange & fascinating IT facts",
+      "programmingTips": "Programming tips & tricks",
+      "howThingsWork": "How things work in tech",
+      "topFive": "Top 5",
+      "more": "And more.."
+    },
+    "ctaButton": "View Past Content",
+     "audioToggle": {
+      "arabic": "Arabic",
+      "english": "English",
+      "audio": "Audio"
     }
+  },
+
+   "currentProject": {
+    "sectionTitle": "CURRENT WORK",
+    "project": {
+      "title": "Connect system",
+      "description": "Developing a human resource management system that streamlines employee, manager, and team operations. The platform focuses on simplifying organizational workflows through intuitive design and reliable data handling.",
+      "fullDescription": "Connect HRMS is designed to help organizations efficiently manage their workforce. It provides tools for creating and managing teams, assigning managers, and tracking employees with real-time data updates. The system is built with scalability in mind, featuring a robust backend, responsive frontend with modern React architecture, and optimized data synchronization to ensure accuracy across all modules. The goal is to reduce administrative overhead while improving clarity and efficiency in HR operations.",
+      "status": "Work In Progress..",
+      "progressLabel": "Development Progress",
+      "statusLabel": "Status:",
+      "galleryTitle": "Project Gallery",
+      "viewDetails": "View Details",
+      "images": {
+        "loginPage": {
+          "title": "Login page Design",
+          "description": "Clean, modern login page"
+        },
+        "employeesAr": {
+          "title": "Employees Ar",
+          "description": "Responsive grid layout with advanced filtering and search."
+        },
+        "managers": {
+          "title": "Managers",
+          "description": "Responsive grid layout with advanced filtering and search."
+        },
+        "adminLogs": {
+          "title": "Admin Logs",
+          "description": "Monitoring users actions during the day."
+        },
+        "manageTeams": {
+          "title": "Manage Teams",
+          "description": "Create, update, delete, manage teams"
+        },
+        "createTeamAr": {
+          "title": "Create Team Ar",
+          "description": "Creating team options"
+        }
+      }
+    }
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "Have a project in mind? Let's work together to bring your ideas to life.",
+    "form": {
+      "cardTitle": "Send Me a Message",
+      "cardDescription": "I'll get back to you as soon as possible",
+      "nameLabel": "Your Name",
+      "namePlaceholder": "Enter your full name",
+      "emailLabel": "Email Address",
+      "emailPlaceholder": "your.email@example.com",
+      "messageLabel": "Your Message",
+      "messagePlaceholder": "Tell me about your project, ideas, or just say hello...",
+      "sendButton": "Send Message",
+      "sendingButton": "Sending Message..."
+    },
+    "alerts": {
+      "success": "Message sent successfully! I'll get back to you soon.",
+      "error": "Failed to send message. Please try again or contact me directly."
+    },
+    "footer": {
+      "preferEmail": "Prefer email? Reach me directly at",
+      "email": "newsamer123@gmail.com"
+    }
+  }
 }
