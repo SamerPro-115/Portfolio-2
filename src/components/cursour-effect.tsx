@@ -70,7 +70,7 @@ const CursorEffect = () => {
     <div className="fixed inset-0 pointer-events-none z-50">
       {/* Main cursor dot */}
       <div 
-        className="absolute w-2 h-2 bg-white rounded-full opacity-90 transition-opacity duration-300 mix-blend-difference"
+        className="absolute w-2 h-2 bg-white rounded-full opacity-70 transition-opacity duration-300 mix-blend-difference"
         style={{
           transform: 'translate(-50%, -50%)',
           left: '0px',

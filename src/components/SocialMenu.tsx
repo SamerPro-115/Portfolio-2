@@ -29,7 +29,7 @@ return (
       <Button
         variant="ghost"
         size="icon"
-        className="relative h-10 w-10 rounded-full border border-white/20 bg-black/50 backdrop-blur-sm transition-all hover:bg-white/10 hover:border-white/40"
+        className="relative h-10 w-10 rounded-full border border-white/20 bg-black/50 transition-all hover:bg-white/10 hover:border-white/40"
       >
         {isOpen ? (
           <X className="h-5 w-5 text-white" />
@@ -41,7 +41,7 @@ return (
 
     <DropdownMenuContent
       align="end"
-      className="w-[200px] border border-white/20 bg-black/95 backdrop-blur-xl p-3 
+      className="w-[200px] border border-white/20 bg-black/95 p-3 
                  animate-in fade-in-0 zoom-in-95 slide-in-from-top-2 
                  duration-200 ease-out"
       sideOffset={8}
