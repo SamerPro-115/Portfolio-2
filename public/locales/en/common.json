@@ -52,6 +52,10 @@
             }
         }
     },
+    "Separator": {
+      "title": "Creating Digital Dreams",
+      "subtitle": "In the quiet of the night, ideas are born"
+    },
     "Skills": {
             "title": "EXPERTISE",
             "desc": "The set of skills I have and use in web development."

@@ -25,24 +25,13 @@ const Introduction = () => {
   return (
     <>
       <div 
-        className="fixed top-0 left-0 w-full h-screen pointer-events-none z-0"
+        className="fixed top-0 left-0 w-full h-screen pointer-events-none z-20"
         style={{ opacity }}
       >
         {/* Pure Black Base */}
         <div className="absolute inset-0 bg-black" />
         
-        {/* Combined Atmospheric Effects */}
-        <div 
-          className="absolute inset-0 lg:opacity-100 opacity-80"
-          style={{
-            background: `
-              radial-gradient(ellipse 800px 600px at 25% 30%, rgba(45, 45, 45, 0.4) 0%, transparent 50%),
-              radial-gradient(ellipse 700px 500px at 75% 70%, rgba(40, 40, 40, 0.35) 0%, transparent 50%),
-              linear-gradient(135deg, transparent 0%, rgba(50, 50, 50, 0.25) 25%, rgba(42, 42, 42, 0.18) 35%, transparent 50%),
-              radial-gradient(ellipse at center, transparent 30%, rgba(30, 30, 30, 0.5) 70%, rgba(15, 15, 15, 0.8) 100%)
-            `
-          }}
-        />
+      
         
         {/* Spotlight + Light Rays */}
         <div 

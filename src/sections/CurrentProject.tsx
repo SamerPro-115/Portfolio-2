@@ -184,8 +184,8 @@ export default function CurrentProject() {
           </div>
 
           <motion.h2 
-            className="text-4xl md:text-6xl font-extralight text-white mb-8 tracking-[0.15em]
-                     drop-shadow-[0_0_25px_rgba(255,255,255,0.3)] relative z-10"
+            className={`${!isAr && "font-serif"} text-4xl md:text-6xl font-extralight text-white mb-8 tracking-[0.15em]
+                     drop-shadow-[0_0_25px_rgba(255,255,255,0.3)] relative z-10`}
             initial={{ letterSpacing: "0.1em" }}
             whileInView={{ letterSpacing: "0.15em" }}
             transition={{ duration: 2 }}

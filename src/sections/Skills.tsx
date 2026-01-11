@@ -92,7 +92,7 @@ export function Skills() {
           className="text-center mb-24"
         >
           <motion.h2 
-            className={`${isAr ? "text-6xl md:text-8xl" : "text-4xl md:text-7xl"}  font-extralight text-white mb-8 tracking-[0.2em] `}
+            className={`${isAr ? "text-6xl md:text-8xl" : "text-4xl md:text-7xl font-serif"}  font-extralight text-white mb-8 tracking-[0.2em] `}
             initial={{ letterSpacing: "0.1em" }}
             whileInView={{ letterSpacing: "0.2em" }}
             transition={{ duration: 2 }}

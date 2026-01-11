@@ -7,6 +7,7 @@ import useTouchDevice from "./hooks/useTouchDevice";
 import CursorEffect from "./components/cursour-effect";
 import SocialMenu from "./components/SocialMenu";
 import LanguageSwitcher from "./components/LanguageSwitcher";
+import Separator from "./components/Separator";
 
 // Lazy load heavy components
 const Introduction = lazy(() => import("./sections/Introduction"));
@@ -75,6 +76,10 @@ function App() {
           <Skills />
         </Suspense>
         
+         <Suspense fallback={<SectionLoader />}>
+          <Separator />
+        </Suspense>
+         
         <Suspense fallback={<SectionLoader />}>
           <CourseSection />
         </Suspense>

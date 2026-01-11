@@ -93,7 +93,7 @@ const toggleLanguage = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl  font-extralight md:text-6xl mb-6 tracking-[0.15em]" style={{letterSpacing: "0.15em"}}>
+          <h2 className={`${!isAr && "font-serif"} text-4xl  font-extralight md:text-6xl mb-6 tracking-[0.15em]`} style={{letterSpacing: "0.15em"}}>
             {t('Content-creation.title')}
           </h2>
           <div className="w-32 h-1 bg-white mx-auto mb-6" />
