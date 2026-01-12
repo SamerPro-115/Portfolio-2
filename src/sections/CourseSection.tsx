@@ -115,7 +115,7 @@ export default function CourseSection() {
             <div className="relative w-full rounded-3xl overflow-hidden border border-white/10" style={{ paddingBottom: '56.25%' }}>
               {/* Course thumbnail */}
               <img 
-                src="/course-thumbnail.png" 
+                src="/course-thumbnail.jpg" 
                 alt="Web Development Course"
                 className="absolute inset-0 w-full h-full object-cover"
               />

@@ -9,10 +9,12 @@ import SocialMenu from "./components/SocialMenu";
 import LanguageSwitcher from "./components/LanguageSwitcher";
 import Separator from "./components/Separator";
 
-// Lazy load heavy components
-const Introduction = lazy(() => import("./sections/Introduction"));
-const Hero = lazy(() => import("./sections/Hero").then(module => ({ default: module.Hero })));
-const AboutMe = lazy(() => import("./sections/AboutMe").then(module => ({ default: module.AboutMe })));
+// Import critical components directly (NO lazy loading)
+import Introduction from "./sections/Introduction";
+import { Hero } from "./sections/Hero";
+import { AboutMe } from "./sections/AboutMe";
+
+// Lazy load ONLY below-the-fold components
 const Works = lazy(() => import("./sections/Works").then(module => ({ default: module.Works })));
 const Skills = lazy(() => import("./sections/Skills").then(module => ({ default: module.Skills })));
 const CourseSection = lazy(() => import("./sections/CourseSection"));
@@ -21,7 +23,7 @@ const CurrentProject = lazy(() => import("./sections/CurrentProject"));
 const Contact = lazy(() => import("./sections/Contact").then(module => ({ default: module.Contact })));
 
 const SectionLoader = () => (
-  <div className="min-h-screen flex items-center justify-center bg-black z-99999">
+  <div className="min-h-screen flex items-center justify-center bg-black">
     <div className="w-8 h-8 border-4 border-gray-600 border-t-white rounded-full animate-spin" />
   </div>
 );
@@ -36,7 +38,7 @@ function App() {
     document.documentElement.dir = direction;
     document.documentElement.lang = lang;
     document.documentElement.setAttribute("data-lang", lang);
-  }, []); 
+  }, [i18n.language]); // Added dependency
 
   return (
     <>
@@ -47,18 +49,12 @@ function App() {
       </div>
       <LanguageSwitcher />
       
-      <Suspense fallback={<SectionLoader />}>
-        <Introduction />
-      </Suspense>
+      {/* NO lazy loading for above-the-fold content */}
+      <Introduction />
 
       <div className="relative z-10 bg-white">
-        <Suspense fallback={<SectionLoader />}>
-          <Hero />
-        </Suspense>
-        
-        <Suspense fallback={<SectionLoader />}>
-          <AboutMe />
-        </Suspense>
+        <Hero />
+        <AboutMe />
 
         <motion.div
           initial={{ width: 0, opacity: 0 }}
@@ -68,6 +64,7 @@ function App() {
           className="flex justify-center"
         />
         
+        {/* Lazy load below-the-fold content */}
         <Suspense fallback={<SectionLoader />}>
           <Works />
         </Suspense>
@@ -76,9 +73,8 @@ function App() {
           <Skills />
         </Suspense>
         
-         <Suspense fallback={<SectionLoader />}>
-          <Separator />
-        </Suspense>
+        {/* Separator should NOT be lazy loaded if it's visible on scroll */}
+        <Separator />
          
         <Suspense fallback={<SectionLoader />}>
           <CourseSection />

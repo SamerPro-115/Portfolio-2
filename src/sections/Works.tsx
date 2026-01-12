@@ -199,6 +199,7 @@ const works = [
                   <div className="w-1/2 relative overflow-hidden">
                     <img
                       src={work.img}
+                      loading='lazy'
                       alt={work.name}
                       className="w-full h-full object-cover filter filter-[grayscale(0.3)] transition-all duration-700 group-hover:grayscale-0 group-hover:scale-110"
                     />
@@ -276,6 +277,7 @@ const works = [
                       <img
                         src={works[selectedWork].img}
                         alt={works[selectedWork].name}
+                        loading='lazy'
                         className="w-full border border-zinc-700 shadow-2xl"
                       />
                       <div className="absolute -bottom-4 -right-4 w-full h-full border border-zinc-800 -z-10"></div>

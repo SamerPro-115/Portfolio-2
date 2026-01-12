@@ -8,11 +8,13 @@
         "title": "About Me",
         "desc-1": "I'm a third-year university student in the Faculty of IT. Outside of coding, I have passions that inspire me and keep life exciting",
         "desc-2": "You can take a look on my profile (CV) down below for more details",
-        "profile": "Profile",
+        "profile": "Download",
         "football": "Football",
         "animation": "Animation",
         "gaming": "Gaming",
-        "toast-alert": "Sorry, I'm still working on my profile!"
+        "toast-alert": "Sorry, I'm still working on my profile!",
+        "toast-download-success": "File has been downloaded",
+        "saying": "Great developers are researchers who code, not coders who search"
     },
       "Works": {
         "title": "Works",

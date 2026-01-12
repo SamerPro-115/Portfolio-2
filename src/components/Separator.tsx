@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from '@/hooks/useLanguage';
 
@@ -8,14 +8,7 @@ export default function Separator() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const { t } = useTranslation();
   const isAr = useLanguage();
-  // Track scroll for text animations
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  });
 
-  const textOpacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
-  const textY = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [100, 0, 0, -100]);
 
   return (
     <section
@@ -29,12 +22,12 @@ export default function Separator() {
           backgroundImage: `url('/OyasumiPunpun.jpg')`,
           filter: 'brightness(0.7)',
         }}
+        
       />
 
       {/* Content with Framer Motion */}
       <motion.div
         className="absolute inset-0 flex items-center justify-center z-20"
-        style={{ opacity: textOpacity, y: textY }}
       >
         <div className="text-center px-4 -mt-20">
           <motion.h2 

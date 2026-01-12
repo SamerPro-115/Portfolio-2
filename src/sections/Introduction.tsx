@@ -35,7 +35,7 @@ const Introduction = () => {
         
         {/* Spotlight + Light Rays */}
         <div 
-          className="absolute inset-0 lg:opacity-100 opacity-70"
+          className="absolute inset-0 lg:opacity-100 opacity-90"
           style={{
             background: `
               radial-gradient(circle 500px at 30% 40%, rgba(120, 120, 120, 0.25) 0%, transparent 70%),
@@ -50,7 +50,7 @@ const Introduction = () => {
                     <Suspense fallback={<div className="absolute inset-0 bg-black" />}>
           <Particles
             particleColors={['#ffffff', '#f5f5f5', '#e8e8e8']}
-            particleCount={150}
+            particleCount={100}
             particleSpread={10}
             speed={0.08}
             particleBaseSize={50}

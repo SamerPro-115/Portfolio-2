@@ -20,12 +20,12 @@ export default function LanguageSwitcher() {
   }
     return(
 <motion.button
-  className="fixed bottom-8 left-8 z-50 
-             bg-black border border-white 
-             text-white px-3 py-1 md:px-4 md:py-2 
+  className="fixed bottom-5 sm:bottom-8 left-5 sm:left-8 z-50 
+             bg-black border border-white/50 
+             text-white px-2 py-1 md:px-4 md:py-2 
              hover:bg-white hover:text-black
              transition-all duration-300
-             font-light tracking-wider"
+             font-light tracking-wider text-xs sm:text-sm"
   whileHover={{ scale: 1.05 }}
   whileTap={{ scale: 0.95 }}
     onClick={() => changeLanguage(i18n.language === 'en' ? 'ar' : 'en')}

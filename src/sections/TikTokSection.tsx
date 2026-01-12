@@ -128,7 +128,7 @@ const toggleLanguage = () => {
                       className="w-full h-full object-cover"
                       loop
                       playsInline
-                      poster="/video-poster.png" // Optional: Add a thumbnail image
+                      poster="/video-poster.jpg" // Optional: Add a thumbnail image
                       onClick={togglePlay}
                     >
                       <source src={isEnglish ? "/videos/video-english.mp4" : "/videos/Video.mp4"} type="video/mp4" />
