@@ -43,56 +43,55 @@ function App() {
   return (
     <>
       {!isTouchDevice && <CursorEffect />}
-     
+
       <div className="fixed top-6 right-6 z-999">
         <SocialMenu />
       </div>
       <LanguageSwitcher />
-      
-        <Hero />
 
- <Suspense fallback={<SectionLoader />}>
-         <AboutMe />
+      <Hero />
 
- </Suspense>
+      <Suspense fallback={<SectionLoader />}>
+        <AboutMe />
+      </Suspense>
 
-        <motion.div
-          initial={{ width: 0, opacity: 0 }}
-          whileInView={{ width: "100%", opacity: 1 }}
-          transition={{ duration: 1, ease: "easeInOut" }}
-          viewport={{ once: true, amount: 0.8 }}
-          className="flex justify-center"
-        />
+      <motion.div
+        initial={{ width: 0, opacity: 0 }}
+        whileInView={{ width: "100%", opacity: 1 }}
+        transition={{ duration: 1, ease: "easeInOut" }}
+        viewport={{ once: true, amount: 0.8 }}
+        className="flex justify-center"
+      />
 
-         <MyRoom />
-        
-        {/* Lazy load below-the-fold content */}
-        <Suspense fallback={<SectionLoader />}>
-          <Works />
-        </Suspense>
-        
-        <Suspense fallback={<SectionLoader />}>
-          <Skills />
-        </Suspense>
-        
-        {/* Separator should NOT be lazy loaded if it's visible on scroll */}
-        <Separator />
-         
-        <Suspense fallback={<SectionLoader />}>
-          <CourseSection />
-        </Suspense>
-        
-        <Suspense fallback={<SectionLoader />}>
-          <TikTokSection />
-        </Suspense>
-        
-        <Suspense fallback={<SectionLoader />}>
-          <CurrentProject />
-        </Suspense>
-        
-        <Suspense fallback={<SectionLoader />}>
-          <Contact />
-        </Suspense>
+      <MyRoom />
+
+      {/* Lazy load below-the-fold content */}
+      <Suspense fallback={<SectionLoader />}>
+        <Works />
+      </Suspense>
+
+      <Suspense fallback={<SectionLoader />}>
+        <Skills />
+      </Suspense>
+
+      {/* Separator should NOT be lazy loaded if it's visible on scroll */}
+      <Separator />
+
+      <Suspense fallback={<SectionLoader />}>
+        <CourseSection />
+      </Suspense>
+
+      <Suspense fallback={<SectionLoader />}>
+        <TikTokSection />
+      </Suspense>
+
+      <Suspense fallback={<SectionLoader />}>
+        <CurrentProject />
+      </Suspense>
+
+      <Suspense fallback={<SectionLoader />}>
+        <Contact />
+      </Suspense>
 
       <Toaster position="top-center" />
     </>

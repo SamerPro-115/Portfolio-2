@@ -26,13 +26,10 @@ const MyRoom = () => {
         className="w-full flex z-20 items-center justify-center relative lg:h-screen"
       >
 
-        
-        
-       
         {/* Content Layer */}
         <div className="flex justify-center">
           <h1 
-           className="text-white text-2xl md:text-4xl lg:text-5xl  bottom-32 flex  
+           className="text-white text-xl md:text-4xl lg:text-5xl  bottom-32 flex lg:tracking-[0.1rem] sm:tracking-[0.6rem] tracking-[0.3rem] 
               introduction-title"
             style={{
               filter: "brightness(0.85)",
