@@ -10,9 +10,9 @@ import LanguageSwitcher from "./components/LanguageSwitcher";
 import Separator from "./components/Separator";
 
 // Import critical components directly (NO lazy loading)
-import Introduction from "./sections/Introduction";
 import { Hero } from "./sections/Hero";
 import { AboutMe } from "./sections/AboutMe";
+import MyRoom from "./sections/MyRoom";
 
 // Lazy load ONLY below-the-fold components
 const Works = lazy(() => import("./sections/Works").then(module => ({ default: module.Works })));
@@ -44,17 +44,17 @@ function App() {
     <>
       {!isTouchDevice && <CursorEffect />}
      
-      <div className="fixed top-6 right-6 z-50">
+      <div className="fixed top-6 right-6 z-999">
         <SocialMenu />
       </div>
       <LanguageSwitcher />
       
-      {/* NO lazy loading for above-the-fold content */}
-      <Introduction />
-
-      <div className="relative z-10 bg-white">
         <Hero />
-        <AboutMe />
+
+ <Suspense fallback={<SectionLoader />}>
+         <AboutMe />
+
+ </Suspense>
 
         <motion.div
           initial={{ width: 0, opacity: 0 }}
@@ -63,6 +63,8 @@ function App() {
           viewport={{ once: true, amount: 0.8 }}
           className="flex justify-center"
         />
+
+         <MyRoom />
         
         {/* Lazy load below-the-fold content */}
         <Suspense fallback={<SectionLoader />}>
@@ -91,7 +93,6 @@ function App() {
         <Suspense fallback={<SectionLoader />}>
           <Contact />
         </Suspense>
-      </div>
 
       <Toaster position="top-center" />
     </>

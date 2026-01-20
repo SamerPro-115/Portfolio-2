@@ -9,30 +9,23 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    fallbackLng: 'en', 
-    supportedLngs: ['en', 'ar'], 
-    
-    defaultNS: "common",
-    
+    fallbackLng: 'en',            // ✅ default ONLY on first visit
+    supportedLngs: ['en', 'ar'],
+
+    defaultNS: 'common',
+
     backend: {
-      loadPath: '/locales/{{lng}}/{{ns}}.json' 
+      loadPath: '/locales/{{lng}}/{{ns}}.json',
     },
-    
+
     interpolation: {
-      escapeValue: false
+      escapeValue: false,
     },
-    
+
     detection: {
-      order: ['localStorage', 'navigator', 'htmlTag'], 
-      caches: ['localStorage'], 
-      
-      // Convert browser language codes to supported languages
-      convertDetectedLanguage: (lng) => {
-        // If browser language starts with 'ar' (like 'ar-SA', 'ar-EG'), use 'ar'
-        if (lng.startsWith('ar')) return 'ar';
-        return 'en';
-      }
-    }
+      order: ['localStorage'],    // ✅ read ONLY saved choice
+      caches: ['localStorage'],   // ✅ save user choice
+    },
   });
 
 export default i18n;

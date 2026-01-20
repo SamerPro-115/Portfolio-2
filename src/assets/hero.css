@@ -2,7 +2,7 @@
       position: absolute;
     height: 100vh;
     width: 100%;
-    z-index: 999999999;
+    z-index: 99;
 }
 .left-side-hero{
       background: linear-gradient(111deg, #000000 54%, transparent 50%);

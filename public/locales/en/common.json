@@ -1,13 +1,14 @@
 {
-    "introduction-word": "WELCOME",
+    "introduction-word": "Where It All Happens",
     "scroll-down": "Scroll down",
     "who-am-i": "Hi, I'm Samer",
     "web-developer": "web developer ",
     "who-am-i-desc": "that loves coding and animation",
     "About-Me": {
         "title": "About Me",
-        "desc-1": "I'm a third-year university student in the Faculty of IT. Outside of coding, I have passions that inspire me and keep life exciting",
-        "desc-2": "You can take a look on my profile (CV) down below for more details",
+        "desc-1": "I'm a third-year university student in the Faculty of IT.",
+        "desc-2": " You can take a look on my profile (CV) down below for more details",
+        "desc-3": "Outside of coding, I have passions that inspire me and keep life exciting",
         "profile": "Download",
         "football": "Football",
         "animation": "Animation",

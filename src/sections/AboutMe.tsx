@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDown, ArrowLeft, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { toast } from 'sonner';
+// import { toast } from 'sonner';
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from '@/hooks/useLanguage';
 
@@ -43,21 +43,34 @@ export function AboutMe() {
     return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
 
-  //   const handleDownloadCV = () => {
-  //   // Create a temporary link element
-  //   const link = document.createElement('a');
-  //   link.href = '/cv/Samer_AlAshqar_Web_Developer.pdf'; 
-  //   link.download = 'Samer_AlAshqar_Web_Developer.pdf'; 
-  //   document.body.appendChild(link);
-  //   link.click();
-  //   document.body.removeChild(link);
-  // };
+     const handleDownloadCV = () => {
+     // Create a temporary link element
+     const link = document.createElement('a');
+     link.href = '/cv/Samer_AlAshqar_Web_Developer.pdf'; 
+     link.download = 'Samer_AlAshqar_Web_Developer.pdf'; 
+     document.body.appendChild(link);
+     link.click();
+     document.body.removeChild(link);
+   };
 
 
   // Handle Toast alert if file not exist
-   const handleDownloadCV = () => {
-     toast.message(t("About-Me.toast-alert"))
-   }
+  //  const handleDownloadCV = () => {
+  //    toast.message(t("About-Me.toast-alert"))
+  //  }
+
+  // Extract animation config
+const fadeInFromLeft = {
+  initial: { opacity: 0, x: -100 },
+  whileInView: { opacity: 1, x: 0 },
+  viewport: { once: true, amount: 0.3 }
+};
+
+// Extract arrow logic into a component or function
+const getDirectionArrow = (isMid: boolean, isAr: boolean) => {
+  if (isMid) return null;
+  return isAr ? <ArrowLeft className="inline" /> : <ArrowRight className="inline" />;
+};
   
 
   return (
@@ -66,55 +79,61 @@ export function AboutMe() {
       onClick={handleContainerClick}
       id="about-me"
     >
-      <div className="text flex flex-1 bg-black justify-center items-center">
-        <div className="flex flex-col w-2/3 lg:mt-0 lg:mb-0 sm:mt-30 sm:mb-30 mt-10 mb-10">
-          <motion.h1
-            initial={{ opacity: 0, x: -100 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true, amount: 0.3 }}
-            className="text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight"
-          >
-            {t("About-Me.title")}
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, x: -100 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            viewport={{ once: true, amount: 0.3 }}
-            className="text-lg lg:text-xl text-gray-300"
-          >
-            {t("About-Me.desc-1")}
-            {isMid ? (
-              <ArrowDown className="inline" />
-            ) : isAr ? (
-              <ArrowLeft className="inline" />
-            ) : (
-              <ArrowRight className="inline" />
-            )}
-            <br />
-            <br />
-            <br />
-            {t("About-Me.desc-2")} <br />
-            <Button
-              onClick={handleDownloadCV}
-              variant={"default"}
-              className={`font-bold w-28 cursor-pointer text-sm md:text-lg mt-4`}
-              style={{ borderRadius: "5px" }}
-            >
-              {t("About-Me.profile")}
-            </Button>
-          </motion.p>
+      <div className="flex flex-1 items-center justify-center bg-black">
+  <div className="flex lg:w-2/3 w-10/12 flex-col mt-10 mb-10 sm:mt-30 sm:mb-30 lg:mt-0 lg:mb-0">
+    <motion.h1
+      {...fadeInFromLeft}
+      transition={{ duration: 0.8, delay: 0.2 }}
+      className="mb-6 text-4xl font-bold leading-tight text-white lg:text-6xl"
+    >
+      {t("About-Me.title")}
+    </motion.h1>
 
-          <p
-            className={`italic text-[0.50rem] sm:text-xs absolute z-50 bg-black/40 max-md:left-0 ${
-              isAr ? "md:left-2.5" : "md:right-2.5"
-            } max-md:text-center max-md:w-full block pb-0.5 pt-0.5 px-1  opacity-[0.7] bottom-0 md:bottom-0.5 text-white`}
+    <motion.p
+      {...fadeInFromLeft}
+      transition={{ duration: 0.8, delay: 0.4 }}
+      className="text-lg text-gray-300 lg:text-xl"
+    >
+      {t("About-Me.desc-1")}
+
+      {t("About-Me.desc-2")}
+          <Button
+            onClick={handleDownloadCV}
+            variant="default"
+            className="mt-4 block p-0 w-28 cursor-pointer font-bold text-sm md:text-lg"
+            style={{ borderRadius: "5px" }}
           >
-            "{t("About-Me.saying")}"
-          </p>
-        </div>
-      </div>
+            {t("About-Me.profile")}
+          </Button>
+          <br />
+          <br />
+          {t("About-Me.desc-3")}
+      
+      {isMid ? (
+        <>
+          
+          <ArrowDown className="inline" />
+        </>
+      ) : (
+        getDirectionArrow(isMid, isAr)
+      )}
+    </motion.p>
+
+    <p
+      className={`
+        absolute bottom-0 z-50 block 
+        w-full px-1 pb-0.5 pt-0.5
+        bg-black/40 text-white opacity-70
+        italic text-[0.50rem] sm:text-xs
+        text-center
+        md:bottom-0.5 md:w-auto
+        ${isAr ? "md:left-2.5 left-0" : "md:right-2.5 right-0"}
+      `}
+    >
+      "{t("About-Me.saying")}"
+    </p>
+  </div>
+</div>
 
       <div className="bg-black flex-1 justify-center items-center flex gap-[1vmin]">
         {images.map((image, index) => (

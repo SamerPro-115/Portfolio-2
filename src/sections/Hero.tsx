@@ -11,15 +11,15 @@ export function Hero() {
 
   return (
     <section  className="min-h-screen overflow-hidden relative">
-      <div className="relative hero-container overflow-hidden">
-        <div className="relative z-10 overflow-hidden">
+      <div className="hero-container overflow-hidden">
+        <div className="  overflow-hidden">
 
-          <img src="/splash-2.png" className="absolute splash-image z-1" alt="splash image" />
+          <img src="/splash-2.png" className="absolute splash-image z-20" alt="splash image" />
           <div className="left-side-hero flex overflow-hidden relative" >
 
            
             <div 
-    className="absolute inset-0 lg:opacity-75 md:opacity-65 opacity-55"
+    className="absolute inset-0 lg:opacity-75 md:opacity-65 opacity-55 "
     style={{
       background: `
         radial-gradient(ellipse 120% 100% at 30% 40%, rgba(80, 80, 80, 0.45) 0%, rgba(50, 50, 50, 0.25) 40%, transparent 70%),
@@ -88,7 +88,7 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="flex-1 relative w-full h-screen overflow-hidden z-20">
+      <div className="flex-1 relative w-full h-screen overflow-hidden">
         <motion.img
           animate={{ scale: [1, 1.07, 1] }}
           transition={{ 
@@ -98,7 +98,7 @@ export function Hero() {
           }}
           src="/Gojo.jpg"
           alt="Hero image"
-          className="w-full h-full object-cover hero-image z-20"
+          className="w-full h-full object-cover hero-image "
         />
       </div>
     </section>

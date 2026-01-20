@@ -1,7 +1,5 @@
-import { lazy, Suspense } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Particles = lazy(() => import('@/components/Animations/Particles'));
 
 
 const NotFound = () => {
@@ -42,22 +40,7 @@ const NotFound = () => {
           `
         }}
       />
-      
-      {/* Particles */}
-      <div className="absolute inset-0">
-                            <Suspense fallback={<div className="absolute inset-0 bg-black" />}>
-        <Particles
-          particleColors={['#ffffff', '#f5f5f5', '#e8e8e8']}
-          particleCount={100}
-          particleSpread={10}
-          speed={0.05}
-          particleBaseSize={40}
-          moveParticlesOnHover={false}
-          alphaParticles={true}
-          disableRotation={false}
-        />
-        </Suspense>
-      </div>
+     
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full px-4">

@@ -81,7 +81,7 @@ const works = [
   return (
     <section
       data-section="works"
-      className="min-h-screen bg-black text-white relative overflow-hidden py-20 z-9999"
+      className="min-h-screen bg-black text-white relative overflow-hidden py-20"
     >
       {/* Background Grid Pattern */}
       <div className="absolute inset-0 opacity-5 ">
@@ -114,7 +114,7 @@ const works = [
         ))}
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-6 relative">
         <div className="text-center mb-20">
           <div className="relative inline-block">
             <div className="absolute -inset-6 bg-white transform -rotate-2 opacity-10"></div>
@@ -157,8 +157,8 @@ const works = [
                 
                
 
-                <div className="relative z-10 h-full flex">
-                  <div className="w-2/3 md:w-1/2 p-4 md:p-8 flex flex-col justify-between text-black relative z-999999999">
+                <div className="relative  h-full flex">
+                  <div className="w-2/3 md:w-1/2 p-4 md:p-8 flex flex-col justify-between text-black relative ">
                     <div className="flex justify-between items-start">
                       <div className="w-16 h-16 bg-black text-white flex items-center justify-center text-xl font-bold">
                         {String(index + 1).padStart(2, "0")}
@@ -242,7 +242,7 @@ const works = [
         {/* Enhanced Modal */}
         {selectedWork !== null && (
           <div
-            className="fixed inset-0 bg-black/95 flex items-center justify-center z-50 p-4"
+            className="fixed inset-0 bg-black/95 flex items-center justify-center z-9999 p-4"
             onClick={() => setSelectedWork(null)}
           >
             <div
