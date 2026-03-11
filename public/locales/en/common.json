@@ -3,7 +3,7 @@
     "scroll-down": "Scroll down",
     "who-am-i": "Hi, I'm Samer",
     "web-developer": "web developer ",
-    "who-am-i-desc": "that loves coding and animation",
+    "who-am-i-desc": "building unique web experiences",
     "About-Me": {
         "title": "About Me",
         "desc-1": "I'm a third-year university student in the Faculty of IT.",
@@ -177,5 +177,13 @@
       "preferEmail": "Prefer email? Reach me directly at",
       "email": "newsamer123@gmail.com"
     }
-  }
+  },
+   "Art": {
+    "title-1": "AI can design,",
+    "title-2": "but can't",
+    "title-3": "make you feel",
+    "sub-1": "Design is logic",
+    "sub-2": "Feeling is human..",
+    "contact":"Get in touch_"
+}
 }

@@ -1,31 +1,22 @@
 import React, { useState } from 'react';
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Loader2, Send, CheckCircle, Mail, User, MessageSquare } from "lucide-react";
+
 import emailjs from '@emailjs/browser';
 import { useTranslation } from 'react-i18next';
 
+import { motion } from "motion/react";
+import { useLanguage } from '@/hooks/useLanguage';
+
 export function Contact() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const { t } = useTranslation();
+  const isAr = useLanguage();
   const [isLoading, setIsLoading] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [showError, setShowError] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -33,165 +24,162 @@ export function Contact() {
     setIsLoading(true);
     setShowError(false);
     setShowSuccess(false);
-
     try {
-      await emailjs.send(
-        'service_rkv4miq',     
-        'template_t3niway',   
-        {
-          user_name: formData.name,
-          user_email: formData.email,
-          message: formData.message,
-        },
-        '4RMueB5KLxcm6MLb9'      
-      );
-
+      await emailjs.send("service_rkv4miq", "template_t3niway", {
+        user_name: formData.name,
+        user_email: formData.email,
+        message: formData.message,
+      }, "4RMueB5KLxcm6MLb9");
       setShowSuccess(true);
-      setFormData({ name: '', email: '', message: '' });
-      
-    
+      setFormData({ name: "", email: "", message: "" });
       setTimeout(() => setShowSuccess(false), 5000);
-      
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
-      console.error('EmailJS Error:', error);
       setShowError(true);
-      
       setTimeout(() => setShowError(false), 5000);
     } finally {
       setIsLoading(false);
     }
   };
 
- return (
-    <section className="min-h-screen bg-black text-white relative overflow-hidden py-20">
-      {/* Background patterns remain the same */}
-      
-      <div className="max-w-4xl mx-auto" id='contact'>
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-            {t('contact.title')}
-          </h2>
-          <p className="text-lg md:text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto">
-            {t('contact.subtitle')}
-          </p>
-        </div>
+  const fadeUp = {
+    hidden: { opacity: 0, y: 24 },
+    show:   { opacity: 1, y: 0 },
+  };
 
-        <Card className="bg-black border-2 border-accent">
-          <CardHeader className="text-center pb-8">
-            <CardTitle className="text-xl md:text-3xl text-white flex items-center justify-center gap-3">
-              <Mail className="w-8 h-8" />
-              {t('contact.form.cardTitle')}
-            </CardTitle>
-            <CardDescription className="text-lg" style={{color: "rgb(187, 187, 187)"}}>
-              {t('contact.form.cardDescription')}
-            </CardDescription>
-          </CardHeader>
-          
-          <CardContent>
-            {/* Success Alert */}
-            {showSuccess && (
-              <Alert className="mb-6 bg-green-900/50 border-green-700/50 text-green-100">
-                <CheckCircle className="h-4 w-4" />
-                <AlertDescription className="font-medium">
-                  {t('contact.alerts.success')}
-                </AlertDescription>
-              </Alert>
-            )}
+  return (
+    <>
 
-            {/* Error Alert */}
-            {showError && (
-              <Alert className="mb-6 bg-red-900/50 border-red-700/50 text-red-100">
-                <AlertDescription className="font-medium">
-                  {t('contact.alerts.error')}
-                </AlertDescription>
-              </Alert>
-            )}
+      <section
+        id="contact"
+        className="bg-black text-white py-28 overflow-hidden"
+      >
+        <div className="max-w-6xl mx-auto px-6 md:px-12">
 
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="space-y-2">
-                <Label htmlFor="name" className="text-white text-base font-medium flex items-center gap-2">
-                  <User className="w-4 h-4" />
-                  {t('contact.form.nameLabel')}
-                </Label>
-                <Input
-                  id="name"
-                  name="name"
-                  type="text"
-                  placeholder={t('contact.form.namePlaceholder')}
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  required
-                  className="bg-primary-foreground border-gray-600/50 text-white focus:border-white focus:ring-white/20 h-12"
-                />
-              </div>
+          {/* Header */}
+          <motion.div
+            initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }}
+            variants={fadeUp} transition={{ duration: 0.9, ease: [0.16,1,0.3,1] }}
+            className="mb-16" dir={isAr ? "rtl" : "ltr"}
+          >
+            <span className="font-mono-tech text-[0.52rem] tracking-[0.42em] uppercase text-white/60 block mb-4">
+              {isAr ? "تواصل معي" : "Get in touch"}
+            </span>
+            <h2 className={`font-extralight text-white leading-none ${isAr ? "font-tajawal text-5xl md:text-6xl xl:text-7xl" : "font-cormorant italic text-6xl md:text-7xl xl:text-8xl"}`}>
+              {t("contact.title")}
+            </h2>
+          </motion.div>
 
-              <div className="space-y-2">
-                <Label htmlFor="email" className="text-white text-base font-medium flex items-center gap-2">
-                  <Mail className="w-4 h-4" />
-                  {t('contact.form.emailLabel')}
-                </Label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder={t('contact.form.emailPlaceholder')}
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  required
-                  className="bg-primary-foreground border-gray-600/50 text-white focus:border-white focus:ring-white/20 h-12"
-                />
-              </div>
+          {/* 2-col grid */}
+          <div className="relative grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-0">
 
-              <div className="space-y-2">
-                <Label htmlFor="message" className="text-white text-base font-medium flex items-center gap-2">
-                  <MessageSquare className="w-4 h-4" />
-                  {t('contact.form.messageLabel')}
-                </Label>
-                <Textarea
-                  id="message"
-                  name="message"
-                  placeholder={t('contact.form.messagePlaceholder')}
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  required
-                  rows={6}
-                  className="bg-primary-foreground border-gray-600/50 text-white focus:border-white focus:ring-white/20 resize-none"
-                />
-              </div>
+            {/* Vertical divider */}
+            <div className="center-line hidden md:block" />
 
-              <Button
-                type="submit"
-                disabled={isLoading}
-                className="w-full h-14 bg-white text-black hover:bg-gray-200 font-semibold text-lg transition-all duration-300 hover:scale-[1.02] disabled:hover:scale-100"
-              >
-                {isLoading ? (
-                  <>
-                    <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                    {t('contact.form.sendingButton')}
-                  </>
-                ) : (
-                  <>
-                    <Send className="mr-2 h-5 w-5" />
-                    {t('contact.form.sendButton')}
-                  </>
-                )}
-              </Button>
-            </form>
-          </CardContent>
-        </Card>
-
-        <div className="text-center mt-12">
-          <p className="text-sm" style={{color: "rgb(187, 187, 187)"}}>
-            {t('contact.footer.preferEmail')}{' '}
-            <a 
-              href="mailto:newsamer123@gmail.com" 
-              className="text-white hover:text-gray-200 underline underline-offset-4 transition-colors cursor-pointer"
+            {/* ── Left: form ── */}
+            <motion.div
+              initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }}
+              variants={fadeUp} transition={{ duration: 0.9, ease: [0.16,1,0.3,1], delay: 0.1 }}
+              className={`flex flex-col justify-center order-2 md:order-1 ${isAr ? "md:ml-16" : "md:pr-16"}`}
+              dir={isAr ? "rtl" : "ltr"}
             >
-              {t('contact.footer.email')}
-            </a>
-          </p>
+              <p className="text-white/50 text-sm leading-relaxed mb-10 max-w-sm">
+                {t("contact.subtitle")}
+              </p>
+
+              {showSuccess && (
+                <div className="mb-6 px-4 py-3 border border-green-700/40 bg-green-900/20 text-green-300 text-sm font-mono-tech tracking-wider">
+                  ✓ {t("contact.alerts.success")}
+                </div>
+              )}
+              {showError && (
+                <div className="mb-6 px-4 py-3 border border-red-700/40 bg-red-900/20 text-red-300 text-sm font-mono-tech tracking-wider">
+                  ✗ {t("contact.alerts.error")}
+                </div>
+              )}
+
+              <form onSubmit={handleSubmit} className="space-y-8">
+                <div>
+                  <label className="contact-label">{t("contact.form.nameLabel")}</label>
+                  <input
+                    name="name" type="text"
+                    placeholder={t("contact.form.namePlaceholder")}
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    required
+                    className="contact-input"
+                  />
+                </div>
+
+                <div>
+                  <label className="contact-label">{t("contact.form.emailLabel")}</label>
+                  <input
+                    name="email" type="email"
+                    placeholder={t("contact.form.emailPlaceholder")}
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
+                    className="contact-input"
+                  />
+                </div>
+
+                <div>
+                  <label className="contact-label">{t("contact.form.messageLabel")}</label>
+                  <textarea
+                    name="message"
+                    placeholder={t("contact.form.messagePlaceholder")}
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    required rows={4}
+                    className="contact-input resize-none"
+                  />
+                </div>
+
+                <button type="submit" disabled={isLoading} className="submit-btn text-xs md:text-sm">
+                  {isLoading ? t("contact.form.sendingButton") : t("contact.form.sendButton")}
+                </button>
+              </form>
+
+              <p className="text-xs text-white/50 mt-8 font-mono-tech tracking-wider">
+                {t("contact.footer.preferEmail")}{" "}
+                <a href="mailto:newsamer123@gmail.com" className="text-white/90 hover:text-white/60 transition-colors underline underline-offset-4">
+                  newsamer123@gmail.com
+                </a>
+              </p>
+            </motion.div>
+
+            {/* ── Right: gif ── */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 1.2, ease: [0.16,1,0.3,1], delay: 0.25 }}
+              className="relative flex items-center order-1 md:order-2"
+            >
+
+
+
+  <div className="relative w-full rounded-xl overflow-hidden" style={{ aspectRatio: "3/4" }}>
+  <img
+    src="/images/human-2.gif"
+    alt="hooded figure"
+    className={`w-full h-full object-cover object-center `}
+  />
+
+    {/* Edge fades */}
+                <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent" />
+                <div className="absolute inset-x-0 top-0    h-1/4 bg-gradient-to-b from-black/70 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-black/70 to-transparent" />
+
+  {/* Dark overlay so text reads clearly */}
+  <div className="absolute inset-0 bg-black/30" />
+
+</div>
+            </motion.div>
+
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

@@ -81,9 +81,11 @@ function App() {
         <CourseSection />
       </Suspense>
 
+
       <Suspense fallback={<SectionLoader />}>
         <TikTokSection />
       </Suspense>
+
 
       <Suspense fallback={<SectionLoader />}>
         <CurrentProject />

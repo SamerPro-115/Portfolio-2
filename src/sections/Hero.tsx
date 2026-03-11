@@ -96,7 +96,7 @@ export function Hero() {
             repeat: Infinity, 
             ease: "easeInOut",
           }}
-          src="/Gojo.jpg"
+          src="/hero.jpg"
           alt="Hero image"
           className="w-full h-full object-cover hero-image "
         />
