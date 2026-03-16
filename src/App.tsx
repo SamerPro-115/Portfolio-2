@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState } from "react";
 import { Toaster } from "sonner";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
@@ -13,6 +13,8 @@ import Separator from "./components/Separator";
 import { Hero } from "./sections/Hero";
 import { AboutMe } from "./sections/AboutMe";
 import MyRoom from "./sections/MyRoom";
+import { Loader } from "./components/ui/loader";
+import FirstVisitTips from "./components/FirstVisitTips";
 
 // Lazy load ONLY below-the-fold components
 const Works = lazy(() => import("./sections/Works").then(module => ({ default: module.Works })));
@@ -31,6 +33,17 @@ const SectionLoader = () => (
 function App() {
   const isTouchDevice = useTouchDevice();
   const { i18n } = useTranslation();
+      const [isLoading, setIsLoading] = useState(true);
+
+
+      useEffect(() => {
+         document.documentElement.style.overflow = 'hidden';
+  const timer = setTimeout(() => {
+    setIsLoading(false)
+    document.documentElement.style.overflow = 'unset';
+  }, 1500);
+  return () => clearTimeout(timer);
+}, []);
 
   useEffect(() => {
     const direction = i18n.language === "ar" ? "rtl" : "ltr";
@@ -39,6 +52,10 @@ function App() {
     document.documentElement.lang = lang;
     document.documentElement.setAttribute("data-lang", lang);
   }, [i18n.language]); // Added dependency
+
+
+
+
 
   return (
     <>
@@ -50,6 +67,9 @@ function App() {
       <LanguageSwitcher />
 
       <Hero />
+            {isLoading && <Loader />}
+
+            <FirstVisitTips />
 
       <Suspense fallback={<SectionLoader />}>
         <AboutMe />
@@ -63,7 +83,8 @@ function App() {
         className="flex justify-center"
       />
 
-      <MyRoom />
+     
+
 
       {/* Lazy load below-the-fold content */}
       <Suspense fallback={<SectionLoader />}>
@@ -81,11 +102,16 @@ function App() {
         <CourseSection />
       </Suspense>
 
+      
+
 
       <Suspense fallback={<SectionLoader />}>
         <TikTokSection />
       </Suspense>
 
+ <Suspense fallback={<SectionLoader />}>
+          <MyRoom  />
+      </Suspense>
 
       <Suspense fallback={<SectionLoader />}>
         <CurrentProject />

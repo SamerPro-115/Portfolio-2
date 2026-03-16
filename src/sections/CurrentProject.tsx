@@ -22,7 +22,7 @@ export default function CurrentProject() {
     description: t('currentProject.project.description'),
     fullDescription: t('currentProject.project.fullDescription'),
     tech: ["React", "TypeScript", "Tailwind CSS", "Shadcn/ui", "Node.js", "GCP", "Socket.io", "MongoDB", "Git/Github"],
-    status: t('currentProject.project.status'),
+    status: t('currentProject.project.status2'),
     progress: 45,
     images: [
       {
@@ -63,6 +63,10 @@ export default function CurrentProject() {
       }
     ]
   };
+
+  const handleOverflow = (hidden:boolean)  => {
+    document.documentElement.style.overflow = hidden ? 'hidden' : "unset";
+  }
 
   return (
     <section className="min-h-screen bg-black py-20 relative overflow-hidden">
@@ -308,7 +312,10 @@ export default function CurrentProject() {
                 className="group cursor-pointer"
                 onHoverStart={() => setHoveredImage(image.id)}
                 onHoverEnd={() => setHoveredImage(null)}
-                onClick={() => setSelectedImage(image)}
+                onClick={() => {
+                  setSelectedImage(image);
+                  handleOverflow(true)
+                }}
                 whileHover={{ y: -8, scale: 1.02 }}
               >
                 <div className="bg-black border border-white/20 h-full  hover:border-white/30 
@@ -360,7 +367,10 @@ export default function CurrentProject() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               className="fixed inset-0 bg-black/95 flex items-center justify-center z-50 p-6"
-              onClick={() => setSelectedImage(null)}
+              onClick={() => {
+                setSelectedImage(null)
+                handleOverflow(false)
+              }}
             >
               <motion.div
                 initial={{ scale: 0.8, opacity: 0 }}
@@ -379,7 +389,10 @@ export default function CurrentProject() {
                   className="absolute top-4 right-4 z-10 text-white/60 hover:text-white text-3xl font-light"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
-                  onClick={() => setSelectedImage(null)}
+                  onClick={() => {
+                    setSelectedImage(null)
+                  handleOverflow(false)
+                }}
                 >
                   ×
                 </motion.button>

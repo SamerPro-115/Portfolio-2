@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 const RoomExperince = lazy(() => import('@/components/HeroModels/RoomExperince'));
 
 
+
 const MyRoom = () => {
   const {t} = useTranslation();
   const isAr = useLanguage();
@@ -20,7 +21,7 @@ const MyRoom = () => {
     {/* 3D Model */}
     <figure className=''>
       <div className="hero-3d-layout grid lg:grid-cols-2 grid-rows-2 lg:grid-rows-1 items-center lg:justify-center w-full lg:h-screen h-[70vh] ">
-        <RoomExperince />
+        <RoomExperince  />
 
     <div 
         className="w-full flex z-20 items-center justify-center relative lg:h-screen"

@@ -294,10 +294,7 @@ html {
 }
 
 
-       
-
-
-
+      
 
 /* Conatct */
 
@@ -317,9 +314,10 @@ html {
 .contact-input::placeholder { color: rgba(255,255,255,0.45); }
         .contact-input:focus { border-bottom-color: rgba(255,255,255,0.6); }
 
+      [data-lang="en"] :is(.contact-label, .submit-btn) {
+  font-family: 'Share Tech Mono', monospace;
+}
         .contact-label {
-          font-family: 'Share Tech Mono', monospace;
-          font-size: 0.52rem;
           letter-spacing: 0.35em;
           text-transform: uppercase;
            color: rgba(255,255,255,0.55);
@@ -334,7 +332,6 @@ html {
           background: transparent;
           border: 1px solid rgba(255,255,255,0.2);
           color: rgba(255,255,255,0.6);
-          font-family: 'Share Tech Mono', monospace;
           letter-spacing: 0.3em;
           text-transform: uppercase;
           cursor: pointer;
@@ -365,4 +362,34 @@ html {
 
 [data-lang="ar"] .center-line{
   background: linear-gradient(to bottom, #ffffff00 0%, rgb(255 255 255 / 55%) 15%, rgb(255 255 255 / 67%) 50%, rgb(255 255 255 / 21%) 85%, transparent 100%);
+}
+
+
+
+
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: fit-content;
+  font-size: 40px;
+  font-family: system-ui, sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #0000;
+  -webkit-text-stroke: 1px #fff;
+  background: conic-gradient(#fff 0 0) 0/0% 100% no-repeat text;
+  animation: l1 1s linear infinite;
+}
+.loader:before {
+  content: "Loading";
+}
+@keyframes l1 {
+  to { background-size: 120% 100%; }
+}
+
+
+@media screen and (max-width: 568px) {
+  .loader{
+    font-size: 30px;
+  }
 }

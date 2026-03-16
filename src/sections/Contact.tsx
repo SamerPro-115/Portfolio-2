@@ -47,6 +47,12 @@ export function Contact() {
     show:   { opacity: 1, y: 0 },
   };
 
+  function labelText(): string {
+   const textSize = isAr ? "text-md" : "text-xs lg:text-sm"
+
+   return textSize;
+  }
+
   return (
     <>
 
@@ -62,9 +68,7 @@ export function Contact() {
             variants={fadeUp} transition={{ duration: 0.9, ease: [0.16,1,0.3,1] }}
             className="mb-16" dir={isAr ? "rtl" : "ltr"}
           >
-            <span className="font-mono-tech text-[0.52rem] tracking-[0.42em] uppercase text-white/60 block mb-4">
-              {isAr ? "تواصل معي" : "Get in touch"}
-            </span>
+            
             <h2 className={`font-extralight text-white leading-none ${isAr ? "font-tajawal text-5xl md:text-6xl xl:text-7xl" : "font-cormorant italic text-6xl md:text-7xl xl:text-8xl"}`}>
               {t("contact.title")}
             </h2>
@@ -80,10 +84,10 @@ export function Contact() {
             <motion.div
               initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }}
               variants={fadeUp} transition={{ duration: 0.9, ease: [0.16,1,0.3,1], delay: 0.1 }}
-              className={`flex flex-col justify-center order-2 md:order-1 ${isAr ? "md:ml-16" : "md:pr-16"}`}
+              className={`flex flex-col justify-center order-1 md:order-1 ${isAr ? "md:ml-16" : "md:pr-16"}`}
               dir={isAr ? "rtl" : "ltr"}
             >
-              <p className="text-white/50 text-sm leading-relaxed mb-10 max-w-sm">
+              <p className={`text-white/50 ${isAr ? "text-md" : "text-sm"} leading-relaxed mb-10 max-w-sm`}>
                 {t("contact.subtitle")}
               </p>
 
@@ -100,7 +104,7 @@ export function Contact() {
 
               <form onSubmit={handleSubmit} className="space-y-8">
                 <div>
-                  <label className="contact-label">{t("contact.form.nameLabel")}</label>
+                  <label className={`contact-label ${labelText()}`}>{t("contact.form.nameLabel")}</label>
                   <input
                     name="name" type="text"
                     placeholder={t("contact.form.namePlaceholder")}
@@ -112,7 +116,7 @@ export function Contact() {
                 </div>
 
                 <div>
-                  <label className="contact-label">{t("contact.form.emailLabel")}</label>
+                  <label className={`contact-label ${labelText()}`}>{t("contact.form.emailLabel")}</label>
                   <input
                     name="email" type="email"
                     placeholder={t("contact.form.emailPlaceholder")}
@@ -124,7 +128,7 @@ export function Contact() {
                 </div>
 
                 <div>
-                  <label className="contact-label">{t("contact.form.messageLabel")}</label>
+                  <label className={`contact-label ${labelText()}`}>{t("contact.form.messageLabel")}</label>
                   <textarea
                     name="message"
                     placeholder={t("contact.form.messagePlaceholder")}
@@ -154,7 +158,7 @@ export function Contact() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 1.2, ease: [0.16,1,0.3,1], delay: 0.25 }}
-              className="relative flex items-center order-1 md:order-2"
+              className="relative flex items-center order-2 md:order-2"
             >
 
 
@@ -163,7 +167,7 @@ export function Contact() {
   <img
     src="/images/human-2.gif"
     alt="hooded figure"
-    className={`w-full h-full object-cover object-center `}
+    className={`w-full h-full object-cover object-center ${!isAr && "transform -scale-x-100"}`}
   />
 
     {/* Edge fades */}
