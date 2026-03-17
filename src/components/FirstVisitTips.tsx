@@ -35,10 +35,10 @@ const dismissMenu = () => {
 
   return (
     <AnimatePresence>
-        <>
           {/* ── Language Switcher Tip ── fixed bottom-left, to the right on desktop, above on mobile */}
        {showLangTip && (
            <motion.div
+                   key="lang-tip"
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -10 }}
@@ -90,6 +90,7 @@ const dismissMenu = () => {
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3, delay: 0.2 }}
             className="fixed z-[99999] top-20 right-6"
+            key="menu-tip"
           >
             <div className="relative bg-white/90 border border-white/30 text-white text-xs tracking-wider px-3 py-2 max-w-[160px]">
               {/* Arrow pointing up */}
@@ -110,7 +111,6 @@ const dismissMenu = () => {
             </div>
           </motion.div>
           )}
-        </>
     </AnimatePresence>
   );
 }

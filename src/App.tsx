@@ -11,10 +11,10 @@ import Separator from "./components/Separator";
 
 // Import critical components directly (NO lazy loading)
 import { Hero } from "./sections/Hero";
-import { AboutMe } from "./sections/AboutMe";
 import MyRoom from "./sections/MyRoom";
 import { Loader } from "./components/ui/loader";
 import FirstVisitTips from "./components/FirstVisitTips";
+import { InkBleedTransition } from "./components/InkBleedTransition";
 
 // Lazy load ONLY below-the-fold components
 const Works = lazy(() => import("./sections/Works").then(module => ({ default: module.Works })));
@@ -67,13 +67,12 @@ function App() {
       <LanguageSwitcher />
 
       <Hero />
+      <InkBleedTransition />
             {isLoading && <Loader />}
 
             <FirstVisitTips />
 
-      <Suspense fallback={<SectionLoader />}>
-        <AboutMe />
-      </Suspense>
+     
 
       <motion.div
         initial={{ width: 0, opacity: 0 }}

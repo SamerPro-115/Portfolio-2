@@ -103,9 +103,7 @@ html{
   font-family: "Cairo", "Noto Sans Arabic", Arial, sans-serif;
 }
 
-.scroll-down-word {
-  font-family: 'Playfair Display', serif;
-}
+
 
 @layer base {
   * {
@@ -120,7 +118,7 @@ html{
 
 
 html {
-  overflow-x: hidden;
+  overflow-x: hidden !important;
 }
 
 
