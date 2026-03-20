@@ -14,11 +14,11 @@ import { Hero } from "./sections/Hero";
 import MyRoom from "./sections/MyRoom";
 import { Loader } from "./components/ui/loader";
 import FirstVisitTips from "./components/FirstVisitTips";
-import { InkBleedTransition } from "./components/InkBleedTransition";
+import { WomanFigure } from "./components/WomanFigure";
+import { ScrollIndecator } from "./components/ui/ScrollIndecator";
 
 // Lazy load ONLY below-the-fold components
 const Works = lazy(() => import("./sections/Works").then(module => ({ default: module.Works })));
-const Skills = lazy(() => import("./sections/Skills").then(module => ({ default: module.Skills })));
 const CourseSection = lazy(() => import("./sections/CourseSection"));
 const TikTokSection = lazy(() => import("./sections/TikTokSection"));
 const CurrentProject = lazy(() => import("./sections/CurrentProject"));
@@ -41,7 +41,7 @@ function App() {
   const timer = setTimeout(() => {
     setIsLoading(false)
     document.documentElement.style.overflow = 'unset';
-  }, 1500);
+  }, 2500);
   return () => clearTimeout(timer);
 }, []);
 
@@ -58,7 +58,7 @@ function App() {
 
 
   return (
-    <>
+    <main className="overflow-x-hidden">
       {!isTouchDevice && <CursorEffect />}
 
       <div className="fixed top-6 right-6 z-999">
@@ -66,13 +66,16 @@ function App() {
       </div>
       <LanguageSwitcher />
 
-      <Hero />
-      <InkBleedTransition />
-            {isLoading && <Loader />}
+      <ScrollIndecator />
+
+                  {isLoading && <Loader />}
+
+
+      <Hero isLoading={isLoading} />
+
+      
 
             <FirstVisitTips />
-
-     
 
       <motion.div
         initial={{ width: 0, opacity: 0 }}
@@ -86,16 +89,16 @@ function App() {
 
 
       {/* Lazy load below-the-fold content */}
-      <Suspense fallback={<SectionLoader />}>
+        
+
+        <Suspense fallback={<SectionLoader />}>
+                <WomanFigure />
         <Works />
-      </Suspense>
+        </Suspense>
 
-      <Suspense fallback={<SectionLoader />}>
-        <Skills />
-      </Suspense>
 
-      {/* Separator should NOT be lazy loaded if it's visible on scroll */}
-      <Separator />
+      
+                 <Separator />
 
       <Suspense fallback={<SectionLoader />}>
         <CourseSection />
@@ -121,7 +124,7 @@ function App() {
       </Suspense>
 
       <Toaster position="top-center" />
-    </>
+    </main>
   );
 }
 

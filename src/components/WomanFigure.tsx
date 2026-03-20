@@ -1,17 +1,18 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { AboutMe } from "@/sections/AboutMe";
+import { Skills } from "@/sections/Skills";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export function InkBleedTransition() {
+export function WomanFigure() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<HTMLDivElement>(null);
   const text1Ref = useRef<HTMLDivElement>(null);
 const text2Ref = useRef<HTMLDivElement>(null);
 const text3Ref = useRef<HTMLDivElement>(null);
+
 
 useEffect(() => {
     const video = videoRef.current;
@@ -61,42 +62,47 @@ useEffect(() => {
 
 
 
+
+
     return () => tl.scrollTrigger?.kill();
   }, []);
 
-  return (
-    <div ref={sectionRef} className="relative h-screen w-full">
-<div className="absolute inset-0 z-10 flex flex-col justify-center gap-6 pointer-events-none px-32 md:px-48">
-  <div ref={text1Ref} className="opacity-0 text-white tracking-widest text-left"
-    style={{ transition: "none", fontFamily: "'Playfair Display', serif", fontSize: "clamp(2rem, 5vw, 4rem)", fontWeight: 700 }}>
-    I build
-  </div>
-  <div ref={text2Ref} className="opacity-0 text-white tracking-widest text-center"
-    style={{ transition: "none", fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.5rem, 4vw, 3rem)", fontWeight: 400 }}>
-    unique experiences
-  </div>
-  <div ref={text3Ref} className="opacity-0 text-white tracking-widest text-right"
-    style={{ transition: "none", fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.2rem, 3vw, 2.5rem)", fontWeight: 400, fontStyle: "italic" }}>
-    for the web
-  </div>
-</div>
-      {/* Ink video */}
+return (
+   
+    <div ref={sectionRef}  id="woman-figure"  className="relative h-screen w-full">
+      <div className="absolute inset-0 z-10 flex flex-col justify-center gap-4 md:gap-6 pointer-events-none px-8 sm:px-16 md:px-32 lg:px-48">
+        <div ref={text1Ref} className="opacity-0 text-white tracking-widest text-left"
+          style={{ transition: "none", fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.5rem, 4vw, 4rem)", fontWeight: 400, fontStyle: "italic" }}>
+          AI can design,
+        </div>
+        <div ref={text2Ref} className="opacity-0 text-white tracking-widest text-center"
+          style={{ transition: "none", fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.5rem, 4vw, 4rem)", fontWeight: 400, fontStyle: "italic" }}>
+          But it can't
+        </div>
+        <div ref={text3Ref} className="opacity-0 text-white tracking-widest text-right"
+          style={{ transition: "none", fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.5rem, 4vw, 4rem)", fontWeight: 400, fontStyle: "italic" }}>
+          Make you feel
+        </div>
+      </div>   
+     
+
+      {/* Video */}
       <video
         ref={videoRef}
-        src="/videos/t-scrub.mp4"
+        src="/videos/woman-scrub.mp4"
         className="w-full h-full object-cover"
         muted
         playsInline
         preload="auto"
       />
 
-      {/* About Me fades in on top */}
+      {/* Skills fades in on top */}
       <div
         ref={aboutRef}
         className="absolute inset-0 z-10 opacity-0"
-        style={{ transition: "none" }} 
+        style={{ transition: "none" }}
       >
-        <AboutMe />
+        <Skills />
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from '@/hooks/useLanguage';
@@ -73,9 +73,17 @@ const works = [
   },
 ];
 
-  useEffect(() => {
-    document.documentElement.style.overflow = selectedWork !== null ? 'hidden' : 'auto';
-  }, [selectedWork])
+  
+  const handleClick = (index: number) => {
+    setSelectedWork(index)
+    document.documentElement.style.overflow = 'hidden'
+  }
+
+  const handleModuleClose = () => {
+    setSelectedWork(null);
+    document.documentElement.style.overflow = 'auto'
+
+  }
 
 
   return (
@@ -147,7 +155,7 @@ const works = [
             <motion.div
               key={work.name}
               className="group relative cursor-pointer "
-              onClick={() => setSelectedWork(index)}
+              onClick={() => handleClick(index)}
               initial={{ opacity: 0, y: 100 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -243,7 +251,7 @@ const works = [
         {selectedWork !== null && (
           <div
             className="fixed inset-0 bg-black/95 flex items-center justify-center z-9999 p-4"
-            onClick={() => setSelectedWork(null)}
+            onClick={handleModuleClose}
           >
             <div
               className="bg-zinc-950 border border-zinc-800 max-w-5xl w-full max-h-[90vh] overflow-auto shadow-2xl"
@@ -261,7 +269,7 @@ const works = [
                   </div>
                 </div>
                 <button
-                  onClick={() => setSelectedWork(null)}
+                  onClick={handleModuleClose}
                   className="w-8 h-8 md:w-12 md:h-12 border border-zinc-700 hover:border-white flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300 group"
                 >
                   <span className="font-bold text-lg group-hover:rotate-90 transition-transform duration-300">
