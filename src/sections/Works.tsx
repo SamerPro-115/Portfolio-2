@@ -104,24 +104,6 @@ const works = [
         ></div>
       </div>
 
-      {/* Floating geometric shapes */}
-      <div className="absolute inset-0 overflow-hidden opacity-10 ">
-        {[...Array(6)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute border-2 border-white"
-            style={{
-              width: `${40 + i * 20}px`,
-              height: `${40 + i * 20}px`,
-              top: `${10 + i * 15}%`,
-              left: `${5 + i * 10}%`,
-              animation: `float ${4 + i}s ease-in-out infinite alternate`,
-              animationDelay: `${i * 0.5}s`,
-            }}
-          />
-        ))}
-      </div>
-
       <div className="container mx-auto px-6 relative">
         <div className="text-center mb-20">
           <div className="relative inline-block">

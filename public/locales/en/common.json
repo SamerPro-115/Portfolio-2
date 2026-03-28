@@ -7,12 +7,8 @@
     "About-Me": {
         "title": "About Me",
         "desc-1": "I'm a third-year university student in the Faculty of IT.",
-        "desc-2": " You can take a look on my profile (CV) down below for more details",
-        "desc-3": "Outside of coding, I have passions that inspire me and keep life exciting",
-        "profile": "Download",
-        "football": "Football",
-        "animation": "Animation",
-        "gaming": "Gaming",
+       "desc-2": " I started web development in 2021, along with creating technical content.",
+        "profile": "Download CV",
         "toast-alert": "Sorry, I'm still working on my profile!",
         "toast-download-success": "File has been downloaded",
         "saying": "Great developers are researchers who code, not coders who search"
@@ -189,5 +185,13 @@
 },
 
  "switch-language-tip": "Switch language here",
-  "social-links-tip": "Find my social links here"
+  "social-links-tip": "Find my social links here",
+   "scroll": "SCROLL",
+
+
+    "Human": {
+    "text-1": "Break it fast",
+    "text-2": "Build it right",
+    "text-3": "Ship it"
+  }
 }

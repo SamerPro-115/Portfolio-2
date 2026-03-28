@@ -1,15 +1,20 @@
+import { useLanguage } from "@/hooks/useLanguage";
+import { useTranslation } from "react-i18next";
 
 
 
 export function ScrollIndecator() {
+
+  const {t} = useTranslation();
+  const isAr = useLanguage()
   return (
     <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[999999] flex flex-col items-center gap-2 pointer-events-none">
       
       <span
-        className="text-white text-[0.6rem] tracking-[0.3em] uppercase"
+        className={`text-white ${isAr ? "text-[1rem]" : "text-[0.6rem] tracking-[0.3em]"} uppercase`}
         style={{ fontFamily: "'Playfair Display', serif" }}
       >
-        scroll
+        {t("scroll")}
       </span>
 
       {/* Mouse body */}

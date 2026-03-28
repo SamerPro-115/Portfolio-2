@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { lazy, Suspense, useState } from "react";
 import { Toaster } from "sonner";
 import { useEffect } from "react";
@@ -10,12 +9,13 @@ import LanguageSwitcher from "./components/LanguageSwitcher";
 import Separator from "./components/Separator";
 
 // Import critical components directly (NO lazy loading)
-import { Hero } from "./sections/Hero";
+import { ScrollStory } from "./sections/ScrollStory";
 import MyRoom from "./sections/MyRoom";
 import { Loader } from "./components/ui/loader";
 import FirstVisitTips from "./components/FirstVisitTips";
-import { WomanFigure } from "./components/WomanFigure";
 import { ScrollIndecator } from "./components/ui/ScrollIndecator";
+import { Skills } from "./sections/Skills";
+import { useFirstTimeVisit } from "./hooks/useFirstTimeVisit";
 
 // Lazy load ONLY below-the-fold components
 const Works = lazy(() => import("./sections/Works").then(module => ({ default: module.Works })));
@@ -34,6 +34,7 @@ function App() {
   const isTouchDevice = useTouchDevice();
   const { i18n } = useTranslation();
       const [isLoading, setIsLoading] = useState(true);
+      const loadingTime = useFirstTimeVisit();
 
 
       useEffect(() => {
@@ -41,9 +42,9 @@ function App() {
   const timer = setTimeout(() => {
     setIsLoading(false)
     document.documentElement.style.overflow = 'unset';
-  }, 2500);
+  }, loadingTime);
   return () => clearTimeout(timer);
-}, []);
+}, [loadingTime]);
 
   useEffect(() => {
     const direction = i18n.language === "ar" ? "rtl" : "ltr";
@@ -51,14 +52,14 @@ function App() {
     document.documentElement.dir = direction;
     document.documentElement.lang = lang;
     document.documentElement.setAttribute("data-lang", lang);
-  }, [i18n.language]); // Added dependency
+  }, [i18n.language]); 
 
+  
 
-
-
+  
 
   return (
-    <main className="overflow-x-hidden">
+    <main className=" bg-black">
       {!isTouchDevice && <CursorEffect />}
 
       <div className="fixed top-6 right-6 z-999">
@@ -68,51 +69,32 @@ function App() {
 
       <ScrollIndecator />
 
-                  {isLoading && <Loader />}
+      {isLoading && <Loader />}
 
+      <ScrollStory isLoading={isLoading} />
 
-      <Hero isLoading={isLoading} />
+      <FirstVisitTips />
 
-      
-
-            <FirstVisitTips />
-
-      <motion.div
-        initial={{ width: 0, opacity: 0 }}
-        whileInView={{ width: "100%", opacity: 1 }}
-        transition={{ duration: 1, ease: "easeInOut" }}
-        viewport={{ once: true, amount: 0.8 }}
-        className="flex justify-center"
-      />
-
-     
-
-
-      {/* Lazy load below-the-fold content */}
-        
-
-        <Suspense fallback={<SectionLoader />}>
-                <WomanFigure />
+      <Suspense fallback={<SectionLoader />}>
         <Works />
-        </Suspense>
+      </Suspense>
 
+      <Suspense fallback={<SectionLoader />}>
+        <Skills />
+      </Suspense>
 
-      
-                 <Separator />
+      <Separator />
 
       <Suspense fallback={<SectionLoader />}>
         <CourseSection />
       </Suspense>
 
-      
-
-
       <Suspense fallback={<SectionLoader />}>
         <TikTokSection />
       </Suspense>
 
- <Suspense fallback={<SectionLoader />}>
-          <MyRoom  />
+      <Suspense fallback={<SectionLoader />}>
+        <MyRoom />
       </Suspense>
 
       <Suspense fallback={<SectionLoader />}>
@@ -122,6 +104,8 @@ function App() {
       <Suspense fallback={<SectionLoader />}>
         <Contact />
       </Suspense>
+
+    
 
       <Toaster position="top-center" />
     </main>
