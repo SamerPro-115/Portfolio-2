@@ -47,28 +47,33 @@ export function AboutMe() {
 return (
   <div
     ref={sectionRef}
-    className="relative flex flex-col lg:flex-row bg-black"
+    className="relative bg-black"
     style={{ height: "100vh" }}
     id="about-me"
   >
 
-
-    {/* Text Panel */}
-    <div className="flex items-center justify-center bg-black
-                    h-[45vh] lg:h-full
-                    flex-none lg:flex-1">
-      <div className="flex flex-col w-10/12 lg:w-2/3 gap-3 lg:gap-6">
+    {/* Text — above on mobile, absolute on lg+ */}
+    <div className={`
+      lg:absolute lg:inset-0 lg:z-10 lg:flex lg:items-center
+      flex items-center justify-center
+      h-[45vh] lg:h-auto
+      lg:justify-start
+    `}>
+      <div className={`flex flex-col gap-2
+                      w-10/12 lg:w-[50%] xl:w-[40%]
+                      px-4 lg:px-12
+                      items-start `}>
 
         <h1
           style={{ opacity: 0 }}
-          className="text-3xl sm:text-4xl lg:text-6xl font-bold leading-tight text-white"
+          className={`text-3xl sm:text-4xl lg:text-6xl ${isAr && "xl:text-7xl"} font-bold leading-tight text-white`}
         >
           {t("About-Me.title")}
         </h1>
 
         <p
           style={{ opacity: 0 }}
-          className="text-sm sm:text-base lg:text-xl text-gray-300 about-text leading-relaxed"
+          className={`text-sm sm:text-base lg:text-xl ${isAr && "xl:text-2xl"} text-gray-300 about-text leading-relaxed`}
         >
           {t("About-Me.desc-1")}
           {t("About-Me.desc-2")}
@@ -76,38 +81,36 @@ return (
           <Button
             onClick={handleDownloadCV}
             variant="default"
-            className={`mt-3 block p-0  ${isAr ? "w-20" : "w-24"} lg:w-34 cursor-pointer font-bold text-xs lg:text-lg`}
+            className={`mt-5 block p-0 ${isAr ? "w-20 xl:text-xl" : "w-24"} lg:w-34 cursor-pointer font-bold text-xs lg:text-lg`}
             style={{ borderRadius: "5px" }}
           >
             {t("About-Me.profile")}
           </Button>
         </p>
 
-     
       </div>
     </div>
 
-    {/* Images Panel */}
-    <div className="bg-black flex-1 flex gap-[1vmin]
-                    h-[55vh] lg:h-full">
-    {/* Images Panel */}
-<div className="bg-black flex-1 relative h-[55vh] lg:h-full overflow-hidden">
-  <img
-    ref={(el) => { imageRefs.current[0] = el; }}
-    style={{ opacity: 1}}
-    className={` h-full 
-               brightness-90
-               ${!isMobile ? "object-cover w-[80%] m-auto" : "w-full object-contain"}
-              `}
-    src={`${isMobile ? "/images/about-2.jpg" : "/images/about.jpg" }`}
-    alt={images[0].alt}
-  />
-
-  
-</div>
+    {/* Image — below on mobile, absolute on lg+ */}
+    <div className={`${!isMobile && isAr ? "scale-x-[-1]" : ""}
+                    lg:absolute lg:inset-0
+                    relative h-[55vh] lg:h-full
+                    flex lg:block justify-center items-end`}>
+      <img
+        ref={(el) => { imageRefs.current[0] = el; }}
+        style={{ opacity: 1 }}
+        className={`brightness-80
+          w-full h-full
+          ${!isMobile
+            ? "lg:absolute lg:right-0 lg:h-screen object-cover object-center"
+            : "object-contain"
+          }
+        `}
+        src={`${isMobile ? "/images/about-2.jpg" : "/images/t.png"}`}
+        alt={images[0].alt}
+      />
     </div>
 
-
   </div>
-);;
+);
 }

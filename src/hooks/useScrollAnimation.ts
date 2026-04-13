@@ -12,7 +12,7 @@ interface UseScrollAnimation {
   nextSectionRef2: React.RefObject<HTMLDivElement | null>;
   scrubTo: (progress: number) => void;
   isMobile: boolean;
-  isMid: boolean;
+  isAr: boolean
 }
 
 export function useScrollAnimation({
@@ -23,7 +23,7 @@ export function useScrollAnimation({
   nextSectionRef2,
   scrubTo,
   isMobile,
-  isMid,
+  isAr
 }: UseScrollAnimation) {
   useEffect(() => {
     const section = sectionRef.current;
@@ -37,7 +37,8 @@ export function useScrollAnimation({
     const videoEnd = videoStart + videoDuration;
 
     gsap.set(image, { transformOrigin: isMobile ? "69% 47%" : "62% 45%" });
-    gsap.set(nextSectionRef2.current, { y: "100vh" });
+
+  
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -57,7 +58,6 @@ export function useScrollAnimation({
       },
     });
 
-    // ── HERO OUT ──────────────────────────── 0.0 → 0.3
     tl.to(text, { opacity: 0, y: -30, duration: 0.2 }, 0);
     tl.to("#splash", { opacity: 0, duration: 0.2, ease: "power2.inOut" }, 0);
     tl.to("#left-side-bg", {
@@ -71,7 +71,6 @@ export function useScrollAnimation({
     tl.to("#overlay", { opacity: 0, duration: 0.3 }, 0.2);
     tl.to("#black-overlay", { opacity: 1, duration: 0.15, ease: "power2.inOut" }, 0.28);
 
-    // ── ABOUT ME IN ───────────────────────── 0.35 → 0.5
     tl.to(nextSectionRef.current, {
       opacity: 1, duration: 0.1, ease: "none", pointerEvents: "auto",
     }, 0.35);
@@ -87,7 +86,6 @@ export function useScrollAnimation({
       { opacity: 0, x: -80 },
       { opacity: 1, x: 0, duration: 0.15, ease: "power3.out" }, 0.38);
 
-    // ── ABOUT ME OUT ──────────────────────── 0.51 →
     tl.to("#about-me h1",
       { opacity: 0, x: -100, duration: 0.1, ease: "power2.in" }, 0.51);
     tl.to("#about-me p.about-text",
@@ -95,37 +93,51 @@ export function useScrollAnimation({
     tl.to("#about-me img",
       { opacity: 0, scale: 1.08, duration: 0.1, ease: "power2.in" }, 0.51);
 
-    // ── WOMAN FIGURE IN ───────────────────── 0.58 →
     tl.to(nextSectionRef2.current, {
       opacity: 1,
-      y: 0,
       duration: 0.15,
       ease: "expo.out",
       pointerEvents: "auto",
-    }, 0.58);
+    }, 0.62);
 
-    // ── WOMAN FIGURE TEXTS ────────────────────────────────────────────────
-    // Text 1
-    tl.fromTo("#woman-figure #text-1",
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 0.04, ease: "power2.out" }, 0.62)
-      .to("#woman-figure #text-1",
-        { opacity: 0, y: -20, duration: 0.04, ease: "power2.in" }, 0.72);
+const line1Words = gsap.utils.toArray<HTMLElement>(".line-1 .word");
+const line2Words = gsap.utils.toArray<HTMLElement>(".line-2 .word");
+const line3Words = gsap.utils.toArray<HTMLElement>(".line-3 .word");
 
-    // Text 2
-    tl.fromTo("#woman-figure #text-2",
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 0.04, ease: "power2.out" }, 0.75)
-      .to("#woman-figure #text-2",
-        { opacity: 0, y: -20, duration: 0.04, ease: "power2.in" }, 0.85);
+tl.fromTo(line1Words,
+  { y: 40, opacity: 0 },
+  { y: 0, opacity: 1, stagger: 0.008, ease: "power2.out", duration: 0.04 },
+  0.65
+);
+tl.fromTo(line1Words,
+  { color: "rgba(255,255,255,0.25)" },
+  { color: "rgba(255,255,255,1)", stagger: 0.008, ease: "none", duration: 0.04 },
+  0.71  
+);
 
-    // Text 3
-    tl.fromTo("#woman-figure #text-3",
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 0.04, ease: "power2.out" }, 0.88)
-      .to("#woman-figure #text-3",
-        { opacity: 0, y: -20, duration: 0.04, ease: "power2.in" }, 0.97);
+tl.fromTo(line2Words,
+  { y: 40, opacity: 0 },
+  { y: 0, opacity: 1, stagger: 0.008, ease: "power2.out", duration: 0.04 },
+  0.72
+);
 
+tl.fromTo(line2Words,
+  { color: "rgba(255,255,255,0.25)" },
+  { color: "rgba(255,255,255,1)", stagger: 0.008, ease: "none", duration: 0.04 },
+  0.78
+);
+
+tl.fromTo(line3Words,
+  { y: 40, opacity: 0 },
+  { y: 0, opacity: 1, stagger: 0.008, ease: "power2.out", duration: 0.04 },
+  0.79
+);
+tl.fromTo(line3Words,
+  { color: "rgba(255,255,255,0.25)" },
+  { color: "rgba(255,255,255,1)", stagger: 0.008, ease: "none", duration: 0.04 },
+  0.85
+);
+tl.to({}, { duration: 0.02 }, 0.98);
     return () => tl.scrollTrigger?.kill();
-  }, [isMobile, isMid]);
+  }, []);
 }

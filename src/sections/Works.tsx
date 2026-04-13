@@ -127,7 +127,7 @@ const works = [
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
               viewport={{ once: true}}
-             className="text-xl text-gray-400 max-w-3xl mx-auto font-light pt-5">
+             className={`${isAr ? "text-2xl md:text-3xl" : "text-xl"} text-gray-400 max-w-3xl mx-auto font-light pt-5`}>
             {t("Works.desc")}
           </motion.p>
         </div>
@@ -150,7 +150,7 @@ const works = [
                 <div className="relative  h-full flex">
                   <div className="w-2/3 md:w-1/2 p-4 md:p-8 flex flex-col justify-between text-black relative ">
                     <div className="flex justify-between items-start">
-                      <div className="w-16 h-16 bg-black text-white flex items-center justify-center text-xl font-bold">
+                      <div className="w-16 h-16 bg-black text-white flex items-center justify-center text-2xl font-bold">
                         {String(index + 1).padStart(2, "0")}
                       </div>
                       <div className="text-right">
@@ -162,7 +162,7 @@ const works = [
                     </div>
 
                     <div>
-                      <h3 className="text-lg md:text-3xl font-bold tracking-tighter mb-4 transform transition-transform duration-300 text-white group-hover:translate-x-2 ">
+                      <h3 className={`${isAr ? "md:text-3xl lg:text-4xl xl:text-5xl text-2xl" : "text-2xl md:text-3xl lg:text-4xl  "} font-bold tracking-tighter mb-4 transform transition-transform duration-300 text-white group-hover:translate-x-2 `}>
                         {work.name}
                       </h3>
 
@@ -170,7 +170,7 @@ const works = [
                         {work.tech.slice(0, 3).map((tech) => (
                           <div
                             key={tech}
-                            className="text-xs font-bold tracking-widest opacity-70 text-white"
+                            className={`${isAr ? "xl:text-2xl md:text-lg text-lg" : "xl:text-xl md:text-md text-sm"} font-bold tracking-widest opacity-70 text-white`}
                           >
                             {tech.toUpperCase()}
                           </div>
@@ -196,7 +196,7 @@ const works = [
 
                     <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
                       <div className="text-center text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                        <div className="text-sm tracking-widest mb-2">
+                        <div className={`${isAr ? "lg:text-xl" : "lg:text-lg"}   tracking-widest mb-2`}>
                           {t("Works.view-project")}
                         </div>
                         <div className="w-16 h-px bg-white mx-auto"></div>
@@ -206,12 +206,12 @@ const works = [
                 </div>
 
                 <div className="absolute bottom-0 left-0 right-0 bg-white text-black p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 z-30">
-                  <p className="text-sm leading-relaxed mb-4">{work.desc}</p>
+                  <p className={`${isAr ? "text-lg" : "text-md"}  leading-relaxed mb-4`}>{work.desc}</p>
                   <a
                     href={work.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-xs font-bold tracking-widest hover:gap-4 transition-all duration-300"
+                    className={`inline-flex items-center gap-2 ${isAr ? "text-xl" : "text-sm"} font-bold tracking-widest hover:gap-4 transition-all duration-300`}
                     onClick={(e) => e.stopPropagation()}
                   >
                     {t("Works.visit-site")}
@@ -241,11 +241,11 @@ const works = [
             >
               <div className="border-b border-zinc-800 p-8 flex justify-between items-start bg-gradient-to-r from-zinc-950 to-zinc-900">
                 <div>
-                  <h3 className="text-xl sm:text-2xl md:text-4xl font-bold tracking-tight mb-3">
+                  <h3 className={`text-3xl font-bold tracking-tight mb-3`}>
                     {works[selectedWork].name}
                   </h3>
                   <div className="flex items-center gap-4">
-                    <span className="px-3 py-1 bg-white text-black text-sm font-bold">
+                    <span className="px-3 py-1 bg-white text-black text-md font-bold">
                       {works[selectedWork].year}
                     </span>
                   </div>
@@ -254,7 +254,7 @@ const works = [
                   onClick={handleModuleClose}
                   className="w-8 h-8 md:w-12 md:h-12 border border-zinc-700 hover:border-white flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300 group"
                 >
-                  <span className="font-bold text-lg group-hover:rotate-90 transition-transform duration-300">
+                  <span className={`font-bold ${isAr ? "text-4xl" : "text-2xl"} group-hover:rotate-90 transition-transform duration-300`}>
                     ×
                   </span>
                 </button>
@@ -276,16 +276,16 @@ const works = [
 
                   <div className="lg:col-span-2 space-y-8">
                     <div>
-                      <h4 className="text-lg font-bold mb-4 tracking-wide text-white/90">
+                      <h4 className={`${isAr ? "text-4xl" : "text-2xl"}  font-bold mb-4 tracking-wide text-white/90`}>
                        {t("Works.overview")}
                       </h4>
-                      <p className="text-zinc-300 leading-relaxed">
+                      <p className={`text-zinc-300 leading-relaxed ${isAr ? "text-xl md:text-2xl" : "text-lg md:text-xl"}`}>
                         {works[selectedWork].desc}
                       </p>
                     </div>
 
                     <div>
-                      <h4 className="text-lg font-bold mb-4 tracking-wide text-white/90">
+                      <h4 className={`${isAr ? "text-2xl" : "text-xl"} font-bold mb-4 tracking-wide text-white/90`} >
                         {t("Works.main-stack")}
                       </h4>
                       <div className="space-y-2">
@@ -295,7 +295,7 @@ const works = [
                             className="flex items-center gap-3 p-3 bg-zinc-900/50 border border-zinc-800"
                           >
                             <div className="w-2 h-2 bg-white"></div>
-                            <span className="font-medium text-sm tracking-wider">
+                            <span className={`font-medium ${isAr ? "text-xl" : "text-md"} tracking-wider`} style={{fontFamily: "Iosevka Charon', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif"}}>
                               {tech}
                             </span>
                           </div>
@@ -307,7 +307,7 @@ const works = [
                       href={works[selectedWork].link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center w-full bg-white text-sm md:text-md text-black md:px-8 py-4 font-bold tracking-widest hover:bg-zinc-200 transition-all duration-300 group"
+                      className={`inline-flex items-center justify-center w-full bg-white ${isAr ? "text-lg" : "text-sm md:text-md" } text-black md:px-8 py-4 font-bold tracking-widest hover:bg-zinc-200 transition-all duration-300 group`}
                     >
                       <span>{t("Works.visit-site")}</span>
                       <div className={`ml-3 w-3 h-3 border-r-2 border-t-2 border-black transform ${isAr ? 'rotate-[222deg]' : 'rotate-45'} group-hover:translate-x-1 transition-transform duration-300`}></div>

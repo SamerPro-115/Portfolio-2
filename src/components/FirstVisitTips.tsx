@@ -50,7 +50,7 @@ const dismissMenu = () => {
               ${isAr ? "sm:left-23" : "sm:left-20"}
             `}
           >
-            <div className="relative bg-white/90 border border-white/30 text-white text-xs tracking-wider px-3 py-2 max-w-[160px]">
+            <div className={`relative bg-white/90 border border-white/30 text-white text-xs tracking-wider px-3 py-2 max-w-[500px]`}>
               {/* Arrow — points left on desktop, down on mobile */}
               <span className="
                 absolute
@@ -71,7 +71,7 @@ const dismissMenu = () => {
                 border-r-[6px] border-r-white/90
               " />
               <div className="flex items-start justify-between gap-2">
-                <p className="leading-relaxed text-black/80">
+                <p className={`lg:text-lg md:text-lg text-md leading-relaxed text-black/80`}>
                   {t("switch-language-tip")}
                 </p>
                 <button onClick={dismissLang} className="text-black/70 hover:text-black transition-colors mt-[1px] shrink-0">
@@ -92,7 +92,7 @@ const dismissMenu = () => {
             className="fixed z-[99999] top-20 right-6"
             key="menu-tip"
           >
-            <div className="relative bg-white/90 border border-white/30 text-white text-xs tracking-wider px-3 py-2 max-w-[160px]">
+            <div className="relative bg-white/90 border border-white/30 text-white text-xs tracking-wider px-3 py-2 max-w-[500px]">
               {/* Arrow pointing up */}
               <span className="
                 absolute top-[-6px] right-3
@@ -101,7 +101,7 @@ const dismissMenu = () => {
                 border-b-[6px] border-b-white/90
               " />
               <div className="flex items-start justify-between gap-2">
-                <p className="leading-relaxed text-black/80">
+                <p className="lg:text-lg md:text-lg text-md leading-relaxed text-black/80">
                  {t("social-links-tip")}
                 </p>
                 <button onClick={dismissMenu} className="text-black/70 hover:text-black transition-colors mt-[1px] shrink-0">

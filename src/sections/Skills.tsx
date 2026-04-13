@@ -134,7 +134,7 @@ export function Skills() {
           </motion.div>
           
           <motion.p 
-            className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto leading-relaxed font-light"
+            className={`text-muted-foreground ${isAr ? "text-xl md:text-2xl" : "text-lg md:text-xl"} max-w-3xl mx-auto leading-relaxed font-light`}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 1.5, delay: 1 }}
@@ -218,7 +218,7 @@ export function Skills() {
                       
                       <h4 className="text-white font-light text-xs md:text-sm text-center 
                                    leading-tight tracking-wide opacity-90
-                                   group-hover:opacity-100 transition-opacity duration-300">
+                                   group-hover:opacity-100 transition-opacity duration-300" style={{fontFamily: "Iosevka Charon, Lucida Sans Regular, Lucida Grande, Lucida Sans Unicode, Geneva, Verdana, sans-serif"}}>
                         {skill.name}
                       </h4>
                       

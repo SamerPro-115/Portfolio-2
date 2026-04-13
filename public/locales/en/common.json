@@ -60,8 +60,7 @@
             "desc": "The set of skills I have and use in web development."
     },
      "Course": {
-        "title-1": "WEB",
-        "title-2": "DEVELOPMENT COURSE",
+        "title": "Web DEVELOPMENT COURSE",
         "subtitle": "EDUCATIONAL COURSE",
         "desc": "A comprehensive Arabic course designed to introduce beginners to the world of web development through HTML, CSS, and JavaScript fundamentals.",
          "technologies": {
@@ -175,23 +174,16 @@
       "email": "newsamer123@gmail.com"
     }
   },
-   "Art": {
-    "title-1": "AI can design,",
-    "title-2": "but can't",
-    "title-3": "make you feel",
-    "sub-1": "Design is logic",
-    "sub-2": "Feeling is human..",
-    "contact":"Get in touch_"
-},
+
 
  "switch-language-tip": "Switch language here",
   "social-links-tip": "Find my social links here",
    "scroll": "SCROLL",
 
 
-    "Human": {
-    "text-1": "Break it fast",
-    "text-2": "Build it right",
-    "text-3": "Ship it"
+    "Walking": {
+    "text-1": "Every great thing starts with a single step.",
+    "text-2": "I build the path as I walk it. in code,",
+    "text-3": "in motion, in feeling."
   }
 }

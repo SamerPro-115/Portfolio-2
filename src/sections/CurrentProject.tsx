@@ -188,7 +188,7 @@ export default function CurrentProject() {
           </div>
 
           <motion.h2 
-            className={`${!isAr && "font-serif"} text-4xl md:text-6xl font-extralight text-white mb-8 tracking-[0.15em]
+            className={`${isAr ? "md:text-7xl" : "font-serif md:text-6xl"} text-4xl  font-extralight text-white mb-8 tracking-[0.15em]
                      drop-shadow-[0_0_25px_rgba(255,255,255,0.3)] relative z-10`}
             initial={{ letterSpacing: "0.1em" }}
             whileInView={{ letterSpacing: "0.15em" }}
@@ -228,7 +228,7 @@ export default function CurrentProject() {
           </motion.h3>
           
           <motion.p 
-            className="text-gray-300 text-lg leading-relaxed mb-8 font-light"
+            className={`text-gray-300 ${isAr ? "text-xl" : "text-lg"} leading-relaxed mb-8 font-light`}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
@@ -246,8 +246,8 @@ export default function CurrentProject() {
               {currentProject.tech.map((tech) => (
                 <span 
                   key={tech}
-                  className="text-sm bg-white/5 border border-white/20 px-3 py-1 
-                           text-gray-300 font-light tracking-wide"
+                  className={`${isAr ? "md:text-xl text-md" : "md:text-md text-xs"} bg-white/5 border border-white/20 px-3 py-1 
+                           text-gray-300 font-light tracking-wide`}
                 >
                   {tech}
                 </span>
@@ -264,8 +264,8 @@ export default function CurrentProject() {
             transition={{ delay: 0.9 }}
           >
             <div className="flex justify-between items-center mb-2">
-              <span className="text-sm text-muted-foreground">{t('currentProject.project.progressLabel')}</span>
-              <span className="text-sm text-gray-300">{currentProject.progress}%</span>
+              <span className={`${isAr ? "text-lg md:text-lg" : "text-xs md:text-md" } text-muted-foreground`}>{t('currentProject.project.progressLabel')}</span>
+              <span className="text-sm md:text-md text-gray-300">{currentProject.progress}%</span>
             </div>
             <div className="bg-gray-800 h-1 relative overflow-hidden">
               <motion.div
@@ -276,8 +276,8 @@ export default function CurrentProject() {
               />
             </div>
             <div className="flex space-x-1 mt-2">
-              <span className="text-muted-foreground text-xs">{t('currentProject.project.statusLabel')}</span>
-              <span className="text-muted-foreground text-xs">{currentProject.status}</span>
+              <span className={`text-muted-foreground ${isAr ? "text-lg md:text-lg" : "text-xs md:text-md" } `}>{t('currentProject.project.statusLabel')}</span>
+              <span className={`text-muted-foreground ${isAr ? "text-lg md:text-lg" : "text-xs md:text-md" }`}>{currentProject.status}</span>
             </div>
           </motion.div>
         </motion.div>
@@ -289,7 +289,7 @@ export default function CurrentProject() {
           viewport={{ once: true }}
         >
           <motion.h4 
-            className="text-2xl font-light text-white mb-12 text-center tracking-wide"
+            className={`${isAr ? "text-3xl" : "text-2xl "} font-light text-white mb-12 text-center tracking-wide`}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
@@ -335,17 +335,17 @@ export default function CurrentProject() {
                                flex items-center justify-center"
                       transition={{ duration: 0.3 }}
                     >
-                      <span className="text-white text-sm font-light tracking-wide">
+                      <span className={`text-white ${isAr ? "text-2xl" : "text-xl"} font-light tracking-wide`}>
                         {t('currentProject.project.viewDetails')}
                       </span>
                     </motion.div>
                   </div>
                   
                   <div className="p-4">
-                    <h5 className="text-white font-light text-lg mb-2 ">
+                    <h5 className={`text-white font-light  ${isAr ? "text-2xl" : "text-xl md:text-2xl"} mb-2 `}>
                       {image.title}
                     </h5>
-                    <p className="text-gray-400 text-sm font-light leading-relaxed">
+                    <p className={`text-gray-400 ${isAr ? "text-lg" : "text-md"} font-light leading-relaxed`}>
                       {image.description}
                     </p>
                   </div>
@@ -410,7 +410,7 @@ export default function CurrentProject() {
                   <h3 className="text-white text-2xl font-light mb-4 tracking-wide">
                     {selectedImage.title}
                   </h3>
-                  <p className="text-gray-300 leading-relaxed font-light">
+                  <p className="text-gray-300 text-lg leading-relaxed font-light">
                     {selectedImage.description}
                   </p>
                 </div>

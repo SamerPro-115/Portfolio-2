@@ -93,11 +93,11 @@ const toggleLanguage = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className={`${!isAr && "font-serif"} text-4xl  font-extralight md:text-6xl mb-6 tracking-[0.15em]`} style={{letterSpacing: "0.15em"}}>
+          <h2 className={`${isAr ? "xl:text-7xl md:6xl" : "font-serif"} text-4xl  font-extralight md:text-6xl mb-6 tracking-[0.15em]`} style={{letterSpacing: "0.15em"}}>
             {t('Content-creation.title')}
           </h2>
           <div className="w-32 h-1 bg-white mx-auto mb-6" />
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+          <p className={`${isAr ? "md:text-2xl text-xl" : "text-xl"} text-gray-400 max-w-2xl mx-auto`}>
             {t("Content-creation.desc")}
           </p>
         </motion.div>
@@ -167,11 +167,11 @@ const toggleLanguage = () => {
                           <img src="/tiktok-logo.jpg" className='rounded-full' alt="Tiktok logo" />
                         </div>
                         <div>
-                          <p className="font-semibold text-sm">@samerpro_</p>
-                          <p className="text-xs text-gray-300">{t("Content-creation.video-title")}</p>
+                          <p className={`font-semibold ${isAr ? "text-md" : "text-sm"}`}>@samerpro_</p>
+                          <p className={`${isAr ? "text-md" : "text-sm"} text-gray-300`}>{t("Content-creation.video-title")}</p>
                         </div>
                       </div>
-                      <p className="text-sm mb-2">
+                      <p className={`${isAr ? "text-md" : "text-sm"} mb-2`}>
                          {t("Content-creation.video-title-2")} 🔥 #coding #tech #programmer
                       </p>
                     </div>
@@ -182,14 +182,14 @@ const toggleLanguage = () => {
                         <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center ">
                           <Play className="w-6 h-6 fill-white" />
                         </div>
-                        <span className="text-xs">56{isAr ? " ألف" : "K"}</span>
+                        <span className="text-sm">56{isAr ? " ألف" : "K"}</span>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
 <button 
-  className='bg-black text-white border border-white rounded-xl p-1 cursor-pointer text-sm translation-video-button' 
+  className='bg-black text-white border border-white rounded-xl p-1 cursor-pointer text-md translation-video-button' 
   onClick={toggleLanguage}
 >
   {isEnglish 
@@ -220,16 +220,16 @@ const toggleLanguage = () => {
             className="space-y-8 "
           >
             <div>
-              <h3 className="text-3xl md:text-4xl font-bold mb-4">
+              <h3 className={` ${isAr ? "text-4xl md:text-5xl" : "text-3xl md:text-4xl"} font-bold mb-4`}>
                 {t("Content-creation.desc-title")}
               </h3>
-              <p className="text-gray-400 text-lg leading-relaxed">
+              <p className={` text-gray-400 ${isAr ? "text-xl" : "text-lg"} leading-relaxed`}>
                 {t("Content-creation.desc-desc")}
               </p>
             </div>
 
             {/* Stats Grid */}
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-3 md:gap-4 gap-2">
               {stats.map((stat, index) => (
                 <motion.div
                   key={index}
@@ -240,14 +240,14 @@ const toggleLanguage = () => {
                 >
                   <div className="mb-2 text-white/70">{stat.icon}</div>
                   <div className="text-2xl font-bold mb-1">{stat.value}</div>
-                  <div className="text-xs text-gray-400">{stat.label}</div>
+                  <div className={`${isAr ? "text-md" : "text-sm"} text-gray-400`}>{stat.label}</div>
                 </motion.div>
               ))}
             </div>
 
             {/* Content Topics */}
           <div className="space-y-3">
-  <h4 className="text-xl font-semibold mb-4">{t('tiktok.whatIShared')}</h4>
+  <h4 className={`${isAr ? "text-3xl" : "text-2xl" } font-semibold mb-4`}>{t('tiktok.whatIShared')}</h4>
   {[
     t('tiktok.topics.itFacts'),
     t('tiktok.topics.programmingTips'),
@@ -263,7 +263,7 @@ const toggleLanguage = () => {
       className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors"
     >
       <div className="w-1.5 h-1.5 bg-white rounded-full" />
-      <span>{topic}</span>
+      <span className={`${isAr ? "text-xl" : ""}`}>{topic}</span>
     </motion.div>
   ))}
 </div>
@@ -276,7 +276,7 @@ const toggleLanguage = () => {
   initial={{ opacity: 0 }}
   animate={isVisible ? { opacity: 1 } : {}}
   transition={{ delay: 1.2 }}
-  className="inline-flex items-center gap-2 bg-white text-black px-8 py-3 rounded-lg font-semibold hover:bg-gray-200 transition-colors"
+  className={`${isAr ? "text-lg" : "text-md"} inline-flex items-center gap-2 bg-white text-black px-5 py-2 rounded-lg font-semibold hover:bg-gray-200 transition-colors`}
 >
   <Play className="w-5 h-5" />
   {t('tiktok.ctaButton')}

@@ -10,7 +10,6 @@ import Separator from "./components/Separator";
 
 // Import critical components directly (NO lazy loading)
 import { ScrollStory } from "./sections/ScrollStory";
-import MyRoom from "./sections/MyRoom";
 import { Loader } from "./components/ui/loader";
 import FirstVisitTips from "./components/FirstVisitTips";
 import { ScrollIndecator } from "./components/ui/ScrollIndecator";
@@ -91,10 +90,6 @@ function App() {
 
       <Suspense fallback={<SectionLoader />}>
         <TikTokSection />
-      </Suspense>
-
-      <Suspense fallback={<SectionLoader />}>
-        <MyRoom />
       </Suspense>
 
       <Suspense fallback={<SectionLoader />}>

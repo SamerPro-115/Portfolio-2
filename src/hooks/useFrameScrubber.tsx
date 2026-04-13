@@ -21,11 +21,12 @@ export function useFrameScrubber({
   useEffect(() => {
     framesRef.current = [];
 
-    const basePath = isMid ? "/videos/human-frames-mobile" :  "/videos/human-frames"
+   const basePath = isMid ? "/videos/human-frames-mobile" :  "/videos/human-frames"
+
 
     for (let i = 1; i <= totalFrames; i++) {
       const img = new Image();
-      img.src = `${basePath}/frame_${String(i).padStart(4, "0")}.jpg`;
+      img.src = `${basePath}/frame_${String(i).padStart(4, "0")}.webp`;
       framesRef.current.push(img);
     }
   }, [isMobile, isMid, totalFrames]);

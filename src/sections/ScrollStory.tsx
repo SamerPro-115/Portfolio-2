@@ -8,7 +8,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { AboutMe } from "./AboutMe";
 import { useMediaQuery } from "react-responsive";
-import { HumanRegeneration } from "@/components/HumanRegeneration";
+import  Walking from "@/components/Walking";
 import { useFrameScrubber } from "@/hooks/useFrameScrubber";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
@@ -25,7 +25,7 @@ export function ScrollStory({isLoading}: Prop) {
   const isMobile = useMediaQuery({maxWidth: "769px"})
   const isMid = useMediaQuery({maxWidth: "1025px"})
 
-      const TOTAL_FRAMES = isMid ? 91 : 152
+      const TOTAL_FRAMES = isMid ? 47 : 94
 
 
   
@@ -57,7 +57,7 @@ useScrollAnimation({
   nextSectionRef2,
   scrubTo,
   isMobile,
-  isMid,
+  isAr
 });
 
 
@@ -97,7 +97,7 @@ const scrollToAboutMe = () => {
               <motion.h1
                  {...fadeInFromLeft}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-4xl lg:text-6xl font-bold text-white mb-2 md:mb-6 leading-tight"
+                className={`text-4xl lg:text-6xl  ${isAr ?   "xl:text-7xl md:text-6xl" : ""} font-bold text-white mb-2  leading-tight`}
               >
                 {t("who-am-i")}
               </motion.h1>
@@ -105,7 +105,7 @@ const scrollToAboutMe = () => {
               <motion.p
                {...fadeInFromLeft}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="text-lg lg:text-xl text-gray-300 md:mb-3 mb-3 leading-relaxed"
+                className={`text-lg  ${isAr ? "xl:text-2xl md:text-xl" : "lg:text-xl"} text-gray-300 md:mb-3 mb-3 leading-relaxed`}
               >
                 {isAr ? (
                   <>
@@ -166,7 +166,7 @@ const scrollToAboutMe = () => {
   className="absolute top-0 left-0 w-full h-screen opacity-0"
   style={{ zIndex: 9999999 }}
 >
-  <HumanRegeneration canvasRef={canvasRef} />
+  <Walking canvasRef={canvasRef} />
 </div>
 
 
