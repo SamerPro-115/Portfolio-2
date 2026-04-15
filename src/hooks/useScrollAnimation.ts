@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -12,6 +12,7 @@ interface UseScrollAnimation {
   nextSectionRef2: React.RefObject<HTMLDivElement | null>;
   scrubTo: (progress: number) => void;
   isMobile: boolean;
+  isMid: boolean,
   isAr: boolean
 }
 
@@ -23,8 +24,11 @@ export function useScrollAnimation({
   nextSectionRef2,
   scrubTo,
   isMobile,
+  isMid,
   isAr
 }: UseScrollAnimation) {
+  const hasPlayed = useRef<boolean>(false)  
+
   useEffect(() => {
     const section = sectionRef.current;
     const text = textRef.current;
@@ -32,7 +36,7 @@ export function useScrollAnimation({
 
     if (!section || !text || !image) return;
 
-    const videoStart = 0.6;
+    const videoStart = 0.63;
     const videoDuration = 0.4;
     const videoEnd = videoStart + videoDuration;
 
@@ -44,19 +48,32 @@ export function useScrollAnimation({
       scrollTrigger: {
         trigger: section,
         start: "top top",
-        end: "+=500%",
+        end: `${isMobile ? "+=200%" : isMid ? "+=300%" : "+=600%"}`,
         pin: true,
         scrub: 1,
         anticipatePin: 1,
-        onUpdate: (self) => {
-          const progress = self.progress;
-          if (progress >= videoStart && progress <= videoEnd) {
-            const frameProgress = (progress - videoStart) / videoDuration;
-            scrubTo(frameProgress);
-          }
-        },
+       onUpdate: (self) => {
+  const progress = self.progress;
+  
+  if (progress >= videoStart && progress <= videoEnd) {
+    const frameProgress = (progress - videoStart) / videoDuration;
+    scrubTo(frameProgress);
+  }
+
+  // Dragon video — play once only
+  const dragonVideo = document.getElementById('about-video-dragon') as HTMLVideoElement
+  if (dragonVideo) {
+    if (progress >= 0.4 && !hasPlayed.current) {
+      hasPlayed.current = true   // Mark as played
+      dragonVideo.currentTime = 0
+      dragonVideo.play()
+    }
+  }
+},
       },
     });
+
+    
 
     tl.to(text, { opacity: 0, y: -30, duration: 0.2 }, 0);
     tl.to("#splash", { opacity: 0, duration: 0.2, ease: "power2.inOut" }, 0);
@@ -77,20 +94,29 @@ export function useScrollAnimation({
     tl.to("#black-overlay", { opacity: 0, duration: 0.12 }, 0.46);
 
     tl.fromTo("#about-me h1",
-      { opacity: 0, x: -80 },
+      { opacity: 0, x: isAr ? 80 : -80 },
       { opacity: 1, x: 0, duration: 0.15, ease: "power3.out" }, 0.38);
     tl.fromTo("#about-me p.about-text",
-      { opacity: 0, x: -80 },
+      { opacity: 0, x: isAr ? 80 : -80},
       { opacity: 1, x: 0, duration: 0.15, ease: "power3.out" }, 0.38);
-    tl.fromTo("#about-me img",
-      { opacity: 0, x: -80 },
-      { opacity: 1, x: 0, duration: 0.15, ease: "power3.out" }, 0.38);
+tl.fromTo(".about-abstract",
+  { opacity: 0, x: isMobile ? 0 : 80 , y:isMobile ? 80 : 0 },
+  { opacity: 1, x: 0 , y: 0 , duration: 0.15, ease: "power3.out" }, 0.38);
+
+tl.fromTo("#about-video-dragon",
+  { opacity: 0.8 },
+  { opacity: 0.7, duration: 0.13 },
+  0.38
+)
+
+tl.to(".about-abstract",
+  { opacity: 0, scale: 1.08, duration: 0.1, ease: "power2.in" }, 0.51);
 
     tl.to("#about-me h1",
-      { opacity: 0, x: -100, duration: 0.1, ease: "power2.in" }, 0.51);
+      { opacity: 0, x: isAr ? 100 : -100, duration: 0.1, ease: "power2.in" }, 0.51);
     tl.to("#about-me p.about-text",
-      { opacity: 0, x: -100, duration: 0.1, ease: "power2.in" }, 0.51);
-    tl.to("#about-me img",
+      { opacity: 0, x: isAr ? 100 : -100, duration: 0.1, ease: "power2.in" }, 0.51);
+    tl.to("#about-video-dragon",
       { opacity: 0, scale: 1.08, duration: 0.1, ease: "power2.in" }, 0.51);
 
     tl.to(nextSectionRef2.current, {
@@ -137,7 +163,11 @@ tl.fromTo(line3Words,
   { color: "rgba(255,255,255,1)", stagger: 0.008, ease: "none", duration: 0.04 },
   0.85
 );
-tl.to({}, { duration: 0.02 }, 0.98);
+
+if(!isMobile)   tl.to({}, { duration: 0.02 }, 0.98); 
+
+
+
     return () => tl.scrollTrigger?.kill();
-  }, []);
+  }, [isAr]);
 }

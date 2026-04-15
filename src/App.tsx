@@ -66,6 +66,7 @@ function App() {
       </div>
       <LanguageSwitcher />
 
+
       <ScrollIndecator />
 
       {isLoading && <Loader />}
@@ -99,6 +100,8 @@ function App() {
       <Suspense fallback={<SectionLoader />}>
         <Contact />
       </Suspense>
+
+      
 
     
 

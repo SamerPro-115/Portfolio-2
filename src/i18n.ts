@@ -9,7 +9,7 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    fallbackLng: 'en',            // ✅ default ONLY on first visit
+    fallbackLng: 'en',            // default ONLY on first visit
     supportedLngs: ['en', 'ar'],
 
     defaultNS: 'common',
@@ -23,8 +23,8 @@ i18n
     },
 
     detection: {
-      order: ['localStorage'],    // ✅ read ONLY saved choice
-      caches: ['localStorage'],   // ✅ save user choice
+      order: ['localStorage'],    // read ONLY saved choice
+      caches: ['localStorage'],   // save user choice
     },
   });
 

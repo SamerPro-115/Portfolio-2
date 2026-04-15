@@ -1,5 +1,6 @@
 import { useLanguage } from "@/hooks/useLanguage";
 import { useTranslation } from "react-i18next";
+import { useMediaQuery } from "react-responsive";
 
 
 
@@ -10,6 +11,7 @@ type Prop = {
 export default function Walking({ canvasRef }: Prop) {
   const isAr = useLanguage();
   const { t } = useTranslation();
+  const isMobile = useMediaQuery({maxWidth: "768px"})
 
 
 
@@ -41,7 +43,9 @@ return (
     />
 
     {/* ── Radial vignette ── */}
-  {/* <div
+    {isMobile && (
+      <>
+        <div
   className="pointer-events-none absolute inset-0 z-10"
   style={{
     background:
@@ -54,15 +58,17 @@ return (
     background:
       "linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 50%)",
   }}
-/> */}
+/>
+      </>
+    )}
 
 
 
     {/* ── Text phrases ── */}
 <div className="absolute inset-0 z-20 pointer-events-none">
  <div style={{ fontFamily: isAr ? "Harmattan" : "Shadows Into Light, serif" }}
-  className={`absolute top-[40%] ${isAr ? "right-[5%]" : "left-[5%]"} w-[90%] sm:w-[70%] xl:w-[50%] italic
-             text-lg sm:text-xl md:text-2xl xl:text-3xl `}>
+  className={`absolute top-[40%] ${isAr ? "right-[5%] text-2xl" : "left-[5%] text-xl"} w-[90%] sm:w-[70%] xl:w-[50%] opacity-90
+              sm:text-xl md:text-2xl xl:text-4xl `}>
 
   {/* First set */}
   <div className="line-1 overflow-hidden">
@@ -79,15 +85,7 @@ return (
 </div>
 </div>
 
-    {/* ── Letterbox bars ── */}
-    <div
-      className="pointer-events-none absolute top-0 left-0 right-0 z-30 bg-black"
-      style={{ height: "6vh" }}
-    />
-    <div
-      className="pointer-events-none absolute bottom-0 left-0 right-0 z-30 bg-black"
-      style={{ height: "6vh" }}
-    />
+
   </div>
 );
 }

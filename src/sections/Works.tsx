@@ -91,6 +91,7 @@ const works = [
       data-section="works"
       className="min-h-screen bg-black text-white relative overflow-hidden py-20"
     >
+      
       {/* Background Grid Pattern */}
       <div className="absolute inset-0 opacity-5 ">
         <div
@@ -302,6 +303,9 @@ const works = [
                         ))}
                       </div>
                     </div>
+
+   
+
 
                     <a
                       href={works[selectedWork].link}

@@ -35,6 +35,7 @@ export function Skills() {
 
  return (
     <section className="min-h-screen bg-black py-20 relative overflow-hidden">
+ 
        <div className="absolute inset-0 overflow-hidden opacity-30 pointer-events-none ">
         {[...Array(5)].map((_, i) => (
           <motion.div

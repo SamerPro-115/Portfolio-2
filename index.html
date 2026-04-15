@@ -50,19 +50,11 @@
 
   /* Harmattan */
 @font-face { font-family: "Harmattan"; src: url("/fonts/Harmattan-Regular.woff2") format("woff2"), url("/fonts/Harmattan-Regular.woff") format("woff"); font-weight: 400; }
-@font-face { font-family: "Harmattan"; src: url("/fonts/Harmattan-Medium.woff2") format("woff2"), url("/fonts/Harmattan-Medium.woff") format("woff"); font-weight: 500; }
-@font-face { font-family: "Harmattan"; src: url("/fonts/Harmattan-SemiBold.woff2") format("woff2"), url("/fonts/Harmattan-SemiBold.woff") format("woff"); font-weight: 600; }
 @font-face { font-family: "Harmattan"; src: url("/fonts/Harmattan-Bold.woff2") format("woff2"), url("/fonts/Harmattan-Bold.woff") format("woff"); font-weight: 700; }
 
 /* IosevkaCharon */
 @font-face { font-family: "Iosevka Charon"; src: url("/fonts/IosevkaCharon-Light.woff2") format("woff2"), url("/fonts/IosevkaCharon-Light.woff") format("woff"); font-weight: 300; }
-@font-face { font-family: "Iosevka Charon"; src: url("/fonts/IosevkaCharon-LightItalic.woff2") format("woff2"), url("/fonts/IosevkaCharon-LightItalic.woff") format("woff"); font-weight: 300; font-style: italic; }
-@font-face { font-family: "Iosevka Charon"; src: url("/fonts/IosevkaCharon-Regular.woff2") format("woff2"), url("/fonts/IosevkaCharon-Regular.woff") format("woff"); font-weight: 400; }
-@font-face { font-family: "Iosevka Charon"; src: url("/fonts/IosevkaCharon-Italic.woff2") format("woff2"), url("/fonts/IosevkaCharon-Italic.woff") format("woff"); font-weight: 400; font-style: italic; }
-@font-face { font-family: "Iosevka Charon"; src: url("/fonts/IosevkaCharon-Medium.woff2") format("woff2"), url("/fonts/IosevkaCharon-Medium.woff") format("woff"); font-weight: 500; }
-@font-face { font-family: "Iosevka Charon"; src: url("/fonts/IosevkaCharon-MediumItalic.woff2") format("woff2"), url("/fonts/IosevkaCharon-MediumItalic.woff") format("woff"); font-weight: 500; font-style: italic; }
 @font-face { font-family: "Iosevka Charon"; src: url("/fonts/IosevkaCharon-Bold.woff2") format("woff2"), url("/fonts/IosevkaCharon-Bold.woff") format("woff"); font-weight: 700; }
-@font-face { font-family: "Iosevka Charon"; src: url("/fonts/IosevkaCharon-BoldItalic.woff2") format("woff2"), url("/fonts/IosevkaCharon-BoldItalic.woff") format("woff"); font-weight: 700; font-style: italic; }
 
 /* ShadowsIntoLight */
 @font-face { font-family: "Shadows Into Light"; src: url("/fonts/ShadowsIntoLight-Regular.woff2") format("woff2"), url("/fonts/ShadowsIntoLight-Regular.woff") format("woff"); font-weight: 400; }
@@ -88,6 +80,73 @@ html{
 
 [data-lang="en"] {
     font-family: 'Iosevka Charon', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.hero-container{
+      position: absolute;
+    height: 100vh;
+    width: 100%;
+    z-index: 99;
+}
+.left-side-hero{
+      background: linear-gradient(111deg, #000000 54%, transparent 50%);
+      height: 100vh;
+      width: 100%;
+}
+
+.hero-image{
+height: 100vh;
+    width: 70%;
+    margin-left: auto;
+}
+
+.text-container{
+      left: 30%;
+    top: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    padding: 5rem;
+}
+
+html{
+    overflow-x: hidden;
+}
+.splash-image{
+    width: 400px;
+    transform: rotate(-35deg) translate(-50%, -50%);
+    left: 10%;
+    top: 0%;
+    opacity: 0.6;
+}
+
+@media screen and (max-width: 992px) {
+    .hero-image {
+    width: 100%;
+}
+}
+
+@media screen and (max-width: 768px) {
+    .left-side-hero {
+            background: linear-gradient(150deg, #000000 53%, transparent 50%);
+    height: 100vh;
+    width: 100%;
+    }
+.hero-image {
+    height: 69vh;
+    overflow-x: hidden;
+    width: 100%;
+    position: absolute;
+    top: 34%;
+    left: 0%;
+}
+    .text-container {
+    left: 54%;
+    top: 27%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    padding: 2rem;
+}
 }
 
 

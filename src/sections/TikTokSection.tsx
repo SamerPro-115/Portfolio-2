@@ -71,7 +71,7 @@ const toggleLanguage = () => {
       ref={sectionRef}
       className="relative min-h-screen bg-black text-white py-20 px-6 overflow-hidden"
     >
-      {/* Background decorative elements */}
+
            
  <div className="absolute inset-0 opacity-20">
         <div className="absolute top-20 left-10 w-32 h-32 border-2 border-white transform rotate-45"></div>
@@ -81,12 +81,10 @@ const toggleLanguage = () => {
       </div>
 
 
-      {/* Background decorative elements */}
       <div className="absolute top-20 left-10 w-64 h-64 border border-white/10 rounded-full" />
       <div className="absolute top-1/2 left-1/4 w-2 h-2 bg-white rounded-full animate-pulse" />
       <div className="absolute top-1/3 right-1/3 w-2 h-2 bg-white rounded-full animate-pulse delay-100" />
       <div className="relative max-w-7xl mx-auto">
-        {/* Section Title */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
@@ -102,37 +100,28 @@ const toggleLanguage = () => {
           </p>
         </motion.div>
 
-        {/* Main Content Grid */}
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Side - Video/Image Display */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isVisible ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative"
           >
-            {/* Phone Frame */}
             <div className="relative mx-auto max-w-sm">
-              {/* Phone mockup */}
               <div className="relative bg-gradient-to-br from-gray-900 to-black rounded-[3rem] p-4 shadow-2xl border border-white/20">
-                {/* Notch */}
                 <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-6 bg-black rounded-b-3xl z-10" />
                 
-                {/* Screen */}
                 <div className="relative bg-black rounded-[2.5rem] overflow-hidden aspect-[9/16]">
-                  {/* Video Container */}
                   <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900">
-                    {/* Replace this src with your actual video path */}
                   <video
                       ref={videoRef}
                       className="w-full h-full object-cover"
                       loop
                       playsInline
-                      poster="/video-poster.jpg" // Optional: Add a thumbnail image
+                      poster="/video-poster.jpg" 
                       onClick={togglePlay}
                     >
                       <source src={isEnglish ? "/videos/video-english.mp4" : "/videos/Video.mp4"} type="video/mp4" />
-                      {/* Fallback for browsers that don't support video */}
                       <div className="absolute inset-0 flex items-center justify-center">
                         <div className="text-center space-y-4 p-8">
                           <Code className="w-20 h-20 mx-auto text-white/50" />
@@ -144,7 +133,6 @@ const toggleLanguage = () => {
                     </video>
                   
 
-                    {/* Play/Pause Overlay */}
                     {!isPlaying && (
                       <motion.div
                         initial={{ opacity: 0 }}
@@ -159,10 +147,8 @@ const toggleLanguage = () => {
                       </motion.div>
                     )}
                     
-                    {/* TikTok-style UI overlay */}
                     <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
                       <div className="flex items-center gap-3 mb-2">
-                        {/* <div className="w-10 h-10 rounded-full bg-white/20 border-2 border-white" /> */}
                         <div className='w-10 h-10 rounded-full border-2 border-white'>
                           <img src="/tiktok-logo.jpg" className='rounded-full' alt="Tiktok logo" />
                         </div>
@@ -176,7 +162,6 @@ const toggleLanguage = () => {
                       </p>
                     </div>
 
-                    {/* Right side actions */}
                     <div className={`absolute ${isAr ? 'left-2' : 'right-2' } bottom-20 flex flex-col gap-4`}>
                       <div className="flex flex-col items-center gap-1">
                         <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center ">
