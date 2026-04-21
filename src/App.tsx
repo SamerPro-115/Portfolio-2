@@ -15,9 +15,10 @@ import FirstVisitTips from "./components/FirstVisitTips";
 import { ScrollIndecator } from "./components/ui/ScrollIndecator";
 import { Skills } from "./sections/Skills";
 import { useFirstTimeVisit } from "./hooks/useFirstTimeVisit";
+import WorksNew from "./sections/WorksNew";
 
 // Lazy load ONLY below-the-fold components
-const Works = lazy(() => import("./sections/Works").then(module => ({ default: module.Works })));
+// const Works = lazy(() => import("./sections/Works").then(module => ({ default: module.Works })));
 const CourseSection = lazy(() => import("./sections/CourseSection"));
 const TikTokSection = lazy(() => import("./sections/TikTokSection"));
 const CurrentProject = lazy(() => import("./sections/CurrentProject"));
@@ -51,11 +52,11 @@ function App() {
     document.documentElement.dir = direction;
     document.documentElement.lang = lang;
     document.documentElement.setAttribute("data-lang", lang);
-  }, [i18n.language]); 
+  }, [i18n.language]);
 
-  
 
-  
+
+
 
   return (
     <main className=" bg-black">
@@ -75,9 +76,9 @@ function App() {
 
       <FirstVisitTips />
 
-      <Suspense fallback={<SectionLoader />}>
+      {/* <Suspense fallback={<SectionLoader />}>
         <Works />
-      </Suspense>
+      </Suspense> */}
 
       <Suspense fallback={<SectionLoader />}>
         <Skills />
@@ -101,9 +102,9 @@ function App() {
         <Contact />
       </Suspense>
 
-      
 
-    
+
+
 
       <Toaster position="top-center" />
     </main>

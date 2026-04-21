@@ -366,3 +366,27 @@ html {
           61%  { transform: translateY(0);   opacity: 0; }
           100% { transform: translateY(0);   opacity: 1; }
         }
+
+
+
+
+
+
+.tiger-image{
+  -webkit-mask-image: url("/images/tiger.svg");
+  -webkit-mask-size: cover;
+  -webkit-mask-position: center;
+}
+
+/* .lt{
+  background-image: url("https://c02.purpledshub.com/uploads/sites/51/2022/03/How-to-draw-a-tiger-step-by-step-tutorial-step-47--b59f171.jpg");
+  background-size: contain;
+  background-clip:text;
+  color: transparent;
+  -webkit-background-clip: text;
+  filter: saturate();
+  letter-spacing: 4rem;
+  text-align: center;
+  filter: saturate(0.2);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+} */

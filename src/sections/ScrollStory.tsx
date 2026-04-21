@@ -10,6 +10,7 @@ import { useMediaQuery } from "react-responsive";
 import  Walking from "@/components/Walking";
 import { useFrameScrubber } from "@/hooks/useFrameScrubber";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import WorksNew from "./WorksNew";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -35,8 +36,10 @@ export function ScrollStory({isLoading}: Prop) {
   const imageRef = useRef<HTMLImageElement>(null);
   const nextSectionRef = useRef<HTMLDivElement>(null);
   const nextSectionRef2 = useRef<HTMLDivElement>(null);
+  const nextSectionRef3 = useRef<HTMLDivElement>(null);
 const canvasRef = useRef<HTMLCanvasElement>(null) as React.RefObject<HTMLCanvasElement>;
 const framesRef = useRef<HTMLImageElement[]>([]);
+
 
 
 const { scrubTo } = useFrameScrubber({
@@ -53,6 +56,7 @@ useScrollAnimation({
   imageRef,
   nextSectionRef,
   nextSectionRef2,
+  nextSectionRef3,
   scrubTo,
   isMobile,
   isMid,
@@ -167,6 +171,12 @@ const scrollToAboutMe = () => {
   style={{ zIndex: 9999999 }}
 >
   <Walking canvasRef={canvasRef} />
+</div>
+
+<div ref={nextSectionRef3} 
+ className="absolute top-0 left-0 w-full h-screen opacity-0 pointer-events-none"
+  style={{ zIndex: 9999999 }}>
+    <WorksNew />
 </div>
 
 

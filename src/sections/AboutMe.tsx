@@ -96,8 +96,7 @@ return (
 
   {isMobile && (
     <img
-      style={{ opacity: 1 }}
-      className="brightness-80 w-full h-full object-contain about-abstract"
+      className="opacity-70 w-full h-full object-contain about-abstract"
       src="/images/about-2.jpg"
       alt="about me image"
     />
@@ -106,8 +105,7 @@ return (
   {!isMobile && (
     <>
       <video
-        style={{ opacity: 1 }}
-        className="brightness-80 w-full h-full lg:absolute lg:right-0 lg:h-screen object-cover object-center about-abstract"
+        className="w-full h-full lg:absolute lg:right-0 lg:h-screen object-cover object-center about-abstract"
         src="/videos/Face-3.mp4"
         autoPlay
         loop

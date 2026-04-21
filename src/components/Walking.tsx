@@ -30,7 +30,7 @@ return (
     {/* ── Canvas (base layer) ── */}
     <canvas
       ref={canvasRef}
-      className={`absolute inset-0 z-0 w-full h-full brightness-70 ${isAr ? "scale-x-[-1]" : ""} `}
+      className={`absolute inset-0 z-0 w-full h-full ${isAr ? "scale-x-[-1]" : ""} walking-frames`}
       style={{ display: "block" }}
     />
 
@@ -65,7 +65,7 @@ return (
 
 
     {/* ── Text phrases ── */}
-<div className="absolute inset-0 z-20 pointer-events-none">
+<div className="absolute inset-0 z-20 pointer-events-none words-container">
  <div style={{ fontFamily: isAr ? "Harmattan" : "Shadows Into Light, serif" }}
   className={`absolute top-[40%] ${isAr ? "right-[5%] text-2xl" : "left-[5%] text-xl"} w-[90%] sm:w-[70%] xl:w-[50%] opacity-90
               sm:text-xl md:text-2xl xl:text-4xl `}>
