@@ -48,7 +48,7 @@ export function useScrollAnimation({
   scrollTrigger: {
     trigger: section,
     start: "top top",
-    end: `${isMobile ? "+=400%" : isMid ? "+=600%" : "+=1500%"}`,
+    end: `${isMobile ? "+=400%" : isMid ? "+=2500%" : "+=1500%"}`,
     pin: true,
     scrub: 1,
     anticipatePin: 1,
@@ -105,7 +105,7 @@ tl.fromTo(".about-abstract",
   { opacity: 0.7, x: 0, y: 0, duration: 0.05, ease: "power3.out" }, 0.12);
 tl.fromTo("#about-video-dragon",
   { opacity: 0 },
-  { opacity: 0.6, duration: 0.05, ease: "power3.out" }, 0.13);
+  { opacity: 0.6, duration: 0.05, ease: "power3.out" }, 0.12);
 
 tl.to(".about-abstract",        { opacity: 0, scale: 1.08, duration: 0.04, ease: "power2.in" }, 0.17);
 tl.to("#about-me h1",           { opacity: 0, x: isAr ? 100 : -100, duration: 0.04, ease: "power2.in" }, 0.17);
@@ -175,7 +175,7 @@ tl.to("#working-image", {
  )
 
 tl.to("#track", {
-  xPercent: -600,
+  xPercent: isAr ? 600 : -600,
   ease: "none",
   duration: 0.45, // duration
 }, 0.48) // start later, more room

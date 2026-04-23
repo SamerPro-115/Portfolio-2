@@ -15,8 +15,9 @@
     },
       "Works": {
         "title": "Works",
+        "projects": "projects",
         "desc": "Take a look on what I've built for different customers",
-        "visit-site": "Visit Site",
+        "visit-site": "Visit Site ↗",
         "view-project": "View Project",
         "overview": "Overview",
         "main-stack": "Main Stack",

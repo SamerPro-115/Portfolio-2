@@ -1,80 +1,21 @@
-import { useRef } from "react"
+import { projects } from "@/data/projects";
+import { useLanguage } from "@/hooks/useLanguage";
+import { useTranslation } from "react-i18next";
 
-const projects = [
-  {
-    name: "Jusoor Events",
-    link: "https://jusoorevent.com",
-    img: "/works/Jusoor.webp",
-    desc: "A bilingual event management platform for conferences across Saudi Arabia.",
-    tech: ["HTML", "jQuery", "Tailwind CSS", "i18next"],
-    year: "2025",
-    num: "01",
-  },
-  {
-    name: "SAAK Training",
-    link: "https://saakteam.com",
-    img: "/works/SAAK.webp",
-    desc: "Full-featured LMS and training portal for a Saudi tech education company.",
-    tech: ["React", "TypeScript", "Tailwind CSS"],
-    year: "2024",
-    num: "02",
-  },
-  {
-    name: "Noon Dashboard",
-    link: "https://noon-dash.vercel.app",
-    img: "/works/fastflow.webp",
-    desc: "Internal analytics dashboard for tracking sales and inventory metrics.",
-    tech: ["React", "Recharts", "Zustand"],
-    year: "2024",
-    num: "03",
-  },
-  {
-    name: "Rafiq App",
-    link: "https://rafiq.app",
-    img: "/works/ex.webp",
-    desc: "A social companion app connecting students across Saudi universities.",
-    tech: ["React Native", "Expo", "Supabase"],
-    year: "2024",
-    num: "04",
-  },
-  {
-    name: "Maktaba",
-    link: "https://maktaba.io",
-    img: "/works/learncorner.webp",
-    desc: "Arabic digital library with reading progress and recommendations.",
-    tech: ["Next.js", "TypeScript", "PostgreSQL"],
-    year: "2023",
-    num: "05",
-  },
-  {
-    name: "Wujood Studio",
-    link: "https://wujood.studio",
-    img: "/works/Wakan.webp",
-    desc: "Creative agency portfolio with immersive scroll animations.",
-    tech: ["React", "GSAP", "Framer Motion"],
-    year: "2023",
-    num: "06",
-  },
-  {
-    name: "Atheer Weather",
-    link: "https://atheer.vercel.app",
-    img: "/works/Mohtaway.webp",
-    desc: "Minimal weather app with animated sky backgrounds.",
-    tech: ["React", "OpenWeather API", "Canvas API"],
-    year: "2022",
-    num: "07",
-  },
-]
 
 
 
 export default function WorksNew() {
 
+   const { t } = useTranslation()
+       const isAr = useLanguage();
+   
+
+
 
   return (
     <div
       className="relative h-screen w-full overflow-hidden bg-black"
-      style={{ fontFamily: "'Iosevka Charon', monospace" }}
     >
 
 
@@ -107,14 +48,14 @@ id="working-image"
           className="mt-1 text-5xl font-bold leading-none text-white"
           style={{ letterSpacing: "-0.02em" }}
         >
-          Works
+          {t("Works.title")}
         </h2>
       </div>
 
       {/* Project counter */}
-      <div className="absolute top-10 right-12 z-30 text-right">
-        <p className="text-[10px] tracking-[0.4em] text-white/25 uppercase">
-          {projects.length} projects
+      <div className="absolute top-10 right-25 z-30 text-right">
+        <p className={`${isAr ? "text-xl" : "uppercase tracking-[0.4em] text-md"}   text-white/80 `}>
+       {t("Works.projects")}   {projects.length} 
         </p>
       </div>
 
@@ -128,13 +69,13 @@ id="working-image"
       >
         {projects.map((project, i) => (
           <div
-            key={project.name}
-            className="panel relative flex h-screen w-screen flex-shrink-0 items-center justify-center px-16"
+            key={project.key}
+            className="panel relative flex h-screen w-screen flex-shrink-0 items-center justify-center md:p-10 xl:px-16"
           >
-            <div className="panel-content flex w-full max-w-5xl items-center gap-16 ">
+            <div className="panel-content flex w-full max-w-5xl items-center gap-14 ">
 
               {/* Left — project info */}
-              <div className="flex-shrink-0 w-80">
+              <div className="flex-shrink-0 md:w-65 xl:w-80">
                 {/* Number */}
                 <p
                   className="mb-6 text-[5rem] font-bold leading-none text-white/8"
@@ -145,15 +86,14 @@ id="working-image"
 
                 {/* Name */}
                 <h3
-                  className="mb-4 text-[clamp(1.8rem,3vw,2.8rem)] font-bold leading-none text-white"
-                  style={{ letterSpacing: "-0.02em" }}
+                  className={`${isAr ? "md:text-3xl lg:text-4xl xl:text-5xl text-2xl" : "md:text-2xl lg:text-4xl"} font-bold tracking-tighter mb-4 transform transition-transform duration-300 text-white group-hover:translate-x-2 `}
                 >
-                  {project.name}
+                  {t(`Works.Projects.${project.key}.title`)}
                 </h3>
 
                 {/* Desc */}
-                <p className="mb-6 text-sm leading-relaxed text-white/40">
-                  {project.desc}
+                <p className={`${isAr ? "md:text-md lg:text-lg" : "md:text-xs lg:text-[1rem]"}  leading-relaxed mb-4 text-white/60`}>
+                  {t(`Works.Projects.${project.key}.desc`)}
                 </p>
 
                 {/* Tech tags */}
@@ -161,7 +101,7 @@ id="working-image"
                   {project.tech.map((t) => (
                     <span
                       key={t}
-                      className="rounded-full border border-white/10 px-3 py-1 text-[10px] tracking-widest text-white/30 uppercase"
+                      className={`${isAr ? "md:text-xs lg:text-sm xl:text-md" : "text-xs"} rounded-full border border-white/10 px-3 py-1 tracking-widest text-white/60 uppercase`}
                     >
                       {t}
                     </span>
@@ -170,38 +110,60 @@ id="working-image"
 
                 {/* Year + link */}
                 <div className="flex items-center gap-4">
-                  <span className="text-xs tabular-nums text-white/20">{project.year}</span>
+                  <span className={`${isAr ? "text-md xl:text-lg" : "text-sm"} tabular-nums text-white/60`}>{project.year}</span>
                   <button
                     onClick={() => window.open(project.link, "_blank")}
-                    className="flex items-center gap-2 text-xs tracking-widest text-white/50 uppercase transition-colors hover:text-white"
+                    className={`${isAr ? "md:text-lg xl:text-xl" : "md:text-sm lg:text-md xl:text-lg"} flex items-center gap-2 text-xs tracking-widest text-white/50 uppercase transition-colors hover:text-white`}
                   >
-                    Visit ↗
+                   {t("Works.visit-site")}
                   </button>
                 </div>
               </div>
 
-              {/* Right — screenshot */}
-              <div
-                className="relative h-full flex-1 overflow-hidden "
-                style={{
-                   height: "50vh",
-                  border: "1px solid rgba(255,255,255,0.08)",
-                }}
-              >
-                <img
-                  src={project.img}
-                  alt={project.name}
-                  className="h-full w-full object-cover object-top transition-transform duration-700 hover:scale-105"
-                />
-                {/* Subtle top fade */}
-                <div
-                  className="pointer-events-none absolute inset-0"
-                  style={{
-                    background:
-                      "linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, transparent 30%)",
-                  }}
-                />
-              </div>
+             {/* Right — screenshot */}
+<div
+  className="relative flex-1 md:h-[25vh] xl:h-[50vh] overflow-hidden"
+  style={{
+    maxHeight: "50vh",
+    transform: "perspective(1000px) rotateY(-3deg)",
+    boxShadow: "0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05)",
+    borderRadius: "6px",
+  }}
+>
+  {/* Browser bar mockup */}
+  <div className="flex items-center gap-1.5 bg-white/5 px-3 py-2 border-b border-white/10 flex-shrink-0">
+    <span className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
+    <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
+    <span className="w-2.5 h-2.5 rounded-full bg-green-500/60" />
+    {/* Fake URL bar */}
+    <div className="ml-2 flex-1 rounded-sm bg-black/5 px-2 py-0.5 text-[10px] text-white/70 tracking-wider truncate">
+      {project.link}
+    </div>
+  </div>
+
+  {/* Image */}
+  <img
+    src={project.img}
+    alt={t(`Works.Projects.${project.key}.title`)}
+    className="h-full w-full object-cover object-top transition-transform duration-700 hover:scale-105"
+  />
+
+  {/* Top fade */}
+  <div
+    className="pointer-events-none absolute inset-0"
+    style={{
+      background: "linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, transparent 30%)",
+    }}
+  />
+
+  {/* Gloss / light sweep */}
+  <div
+    className="pointer-events-none absolute inset-0"
+    style={{
+      background: "linear-gradient(135deg, rgba(255,255,255,0.04) 0%, transparent 50%)",
+    }}
+  />
+</div>
             </div>
 
             {/* Vertical divider between panels */}
