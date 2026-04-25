@@ -10,7 +10,7 @@ import { useMediaQuery } from "react-responsive";
 import  Walking from "@/components/Walking";
 import { useFrameScrubber } from "@/hooks/useFrameScrubber";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import WorksNew from "./WorksNew";
+import Works from "./Works";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -22,8 +22,8 @@ export function ScrollStory({isLoading}: Prop) {
 
   const { t } = useTranslation();
   const isAr = useLanguage();
-  const isMobile = useMediaQuery({maxWidth: "769px"})
-  const isMid = useMediaQuery({maxWidth: "1025px"})
+  const isMobile = useMediaQuery({maxWidth: "767px"})
+  const isMid = useMediaQuery({maxWidth: "992px"})
 
       const TOTAL_FRAMES = isMid ? 47 : 94
 
@@ -69,6 +69,12 @@ useScrollAnimation({
   initial: { opacity: 0, y: 100 },
   animate: isLoading ? { opacity: 0, y: 100 } :  { opacity: 1, y: 0 } ,
 };
+
+
+
+
+
+
 
 
 const scrollToAboutMe = () => {
@@ -173,12 +179,15 @@ const scrollToAboutMe = () => {
   <Walking canvasRef={canvasRef} />
 </div>
 
-<div ref={nextSectionRef3} 
+
+{!isMid && (
+  <div ref={nextSectionRef3} 
  className="absolute top-0 left-0 w-full h-screen opacity-0 pointer-events-none"
   style={{ zIndex: 9999999 }}>
-    <WorksNew />
+    <Works />
 </div>
 
+)}
 
 
 

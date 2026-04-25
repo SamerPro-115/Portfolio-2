@@ -1,352 +1,171 @@
-import {  useState } from 'react';
-import { motion } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
-import { useLanguage } from '@/hooks/useLanguage';
+import { projects } from "@/data/projects";
+import { useLanguage } from "@/hooks/useLanguage";
+import { useTranslation } from "react-i18next";
 
 
 
-export function Works() {
-  const [selectedWork, setSelectedWork] = useState<number | null>(null);
-    const {t} = useTranslation();
-    const isAr = useLanguage();
 
-    
-const works = [
-   {
-    name: t("Works.Projects.Jusoor.title"),
-    link: "https://jusoorevent.com",
-    img: "/works/Jusoor.webp",
-    desc: t("Works.Projects.Jusoor.desc"),
-    tech: ["HTML", "Jquery", "Tailwind CSS", "i18next"],
-    year: "2025"
-  },
-   {
-    name: t("Works.Projects.SAAK.title"),
-    link: "https://saakteam.com.sa",
-    img: "/works/SAAK.webp",
-    desc: t("Works.Projects.SAAK.desc"),
-    tech: ["React", "TypeScript", "Tailwind CSS", "i18next"],
-    year: "2025"
-  },
-   {
-    name: t("Works.Projects.WAKAN.title"),
-    link: "https://wa-kan.com",
-    img: "/works/Wakan.webp",
-    desc: t("Works.Projects.WAKAN.desc"),
-    tech: ["HTML", "CSS", "JavaScript"],
-    year: "2025"
-  },
-   {
-    name: t("Works.Projects.Mohtaway.title"),
-    link: "https://mohtaway.app",
-    img: "/works/Mohtaway.webp",
-    desc: t("Works.Projects.Mohtaway.desc"),
-    tech: ["JavaScript", "Node.js", "MongoDB", "GCP"],
-    year: "2024 - 2025"
-  },
+export default function Works() {
 
-  {
-    name: t("Works.Projects.FastFlow.title"),
-    link: "https://fastflow.sa",
-    img: "/works/fastflow.webp",
-    desc: t("Works.Projects.FastFlow.desc"),
-    tech: ["JavaScript", "Bootstrap", "Animate.css"],
-    year: "2024"
-  },
-  
-    {
-    name: t("Works.Projects.Traders-Tools.title"),
-    link: "https://chromewebstore.google.com/detail/ljdomcoabaomadeckhgmdlbjdpmcgdhj?utm_source=item-share-cb",
-    img: "/works/ex.webp",
-    desc: t("Works.Projects.Traders-Tools.desc"),
-    tech: ["React", "Chrome API", "JavaScript"],
-    year: "2025"
-  },
- 
-  {
-    name: t("Works.Projects.LearningCorner.title"),
-    link: "https://www.learningcorner.net",
-    img: "/works/learncorner.webp",
-    desc: t("Works.Projects.LearningCorner.desc"),
-    tech: ["HTML", "CSS", "Custom Integration"],
-    year: "2023"
-  },
-];
-
-  
-  const handleClick = (index: number) => {
-    setSelectedWork(index)
-    document.documentElement.style.overflow = 'hidden'
-  }
-
-  const handleModuleClose = () => {
-    setSelectedWork(null);
-    document.documentElement.style.overflow = 'auto'
-
-  }
-
-
-  return (
-    <section
-      data-section="works"
-      className="min-h-screen bg-black text-white relative overflow-hidden py-20"
-    >
-      
-      {/* Background Grid Pattern */}
-      <div className="absolute inset-0 opacity-5 ">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `
-            repeating-linear-gradient(0deg, transparent, transparent 50px, white 50px, white 51px),
-            repeating-linear-gradient(90deg, transparent, transparent 50px, white 50px, white 51px)
-          `,
-          }}
-        ></div>
-      </div>
-
-      <div className="container mx-auto px-6 relative">
-        <div className="text-center mb-20">
-          <div className="relative inline-block">
-            <div className="absolute -inset-6 bg-white transform -rotate-2 opacity-10"></div>
-            <motion.h2
-              className="relative text-6xl md:text-8xl font-bold tracking-tighter mb-6"
-              initial={{ opacity: 0, y: 100 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              viewport={{ once: true}}
-            >
-              {t("Works.title")}
-            </motion.h2>
-          </div>
-          <motion.div className="w-32 h-1 bg-white mx-auto mb-6"
-           initial={{ opacity: 0, y: 100 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true, amount: 0.5 }}></motion.div>
-          <motion.p  initial={{ opacity: 0, y: 100 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              viewport={{ once: true}}
-             className={`${isAr ? "text-2xl md:text-3xl" : "text-xl"} text-gray-400 max-w-3xl mx-auto font-light pt-5`}>
-            {t("Works.desc")}
-          </motion.p>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
-          {works.map((work, index) => (
-            <motion.div
-              key={work.name}
-              className="group relative cursor-pointer "
-              onClick={() => handleClick(index)}
-              initial={{ opacity: 0, y: 100 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true}}
-            >
-              <div className="relative h-96 bg-black border-4 border-white overflow-hidden group-hover:border-gray-300 transition-all duration-500">
-                
-               
-
-                <div className="relative  h-full flex">
-                  <div className="w-2/3 md:w-1/2 p-4 md:p-8 flex flex-col justify-between text-black relative ">
-                    <div className="flex justify-between items-start">
-                      <div className="w-16 h-16 bg-black text-white flex items-center justify-center text-2xl font-bold">
-                        {String(index + 1).padStart(2, "0")}
-                      </div>
-                      <div className="text-right">
-                        <div className="text-sm font-bold tracking-widest">
-                          {work.year}
-                        </div>
-                        <div className="w-8 h-px bg-black mt-2"></div>
-                      </div>
-                    </div>
-
-                    <div>
-                      <h3 className={`${isAr ? "md:text-3xl lg:text-4xl xl:text-5xl text-2xl" : "text-2xl md:text-3xl lg:text-4xl  "} font-bold tracking-tighter mb-4 transform transition-transform duration-300 text-white group-hover:translate-x-2 `}>
-                        {work.name}
-                      </h3>
-
-                      <div className="space-y-1">
-                        {work.tech.slice(0, 3).map((tech) => (
-                          <div
-                            key={tech}
-                            className={`${isAr ? "xl:text-2xl md:text-lg text-lg" : "xl:text-xl md:text-md text-sm"} font-bold tracking-widest opacity-70 text-white`}
-                          >
-                            {tech.toUpperCase()}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="flex items-center gap-4">
-                      <div className="w-12 h-px bg-black text-white"></div>
-                      <div className="text-xs tracking-widest font-bold">
-                        PROJECT
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="w-1/2 relative overflow-hidden">
-                    <img
-                      src={work.img}
-                      loading='lazy'
-                      alt={work.name}
-                      className="w-full h-full object-cover filter filter-[grayscale(0.3)] transition-all duration-700 group-hover:grayscale-0 group-hover:scale-110"
-                    />
-
-                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                      <div className="text-center text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                        <div className={`${isAr ? "lg:text-xl" : "lg:text-lg"}   tracking-widest mb-2`}>
-                          {t("Works.view-project")}
-                        </div>
-                        <div className="w-16 h-px bg-white mx-auto"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="absolute bottom-0 left-0 right-0 bg-white text-black p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 z-30">
-                  <p className={`${isAr ? "text-lg" : "text-md"}  leading-relaxed mb-4`}>{work.desc}</p>
-                  <a
-                    href={work.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`inline-flex items-center gap-2 ${isAr ? "text-xl" : "text-sm"} font-bold tracking-widest hover:gap-4 transition-all duration-300`}
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    {t("Works.visit-site")}
-                    {isAr ? <div className="w-4 h-4 border-r-2 border-t-2 border-black transform rotate-[222deg]"></div> : <div className="w-4 h-4 border-r-2 border-t-2 border-black transform rotate-45"></div>}
-                  </a>
-                </div>
-
-                <div className="absolute top-0 left-0 w-8 h-8 border-l-4 border-t-4 border-white opacity-50 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="absolute bottom-0 right-0 w-8 h-8 border-r-4 border-b-4 border-white opacity-50 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </div>
-
-              <div className="absolute -top-4 -right-4 w-8 h-8 bg-white border-4 border-black transform rotate-45 opacity-0 group-hover:opacity-100 group-hover:rotate-90 transition-all duration-500"></div>
-              <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-black border-2 border-white opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Enhanced Modal */}
-        {selectedWork !== null && (
-          <div
-            className="fixed inset-0 bg-black/95 flex items-center justify-center z-9999 p-4"
-            onClick={handleModuleClose}
-          >
-            <div
-              className="bg-zinc-950 border border-zinc-800 max-w-5xl w-full max-h-[90vh] overflow-auto shadow-2xl"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className="border-b border-zinc-800 p-8 flex justify-between items-start bg-gradient-to-r from-zinc-950 to-zinc-900">
-                <div>
-                  <h3 className={`text-3xl font-bold tracking-tight mb-3`}>
-                    {works[selectedWork].name}
-                  </h3>
-                  <div className="flex items-center gap-4">
-                    <span className="px-3 py-1 bg-white text-black text-md font-bold">
-                      {works[selectedWork].year}
-                    </span>
-                  </div>
-                </div>
-                <button
-                  onClick={handleModuleClose}
-                  className="w-8 h-8 md:w-12 md:h-12 border border-zinc-700 hover:border-white flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300 group"
-                >
-                  <span className={`font-bold ${isAr ? "text-4xl" : "text-2xl"} group-hover:rotate-90 transition-transform duration-300`}>
-                    ×
-                  </span>
-                </button>
-              </div>
-
-              <div className="p-8">
-                <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
-                  <div className="lg:col-span-3">
-                    <div className="relative">
-                      <img
-                        src={works[selectedWork].img}
-                        alt={works[selectedWork].name}
-                        loading='lazy'
-                        className="w-full border border-zinc-700 shadow-2xl"
-                      />
-                      <div className="absolute -bottom-4 -right-4 w-full h-full border border-zinc-800 -z-10"></div>
-                    </div>
-                  </div>
-
-                  <div className="lg:col-span-2 space-y-8">
-                    <div>
-                      <h4 className={`${isAr ? "text-4xl" : "text-2xl"}  font-bold mb-4 tracking-wide text-white/90`}>
-                       {t("Works.overview")}
-                      </h4>
-                      <p className={`text-zinc-300 leading-relaxed ${isAr ? "text-xl md:text-2xl" : "text-lg md:text-xl"}`}>
-                        {works[selectedWork].desc}
-                      </p>
-                    </div>
-
-                    <div>
-                      <h4 className={`${isAr ? "text-2xl" : "text-xl"} font-bold mb-4 tracking-wide text-white/90`} >
-                        {t("Works.main-stack")}
-                      </h4>
-                      <div className="space-y-2">
-                        {works[selectedWork].tech.map((tech) => (
-                          <div
-                            key={tech}
-                            className="flex items-center gap-3 p-3 bg-zinc-900/50 border border-zinc-800"
-                          >
-                            <div className="w-2 h-2 bg-white"></div>
-                            <span className={`font-medium ${isAr ? "text-xl" : "text-md"} tracking-wider`} style={{fontFamily: "Iosevka Charon', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif"}}>
-                              {tech}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
+   const { t } = useTranslation()
+       const isAr = useLanguage();
    
 
 
-                    <a
-                      href={works[selectedWork].link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`inline-flex items-center justify-center w-full bg-white ${isAr ? "text-lg" : "text-sm md:text-md" } text-black md:px-8 py-4 font-bold tracking-widest hover:bg-zinc-200 transition-all duration-300 group`}
-                    >
-                      <span>{t("Works.visit-site")}</span>
-                      <div className={`ml-3 w-3 h-3 border-r-2 border-t-2 border-black transform ${isAr ? 'rotate-[222deg]' : 'rotate-45'} group-hover:translate-x-1 transition-transform duration-300`}></div>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
+
+  return (
+    <div
+      className="relative h-screen w-full overflow-hidden bg-black"
+    >
+
+
+  
+<img
+id="working-image"
+  src="/images/work-bg.webp"
+  className="w-full h-full object-cover"
+   style={{
+           clipPath: "inset(30% 50% round 4px)",
+         }}
+/>
+
+
+      {/* Dark overlay for readability */}
+      <div
+        className="pointer-events-none absolute inset-0 z-10"
+        style={{
+          background:
+            "linear-gradient(to right, rgba(0,0,0,0.85) 20%, rgba(0,0,0,0.4) 100%, rgba(0,0,0,0.85) 100%)",
+        }}
+      />
+
+      {/* ── Section label ─────────────────────────────────────────────── */}
+      <div className="absolute top-10 left-12 z-30">
+        <p className={`${isAr ? "text-md" : "text-[10px] uppercase tracking-[0.45em]" } text-white/50 `}>
+         {t("Works.selected-works")}
+        </p>
+        <h2
+          className="mt-1 text-5xl font-bold leading-none text-white"
+          style={{ letterSpacing: "-0.02em" }}
+        >
+          {t("Works.title")}
+        </h2>
       </div>
 
-      <style>{`
-        @keyframes float {
-          0% { transform: translateY(0px) rotate(0deg); }
-          100% { transform: translateY(-20px) rotate(180deg); }
-        }
-        
-        @keyframes slideInUp {
-          from { opacity: 0; transform: translateY(50px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes fadeInScale {
-          from { opacity: 0; transform: scale(0.8); }
-          to { opacity: 1; transform: scale(1); }
-        }
-        
-        .line-clamp-3 {
-          display: -webkit-box;
-          -webkit-line-clamp: 3;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-        }
-      `}</style>
-    </section>
-  );
+      {/* Project counter */}
+      <div className="absolute top-10 right-25 z-30 text-right">
+        <p className={`${isAr ? "text-xl" : "uppercase tracking-[0.4em] text-md"}   text-white/80 `}>
+       {t("Works.projects")}   {projects.length} 
+        </p>
+      </div>
+
+     
+
+      {/* ── Horizontal track ──────────────────────────────────────────── */}
+      <div
+      id="track"
+        className="absolute inset-0 z-20 flex items-center"
+      
+      >
+        {projects.map((project, i) => (
+          <div
+            key={project.key}
+            className="panel  relative flex h-screen w-screen flex-shrink-0 items-center justify-center md:p-10 xl:px-16"
+          >
+            <div className="panel-content flex w-full max-w-5xl items-center gap-14 ">
+
+              {/* Left — project info */}
+              <div className="flex-shrink-0 w-80">
+                <p
+                  className="mb-6 text-[5rem] font-bold leading-none text-white/8"
+                  style={{ letterSpacing: "-0.04em" }}
+                >
+                  {project.num}
+                </p>
+
+                <h3
+                  className={`${isAr ? "md:text-3xl lg:text-4xl xl:text-5xl text-2xl" : "md:text-2xl lg:text-4xl"} font-bold tracking-tighter mb-4 transform transition-transform duration-300 text-white group-hover:translate-x-2 `}
+                >
+                  {t(`Works.Projects.${project.key}.title`)}
+                </h3>
+
+                <p className={`${isAr ? "md:text-md lg:text-lg" : "md:text-xs lg:text-[1rem]"}  leading-relaxed mb-4 text-white/60`}>
+                  {t(`Works.Projects.${project.key}.desc`)}
+                </p>
+
+                <div className="mb-8 flex flex-wrap gap-2">
+                  {project.tech.map((t) => (
+                    <span
+                      key={t}
+                      className={`${isAr ? "md:text-xs lg:text-sm xl:text-md" : "text-xs"} rounded-full border border-white/10 px-3 py-1 tracking-widest text-white/60 uppercase`}
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <span className={`${isAr ? "text-md xl:text-lg" : "text-sm"} tabular-nums text-white/60`}>{project.year}</span>
+                  <a
+                  href={project.link}
+                  target="_blank"
+                    className={`${isAr ? "md:text-lg xl:text-xl" : "md:text-sm lg:text-md xl:text-lg"} flex items-center gap-2 text-xs tracking-widest text-white/50 uppercase transition-colors hover:text-white ${project.key === "Wedding Invitation" ? "pointer-events-none" : "" }`}
+                  >
+                  {project.key === "Wedding Invitation" ? t("Works.soon") :  t("Works.visit-site")} ↗
+                  </a>
+                </div>
+              </div>
+
+             {/* Right — screenshot */}
+<div
+  className="relative h-full flex-1  xl:h-[60vh] overflow-hidden"
+  style={{
+    maxHeight: "50vh",
+    transform: "perspective(1000px) rotateY(-3deg)",
+    boxShadow: "0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05)",
+    borderRadius: "6px",
+  }}
+>
+  <div className="flex items-center gap-1.5 bg-white/5 px-3 py-2 border-b border-white/10 flex-shrink-0">
+    <span className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
+    <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
+    <span className="w-2.5 h-2.5 rounded-full bg-green-500/60" />
+    {/* Fake URL bar */}
+    <div className="ml-2 flex-1 rounded-sm bg-black/5 px-2 py-0.5 text-[10px] text-white/70 tracking-wider truncate">
+      {project.link}
+    </div>
+  </div>
+
+  <img
+    src={project.img}
+    alt={t(`Works.Projects.${project.key}.title`)} 
+    className={`saturate-80 h-full w-full ${project.key === "Wedding Invitation" ? "object-fill" : "object-cover"} object-top transition-transform duration-700 hover:scale-105 `}
+  />
+
+  <div
+    className="pointer-events-none absolute inset-0"
+    style={{
+      background: "linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, transparent 30%)",
+    }}
+  />
+
+  <div
+    className="pointer-events-none absolute inset-0"
+    style={{
+      background: "linear-gradient(135deg, rgba(255,255,255,0.04) 0%, transparent 50%)",
+    }}
+  />
+</div>
+            </div>
+
+            {i < projects.length - 1 && (
+              <div
+                className="absolute right-0 top-1/2 h-32 w-px -translate-y-1/2 bg-white/8"
+              />
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  )
 }

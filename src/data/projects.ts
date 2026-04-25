@@ -10,13 +10,21 @@ export type TProjects = {
 }
 
 export const projects: TProjects[] = [
+     {
+         key: "Wedding Invitation",
+    link: "--------------------",
+    img: "/works/envlope.webp",
+    tech: ["React", "TypeScript", "Tailwind CSS", "GSAP"],
+    year: "2026",
+    num: "01",
+    },
     {
          key: "Jusoor",
     link: "https://jusoorevent.com",
     img: "/works/Jusoor.webp",
     tech: ["HTML", "jQuery", "Tailwind CSS", "i18next"],
     year: "2025",
-    num: "01",
+    num: "02",
     },
      {
          key: "SAAK",
@@ -24,7 +32,7 @@ export const projects: TProjects[] = [
     img: "/works/SAAK.webp",
    tech: ["React", "TypeScript", "Tailwind CSS", "i18next"],
     year: "2025",
-    num: "02",
+    num: "03",
     },
      {
          key: "WAKAN",
@@ -32,7 +40,7 @@ export const projects: TProjects[] = [
     img: "/works/Wakan.webp",
    tech: ["HTML", "CSS", "JavaScript"],
     year: "2025",
-    num: "03",
+    num: "04",
     },
      {
          key: "Mohtaway",
@@ -40,7 +48,7 @@ export const projects: TProjects[] = [
     img: "/works/Mohtaway.webp",
    tech: ["JavaScript", "Node.js", "MongoDB", "GCP"],
     year: "2024 - 2025",
-    num: "04",
+    num: "05",
     },
      {
          key: "FastFlow",
@@ -48,7 +56,7 @@ export const projects: TProjects[] = [
     img: "/works/fastflow.webp",
    tech: ["JavaScript", "Bootstrap", "Animate.css"],
     year: "2024",
-    num: "05",
+    num: "06",
     },
     {
          key: "Traders-Tools",
@@ -56,7 +64,7 @@ export const projects: TProjects[] = [
     img: "/works/ex.webp",
    tech: ["React", "Chrome API", "JavaScript"],
     year: "2025",
-    num: "06",
+    num: "07",
     },
      {
          key: "LearningCorner",
@@ -64,7 +72,7 @@ export const projects: TProjects[] = [
     img: "/works/learncorner.webp",
   tech: ["HTML", "CSS", "Custom Integration"],
     year: "2023",
-    num: "07",
+    num: "08",
     },
 
 

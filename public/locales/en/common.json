@@ -14,14 +14,19 @@
         "saying": "Great developers are researchers who code, not coders who search"
     },
       "Works": {
+        "selected-works": "selected works",
         "title": "Works",
         "projects": "projects",
         "desc": "Take a look on what I've built for different customers",
-        "visit-site": "Visit Site ↗",
-        "view-project": "View Project",
+        "visit-site": "Visit Site ",
         "overview": "Overview",
         "main-stack": "Main Stack",
+        "soon": "Soon",
          "Projects": {
+          "Wedding Invitation": {
+            "title": "Wedding Invitation",
+            "desc": "Work In Progress"
+          },
             "Jusoor": {
                 "title": "Jusoor Events",
                 "desc": "Built a responsive Arabic/English website with service specific designs and performance-optimized animations."
@@ -34,22 +39,22 @@
                 "title": "WAKAN",
                 "desc": "Customized a pre-built template to match wa-kan’s brand identity, focusing on responsive layout and visual consistency."
             },
-             "Mohtaway": {
-                "title": "Mohtaway",
-                "desc": "Content-sharing platform with subscription features. The UI was designed in collaboration with a designer, and I implemented the platform, enabling creators to sell videos, books, and podcasts on the Mohtaway marketplace."
-            },
+            "Mohtaway": {
+    "title": "Mohtaway",
+    "desc": "Content-sharing platform with subscription features, enabling creators to sell videos, books, and podcasts. I collaborated with a designer on the UI and handled full implementation."
+},
              "FastFlow": {
                 "title": "FAST FLOW",
                 "desc": "Responsive portfolio website for an events company, focused on clear content presentation, structured sections, and a reliable user experience."
             },
             "Traders-Tools": {
-                "title": "Trader's Tools",
-                "desc": "React based Chrome extension for traders. The UI was designed in collaboration with a designer, and I handled the full implementation."
-            },
-            "LearningCorner": {
-                "title": "Learning Corner",
-                "desc": "Learning platform connecting students with their instructor. I customized Msaaq platform pages using embedded HTML and CSS to improve the UI. This project represents an early professional milestone in my web development journey."
-            }
+    "title": "Trader's Tools",
+    "desc": "React-based Chrome extension for traders, built in collaboration with a designer who handled the UI while I led the full implementation."
+},
+"LearningCorner": {
+    "title": "Learning Corner",
+    "desc": "Learning platform connecting students with their instructor. Customized Msaaq platform pages using embedded HTML and CSS. an early milestone in my web development journey."
+}
         }
     },
     "Separator": {

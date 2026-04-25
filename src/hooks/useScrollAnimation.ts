@@ -37,9 +37,11 @@ export function useScrollAnimation({
 
     if (!section || !text || !image) return;
 
-    const videoStart = 0.20;
-    const videoDuration = 0.2;
+
+    const videoStart =  isMobile ? 0.5 : isMid ? 0.4 : 0.2;
+    const videoDuration = isMobile ? 0.3 : isMid  ? 0.5 : 0.25 ;
     const videoEnd = videoStart + videoDuration;
+
 
     gsap.set(image, { transformOrigin: isMobile ? "69% 47%" : "62% 45%" });
 
@@ -48,12 +50,13 @@ export function useScrollAnimation({
   scrollTrigger: {
     trigger: section,
     start: "top top",
-    end: `${isMobile ? "+=400%" : isMid ? "+=2500%" : "+=1500%"}`,
+    end: `${isMid ? "+=300%" : "+=1500%"}`,
     pin: true,
     scrub: 1,
     anticipatePin: 1,
     onUpdate: (self) => {
-      const progress = self.progress;
+ 
+        const progress = self.progress;
 
       // Adjust videoStart/videoEnd to new range
       if (progress >= videoStart && progress <= videoEnd) {
@@ -61,6 +64,7 @@ export function useScrollAnimation({
         scrubTo(frameProgress);
       }
 
+         if(!isMobile) {
       // Dragon video — play once only
       const dragonVideo = document.getElementById("about-video-dragon") as HTMLVideoElement;
       if (dragonVideo) {
@@ -70,6 +74,8 @@ export function useScrollAnimation({
           dragonVideo.play();
         }
       }
+        }
+  
     },
   },
 });
@@ -103,14 +109,18 @@ tl.fromTo("#about-me p.about-text",
 tl.fromTo(".about-abstract",
   { opacity: 0, x: isMobile ? 0 : 80, y: isMobile ? 80 : 0 },
   { opacity: 0.7, x: 0, y: 0, duration: 0.05, ease: "power3.out" }, 0.12);
-tl.fromTo("#about-video-dragon",
+
+  if(!isMobile) {
+    tl.fromTo("#about-video-dragon",
   { opacity: 0 },
   { opacity: 0.6, duration: 0.05, ease: "power3.out" }, 0.12);
+tl.to("#about-video-dragon",    { opacity: 0, scale: 1.08, duration: 0.04, ease: "power2.in" }, 0.17);
+  }
 
 tl.to(".about-abstract",        { opacity: 0, scale: 1.08, duration: 0.04, ease: "power2.in" }, 0.17);
 tl.to("#about-me h1",           { opacity: 0, x: isAr ? 100 : -100, duration: 0.04, ease: "power2.in" }, 0.17);
 tl.to("#about-me p.about-text", { opacity: 0, x: isAr ? 100 : -100, duration: 0.04, ease: "power2.in" }, 0.17);
-tl.to("#about-video-dragon",    { opacity: 0, scale: 1.08, duration: 0.04, ease: "power2.in" }, 0.17);
+
 
 // ── Phase 3: Quote + Walking frames (0.25 → 0.42) ─────────────────────────
 tl.to(nextSectionRef2.current, {
@@ -149,37 +159,35 @@ tl.fromTo(line3Words,
   { color: "rgba(255,255,255,1)", stagger: 0.004, ease: "none", duration: 0.03 }, 0.30);
 
 // ── Phase 4: Exit quote + Tiger reveal (0.42 → 0.50) ─────────────────────
-tl.to(".words-container", { opacity: 0, duration: 0.07 }, 0.36);
-tl.to(".walking-frames",  { opacity: 0, duration: 0.07 }, 0.36);
+    tl.to(".words-container", { opacity: 0, duration: 0.07 }, isMobile ? 0.32 : 0.36);
+tl.to(".walking-frames",  { opacity: 0, duration: 0.07 }, isMobile ? 0.32 : 0.36);
 
-tl.to(nextSectionRef3.current, {
-  opacity: 1,
-  duration: 0.03,
-  pointerEvents: "auto",
-}, 0.37);
+if (!isMid) {
+  tl.to(nextSectionRef3.current, {
+    opacity: 1,
+    duration: 0.03,
+    pointerEvents: "auto",
+  }, 0.37);
 
-// Tiger reveal
-tl.to("#working-image", {
-  clipPath: "inset(0% 0% round 0px)",
-  scale: 0.7,
-  filter: "saturate(1)",
-  duration: 0.1,
-  ease: "power3.inOut",
-}, 0.38)
+  tl.to("#working-image", {
+    clipPath: "inset(0% 0% round 0px)",
+    scale: 0.7,
+    filter: "saturate(1)",
+    duration: 0.1,
+    ease: "power3.inOut",
+  }, 0.38);
 
+  tl.fromTo("#track",
+    { opacity: 0, y: 80 },
+    { opacity: 1, duration: 0.04, y: 0 }, 0.45
+  );
 
-
- tl.fromTo("#track", 
-   {opacity: 0, y: 80},
-   {opacity: 1, duration:0.04, y: 0}, 0.45
- )
-
-tl.to("#track", {
-  xPercent: isAr ? 600 : -600,
-  ease: "none",
-  duration: 0.45, // duration
-}, 0.48) // start later, more room
-
+  tl.to("#track", {
+    xPercent: isAr ? 720 : -720,
+    ease: "none",
+    duration: 0.45,
+  }, 0.48);
+}
     return () => tl.scrollTrigger?.kill();
   }, [isAr]);
 }

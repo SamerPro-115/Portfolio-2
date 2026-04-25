@@ -15,7 +15,8 @@ import FirstVisitTips from "./components/FirstVisitTips";
 import { ScrollIndecator } from "./components/ui/ScrollIndecator";
 import { Skills } from "./sections/Skills";
 import { useFirstTimeVisit } from "./hooks/useFirstTimeVisit";
-import WorksNew from "./sections/WorksNew";
+import { WorksMobile } from "./sections/WorksMobile";
+import { useMediaQuery } from "react-responsive";
 
 // Lazy load ONLY below-the-fold components
 // const Works = lazy(() => import("./sections/Works").then(module => ({ default: module.Works })));
@@ -35,6 +36,7 @@ function App() {
   const { i18n } = useTranslation();
       const [isLoading, setIsLoading] = useState(true);
       const loadingTime = useFirstTimeVisit();
+      const isMid = useMediaQuery({maxWidth: "992px"})
 
 
       useEffect(() => {
@@ -52,6 +54,10 @@ function App() {
     document.documentElement.dir = direction;
     document.documentElement.lang = lang;
     document.documentElement.setAttribute("data-lang", lang);
+    
+
+      document.title = i18n.language === "ar" ? "SamerPro | مطور ويب" : "SamerPro | Web Developer";
+
   }, [i18n.language]);
 
 
@@ -76,9 +82,11 @@ function App() {
 
       <FirstVisitTips />
 
-      {/* <Suspense fallback={<SectionLoader />}>
-        <Works />
-      </Suspense> */}
+     {isMid && (
+        <Suspense fallback={<SectionLoader />}>
+        <WorksMobile />
+      </Suspense> 
+     )}
 
       <Suspense fallback={<SectionLoader />}>
         <Skills />
