@@ -6,7 +6,7 @@ import useTouchDevice from "./hooks/useTouchDevice";
 import CursorEffect from "./components/cursour-effect";
 import SocialMenu from "./components/SocialMenu";
 import LanguageSwitcher from "./components/LanguageSwitcher";
-import Separator from "./components/Separator";
+// import Separator from "./components/Separator";
 
 // Import critical components directly (NO lazy loading)
 import { ScrollStory } from "./sections/ScrollStory";
@@ -92,7 +92,7 @@ function App() {
         <Skills />
       </Suspense>
 
-      <Separator />
+      {/* <Separator /> */}
 
       <Suspense fallback={<SectionLoader />}>
         <CourseSection />

@@ -82,8 +82,8 @@ const scrollToAboutMe = () => {
   if (!section) return;
 
   const sectionTop = section.getBoundingClientRect().top + window.scrollY;
-  const totalScrollDistance = window.innerHeight * ( isMobile ? 2.5 : isMid ? 3.5 : 6); // 250% of viewport
-  const aboutMePosition = sectionTop + totalScrollDistance * 0.46; // 0.35 = when AboutMe appears
+  const totalScrollDistance = window.innerHeight * ( isMobile ? 3 : isMid ? 3 : 6);
+  const aboutMePosition = sectionTop + totalScrollDistance * 0.30; 
 
   window.scrollTo({
     top: aboutMePosition,

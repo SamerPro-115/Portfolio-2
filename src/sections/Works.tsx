@@ -109,51 +109,49 @@ id="working-image"
                   <a
                   href={project.link}
                   target="_blank"
-                    className={`${isAr ? "md:text-lg xl:text-xl" : "md:text-sm lg:text-md xl:text-lg"} flex items-center gap-2 text-xs tracking-widest text-white/50 uppercase transition-colors hover:text-white ${project.key === "Wedding Invitation" ? "pointer-events-none" : "" }`}
+                    className={`${isAr ? "md:text-lg xl:text-xl" : "md:text-sm lg:text-md xl:text-lg"} flex items-center gap-2 text-xs tracking-widest text-white/50 uppercase transition-colors hover:text-white `}
                   >
-                  {project.key === "Wedding Invitation" ? t("Works.soon") :  t("Works.visit-site")} ↗
+                  {t("Works.visit-site")} ↗
                   </a>
                 </div>
               </div>
 
              {/* Right — screenshot */}
 <div
-  className="relative h-full flex-1  xl:h-[60vh] overflow-hidden"
+  className="relative flex flex-col flex-1 xl:h-[60vh] overflow-hidden"
   style={{
-    maxHeight: "50vh",
+    maxHeight: "60vh",
     transform: "perspective(1000px) rotateY(-3deg)",
     boxShadow: "0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05)",
     borderRadius: "6px",
   }}
 >
+  {/* Browser bar */}
   <div className="flex items-center gap-1.5 bg-white/5 px-3 py-2 border-b border-white/10 flex-shrink-0">
     <span className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
     <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
     <span className="w-2.5 h-2.5 rounded-full bg-green-500/60" />
-    {/* Fake URL bar */}
     <div className="ml-2 flex-1 rounded-sm bg-black/5 px-2 py-0.5 text-[10px] text-white/70 tracking-wider truncate">
       {project.link}
     </div>
   </div>
 
-  <img
-    src={project.img}
-    alt={t(`Works.Projects.${project.key}.title`)} 
-    className={`saturate-80 h-full w-full ${project.key === "Wedding Invitation" ? "object-fill" : "object-cover"} object-top transition-transform duration-700 hover:scale-105 `}
-  />
+  {/* Image fills remaining space */}
+  <div className="flex-1 min-h-0 overflow-hidden">
+    <img
+      src={project.img}
+      alt={t(`Works.Projects.${project.key}.title`)}
+      className="saturate-80 h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+    />
+  </div>
 
   <div
     className="pointer-events-none absolute inset-0"
-    style={{
-      background: "linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, transparent 30%)",
-    }}
+    style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, transparent 30%)" }}
   />
-
   <div
     className="pointer-events-none absolute inset-0"
-    style={{
-      background: "linear-gradient(135deg, rgba(255,255,255,0.04) 0%, transparent 50%)",
-    }}
+    style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.04) 0%, transparent 50%)" }}
   />
 </div>
             </div>

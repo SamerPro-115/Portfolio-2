@@ -12,9 +12,9 @@ export type TProjects = {
 export const projects: TProjects[] = [
      {
          key: "Wedding Invitation",
-    link: "--------------------",
+    link: "https://wedding-invitation-sam.netlify.app",
     img: "/works/envlope.webp",
-    tech: ["React", "TypeScript", "Tailwind CSS", "GSAP"],
+    tech: ["React", "TypeScript", "Tailwind CSS", "GSAP", "i18next"],
     year: "2026",
     num: "01",
     },

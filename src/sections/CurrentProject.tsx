@@ -22,8 +22,8 @@ export default function CurrentProject() {
     description: t('currentProject.project.description'),
     fullDescription: t('currentProject.project.fullDescription'),
     tech: ["React", "TypeScript", "Tailwind CSS", "Shadcn/ui", "Node.js", "GCP", "Socket.io", "MongoDB", "Git/Github"],
-    status: t('currentProject.project.status2'),
-    progress: 45,
+    status: t('currentProject.project.status1'),
+    progress: 51,
     images: [
       {
         id: 1,

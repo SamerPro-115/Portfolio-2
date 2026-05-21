@@ -50,7 +50,7 @@ export function useScrollAnimation({
   scrollTrigger: {
     trigger: section,
     start: "top top",
-    end: `${isMid ? "+=300%" : "+=1500%"}`,
+    end: `${isMid ? "+=220%" : "+=900%"}`,
     pin: true,
     scrub: 1,
     anticipatePin: 1,
@@ -172,7 +172,7 @@ if (!isMid) {
   tl.to("#working-image", {
     clipPath: "inset(0% 0% round 0px)",
     scale: 0.7,
-    filter: "saturate(1)",
+       filter: "saturate(1)",
     duration: 0.1,
     ease: "power3.inOut",
   }, 0.38);

@@ -205,7 +205,7 @@ export default function CourseSection() {
             <p className={`text-gray-400 ${isAr ? "md:text-xl text-lg" : "md:text-lg text-md"}`}>{t("Course.learn-desc")}</p>
           </div>
           <motion.a
-            href="https://retm.net/course/679df2560f5f53dde9ba2436"
+            href="https://www.youtube.com/watch?v=Sj-x5PG3VhE&list=PLdIrRTSsCX9A3eDvoRCun--1Hetabz6aX"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}

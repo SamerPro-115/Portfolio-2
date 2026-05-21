@@ -7,7 +7,7 @@
     "About-Me": {
         "title": "About Me",
         "desc-1": "I'm a third-year university student in the Faculty of IT.",
-       "desc-2": " I started web development in 2021, along with creating technical content.",
+       "desc-2": " I started web development in 2022, along with creating technical content.",
         "profile": "Download CV",
         "toast-alert": "Sorry, I'm still working on my profile!",
         "toast-download-success": "File has been downloaded",
@@ -25,7 +25,7 @@
          "Projects": {
           "Wedding Invitation": {
             "title": "Wedding Invitation",
-            "desc": "Work In Progress"
+            "desc": "A bilingual (Arabic/English) wedding invitation web app with scroll-driven animations, a video that plays on scroll, and an admin dashboard for managing RSVP guests."
           },
             "Jusoor": {
                 "title": "Jusoor Events",

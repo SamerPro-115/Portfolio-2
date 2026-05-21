@@ -75,7 +75,7 @@ const dismissMenu = () => {
                   {t("switch-language-tip")}
                 </p>
                 <button onClick={dismissLang} className="text-black/70 hover:text-black transition-colors mt-[1px] shrink-0">
-                  <X size={12} />
+                  <X size={18} />
                 </button>
               </div>
             </div>
@@ -105,7 +105,7 @@ const dismissMenu = () => {
                  {t("social-links-tip")}
                 </p>
                 <button onClick={dismissMenu} className="text-black/70 hover:text-black transition-colors mt-[1px] shrink-0">
-                  <X size={12} />
+                  <X size={18} />
                 </button>
               </div>
             </div>

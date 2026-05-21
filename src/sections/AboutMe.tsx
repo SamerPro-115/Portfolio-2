@@ -20,12 +20,6 @@ export function AboutMe() {
 
 
 
-
-
-  
-
-
-
   const handleDownloadCV = () => {
     const link = document.createElement("a");
     link.href = "/cv/Samer_AlAshqar_Web_Developer.pdf";
